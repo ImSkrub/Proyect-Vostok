@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        //player.GetComponent<Life>().OnDeath += FinishGame;
+        player.GetComponent<Life>().OnDeath += FinishGame;
     }
 
     private void Start()
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
+    
     public void UpdateListOfPositions(List<Vector3> listOfPositions)
     {
         print(listOfPositions.Count);
@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour
     {
         print(listOfPositions.Count);
         player = Instantiate(copiaPlayerPrefab);
-       // player.TryGetComponent<PlayerCopia>(out PlayerCopia copiaPlayer);
-        //copiaPlayer.setListOfPositions(listOfPositions);
+        player.TryGetComponent<PlayerCopia>(out PlayerCopia copiaPlayer);
+        copiaPlayer.setListOfPositions(listOfPositions);
     }
 
     public void instantiateListOfObjects()
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     }
 
     public List<GameObject> getCopiaPlayers() { return copiaPlayers; }
-
+    
     void FinishGame()
     {
         SceneManager.LoadScene(3);

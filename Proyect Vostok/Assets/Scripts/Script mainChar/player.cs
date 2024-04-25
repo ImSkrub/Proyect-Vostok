@@ -8,10 +8,13 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     public PlayerData Data;
+
+
    
-    /*Variables you have to access player data:
+    /*
+     *Variables you have to access player data:
      *runMaxSpeed,runAccelAmount,runDeccelAmount,accelInAir,deccelInAir,jumpHangTimeThreshold.
-     *jumpHangAccelerationMult,jumpHangMaxSpeedMult,doConserveMomentum,jumpForce
+     *jumpHangAccelerationMult,jumpHangMaxSpeedMult,doConserveMomentum,
     */
 
     [SerializeField] GameObject gameManager;
@@ -29,7 +32,6 @@ public class player : MonoBehaviour
     public float LastOnWallTime { get; private set; }
     //wallSlide
     public bool IsWallSliding;
-    [SerializeField]private float wallSlidingSpeed = 2f;
     //wallJump
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
@@ -47,9 +49,12 @@ public class player : MonoBehaviour
     #endregion
 
     //Salto
-    private float jumpForce;
+    public float jumpForce = 15;
     private float currentTime;
 
+    /*
+    Funcion de dash para mas adelante, todavia no se va a usar.
+    
     [Header("Dash")]
     [SerializeField] private float dashingVelocity = 24f;
     [SerializeField] private float dashingTime = 0.3f;
@@ -57,6 +62,7 @@ public class player : MonoBehaviour
     private Vector2 dashingDir;
     private bool isDashing;
     private bool canDash = true;
+    */
 
     //evento plataformas
     public event EventHandler OnJump;
@@ -82,6 +88,7 @@ public class player : MonoBehaviour
         lastVector = RB.velocity;
         gameManager.TryGetComponent<GameManager>(out gameManagerInstance);
         moveInput= gameObject.transform.position;
+
     }
 
     private void Start()
@@ -92,11 +99,7 @@ public class player : MonoBehaviour
     //Update del juego.
     private void Update()
     {
-        #region TIMERS
-        LastOnGroundTime -= Time.deltaTime;
-        LastOnWallTime -= Time.deltaTime;
-       
-        #endregion
+     
         ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -107,7 +110,8 @@ public class player : MonoBehaviour
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            Jump();
+            RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            OnJump?.Invoke(this, EventArgs.Empty);
         }
 
         if (IsJumping && RB.velocity.y < 0)
@@ -123,7 +127,7 @@ public class player : MonoBehaviour
             IsWallJumping = false;
             Jump();
         }*/
-
+        /*
         #region DASH
         var dashInput = Input.GetButtonDown("Dash");
         
@@ -143,6 +147,7 @@ public class player : MonoBehaviour
         }
 
         //para animacion      animator.SetBool("isDashing",isDashing);
+
         if (isDashing)
         {
             RB.velocity = dashingDir.normalized * dashingVelocity;
@@ -152,7 +157,7 @@ public class player : MonoBehaviour
         {
             canDash = true;
         }
-        #endregion
+        #endregion*/
        
         WallSlide();
         WallJump();
@@ -160,6 +165,21 @@ public class player : MonoBehaviour
         if (!IsWallJumping)
         {
             Turn();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //listPlayerPositions.Add(playerPositions);
+            gameManagerInstance.UpdateListOfPositions(playerPositions);
+
+            //Life guarda el respawnpoint para reiniciar las posiciones, como lo relaciono?
+
+            playerPositions.Clear();
+
+            
+
+            gameManagerInstance.instantiateListOfObjects();
+
         }
     }
 
@@ -219,19 +239,6 @@ public class player : MonoBehaviour
     #endregion
 
     #region Jump methods
-    private void Jump()
-    {
-        
-        
-        if (RB.velocity.y < 0)
-        {
-            jumpForce -= RB.velocity.y;
-        }
-
-        RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        OnJump?.Invoke(this, EventArgs.Empty);
-
-    }
 
     //trampolin
     public void ForcedJump()
@@ -294,14 +301,14 @@ public class player : MonoBehaviour
         }        
     }
     #endregion
-
+    /*
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
     }
-
+    */
     #region GENERAL METHODS
     private bool IsGrounded()
     {

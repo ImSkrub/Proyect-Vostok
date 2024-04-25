@@ -64,6 +64,6 @@ public class Life : MonoBehaviour
     {
         gameObject.transform.position = respawn.position;
         currentHealth = maxHealth;
-        
+        OnDeath?.Invoke();
     }
 }
