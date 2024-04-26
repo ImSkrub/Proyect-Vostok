@@ -8,8 +8,6 @@ using UnityEngine;
 public class player : MonoBehaviour
 {
     public PlayerData Data;
-
-
    
     /*
      *Variables you have to access player data:

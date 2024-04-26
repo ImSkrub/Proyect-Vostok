@@ -1116,7 +1116,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "No fue satisfactorio tu desempe\xF1o"
+  m_Text: Terminaste las pruebas
 --- !u!222 &2009260928
 CanvasRenderer:
   m_ObjectHideFlags: 0
