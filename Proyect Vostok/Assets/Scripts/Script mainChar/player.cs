@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    [Header("Variables")]
     public PlayerData Data;
    
     /*
@@ -30,6 +31,7 @@ public class player : MonoBehaviour
     public float LastOnWallTime { get; private set; }
     //wallSlide
     public bool IsWallSliding;
+    private float wallSlidingSpeed = 0.2f;
     //wallJump
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
@@ -49,26 +51,27 @@ public class player : MonoBehaviour
     //Salto
     public float jumpForce = 15;
     private float currentTime;
-     
+
     [Header("Dash")]
     [SerializeField] private float dashingVelocity = 24f;
     [SerializeField] private float dashingTime = 0.3f;
     private Vector2 dashingDir;
     private bool isDashing;
     private bool canDash = true;
-  
+    private bool isDashEnabled = false;
+    
 
     //evento plataformas
     public event EventHandler OnJump;
-
-    //Vectores para guardar posiciones e input.
-
-    //first position
+        
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
 
+ 
+    
     //last position
-    private Vector2 lastVector;
+    private Vector2 firstPosition;
+    private Vector2 lastPosition;
 
     //Listas que guardan el movimiento del jugador.
     public List<Vector3> playerPositions = new List<Vector3>();
@@ -113,23 +116,25 @@ public class player : MonoBehaviour
     
         
         #region DASH
-        var dashInput = Input.GetButtonDown("Dash");
-        
-        //dash
-        
-        if (dashInput && canDash)
-        {
-            isDashing = true;
-            canDash = false;
-            trailRenderer.emitting = true;
-            dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if(dashingDir== Vector2.zero)
-            {
-                dashingDir = new Vector2(transform.localScale.x, 0);
-            }
-            StartCoroutine(StopDashing());
-        }
+       
 
+        //dash
+        if (isDashEnabled)
+        {
+            var dashInput = Input.GetButtonDown("Dash");
+            if (dashInput && canDash)
+            {
+                isDashing = true;
+                canDash = false;
+                trailRenderer.emitting = true;
+                dashingDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                if (dashingDir == Vector2.zero)
+                {
+                    dashingDir = new Vector2(transform.localScale.x, 0);
+                }
+                StartCoroutine(StopDashing());
+            }
+        }
         //para animacion      animator.SetBool("isDashing",isDashing);
 
         if (isDashing)
@@ -258,7 +263,7 @@ public class player : MonoBehaviour
         if (IsWalled() && !IsGrounded() && moveInput.x != 0f)
         {
             IsWallSliding = true;
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Clamp(RB.velocity.y, -5, float.MaxValue));
+            RB.velocity = new Vector2(RB.velocity.x, Mathf.Clamp(RB.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
         else
         {
