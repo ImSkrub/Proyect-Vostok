@@ -49,18 +49,14 @@ public class player : MonoBehaviour
     //Salto
     public float jumpForce = 15;
     private float currentTime;
-
-    /*
-    Funcion de dash para mas adelante, todavia no se va a usar.
-    
+     
     [Header("Dash")]
     [SerializeField] private float dashingVelocity = 24f;
     [SerializeField] private float dashingTime = 0.3f;
-    private float dashingCooldown = 1f;
     private Vector2 dashingDir;
     private bool isDashing;
     private bool canDash = true;
-    */
+  
 
     //evento plataformas
     public event EventHandler OnJump;
@@ -83,10 +79,6 @@ public class player : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-        lastVector = RB.velocity;
-        gameManager.TryGetComponent<GameManager>(out gameManagerInstance);
-        moveInput= gameObject.transform.position;
-
     }
 
     private void Start()
@@ -118,14 +110,8 @@ public class player : MonoBehaviour
 
         }
 
-        /*
-        if (CanJump() && LastPressedJumpTime > 0)
-        {
-            IsJumping = true;
-            IsWallJumping = false;
-            Jump();
-        }*/
-        /*
+    
+        
         #region DASH
         var dashInput = Input.GetButtonDown("Dash");
         
@@ -155,7 +141,7 @@ public class player : MonoBehaviour
         {
             canDash = true;
         }
-        #endregion*/
+        #endregion
        
         WallSlide();
         WallJump();
@@ -165,20 +151,6 @@ public class player : MonoBehaviour
             Turn();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            //listPlayerPositions.Add(playerPositions);
-            gameManagerInstance.UpdateListOfPositions(playerPositions);
-
-            //Life guarda el respawnpoint para reiniciar las posiciones, como lo relaciono?
-
-            playerPositions.Clear();
-
-            
-
-            gameManagerInstance.instantiateListOfObjects();
-
-        }
     }
 
     private void FixedUpdate()
@@ -194,7 +166,7 @@ public class player : MonoBehaviour
     {
         //Calculate the direction we want to move in and our desired velocity
         float targetSpeed = moveInput.x * Data.runMaxSpeed;
-       
+
         #region Calculate AccelRate
         float accelRate;
 
@@ -208,7 +180,7 @@ public class player : MonoBehaviour
 
         #region Add Bonus Jump Apex Acceleration
         //Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
-        if ((IsJumping || IsWallJumping ) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
+        if ((IsJumping || IsWallJumping) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
         {
             accelRate *= Data.jumpHangAccelerationMult;
             targetSpeed *= Data.jumpHangMaxSpeedMult;
@@ -242,11 +214,6 @@ public class player : MonoBehaviour
     public void ForcedJump()
     {
       RB.AddForce(Vector2.up * 600);
-    }
-
-    public bool CanJump()
-    {
-        return LastOnGroundTime > 0 && !IsJumping;   
     }
 
     private void WallJump()
@@ -299,14 +266,14 @@ public class player : MonoBehaviour
         }        
     }
     #endregion
-    /*
+    
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
     }
-    */
+    
     #region GENERAL METHODS
     private bool IsGrounded()
     {
