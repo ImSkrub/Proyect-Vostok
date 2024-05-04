@@ -74,8 +74,18 @@ public class player : MonoBehaviour
     private Vector2 lastPosition;
 
     //Listas que guardan el movimiento del jugador.
-    public List<Vector3> playerPositions = new List<Vector3>();
-    public List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
+    public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
+    //public List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
+    
+    /*COPIA
+    En vez de lista, usar Queue, despues tener una variable para limitar a la cola, despues guardo por posiciones, hace de pos1 a pos2.
+    Puedo ponerle una cantidad maxima de posiciones a guardar, a modo de que se vaya eliminando las anteriores posiciones.
+    Pregunto diferencias si tengo que ajustar o no. Para manejar las animaciones
+    Crear un script de modelo(Como el PlayerData), que tenga la posicion, accion y lo que quiere hacer. 
+    Y hago una Queue de ese modelo
+
+    Buscar como hacer el reset de escena y implementarlo en el update de lista de posiciones.
+     */
 
     //Start del juego.
     private void Awake()
@@ -113,10 +123,14 @@ public class player : MonoBehaviour
 
         }
 
-    
-        
+        //Copia
+        if (Input.GetButtonDown("Reset"))
+        {
+            //gameManagerInstance.UpdateListOfPositions(listCopyDataModels);
+        }
+
         #region DASH
-       
+
 
         //dash
         if (isDashEnabled)
@@ -155,7 +169,7 @@ public class player : MonoBehaviour
         {
             Turn();
         }
-
+       
     }
 
     private void FixedUpdate()
@@ -164,6 +178,8 @@ public class player : MonoBehaviour
         {
             Run();
         }
+        //playerPositions.Add(new CopyDataModel(transform.position, "default"));
+
      }
 
     #region RUN METHOD

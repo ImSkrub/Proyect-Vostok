@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7769497908183718804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawnpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 355248949439452694}
   - component: {fileID: 8611667196239712962}
   - component: {fileID: 5733894738501539552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,14 +175,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6200894109943104042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bd4f60fb410e94e8e1380720da3ce5, type: 3}
+  m_Script: {fileID: 11500000, guid: d2e5879d7d027e44c921c536d4752557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabBullet: {fileID: 0}
-  damage: 10
-  speed: 15
-  lifeTime: 1
-  spawnpoint: {fileID: 0}
-  fireRate: 0.01
+  follow: {fileID: 0}
   player: {fileID: 0}
-  range: 10
+  distToAttack: 20
+  attackVel: 15
+  closestDist: 5
+  lerpSpeedRotation: 0
+  attackDelay: 0.5
+  weaponsSlot: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  weaponSlot: {fileID: 7769497908183718804}
