@@ -16,7 +16,7 @@ public class CollisionItems : MonoBehaviour
 
     public enum StatType
     {
-        life,
+        life,dash
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -31,7 +31,7 @@ public class CollisionItems : MonoBehaviour
                 ApplyItemEffect(_player, item);
             }
 
-            Destroy(gameObject,0.5f);
+            Destroy(gameObject,0.2f);
         }
     }
 
@@ -41,6 +41,9 @@ public class CollisionItems : MonoBehaviour
         {
             case StatType.life:
                 _player.GetComponent<Life>().currentHealth += item.amount;
+                break;
+            case StatType.dash:
+                _player.GetComponent<player>().activateDash();
                 break;
         }
     }

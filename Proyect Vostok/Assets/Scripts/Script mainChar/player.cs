@@ -31,7 +31,7 @@ public class player : MonoBehaviour
     public float LastOnWallTime { get; private set; }
     //wallSlide
     public bool IsWallSliding;
-    private float wallSlidingSpeed = 0.2f;
+    private float wallSlidingSpeed = 5f;
     //wallJump
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
@@ -59,7 +59,15 @@ public class player : MonoBehaviour
     private bool isDashing;
     private bool canDash = true;
     private bool isDashEnabled = false;
-    
+
+    [Header ("DashColor")]
+    [Tooltip("Material to switch during dash")]
+    [SerializeField] private Material flashMaterial;
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
+
+
 
     //evento plataformas
     public event EventHandler OnJump;
@@ -97,12 +105,14 @@ public class player : MonoBehaviour
     private void Start()
     {
         IsFacingRight = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalMaterial=spriteRenderer.material;
     }
 
     //Update del juego.
     private void Update()
     {
-     
+         
         ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -130,12 +140,11 @@ public class player : MonoBehaviour
         }
 
         #region DASH
-
-
         //dash
+        
+        var dashInput = Input.GetButtonDown("Dash");
         if (isDashEnabled)
         {
-            var dashInput = Input.GetButtonDown("Dash");
             if (dashInput && canDash)
             {
                 isDashing = true;
@@ -149,6 +158,7 @@ public class player : MonoBehaviour
                 StartCoroutine(StopDashing());
             }
         }
+
         //para animacion      animator.SetBool("isDashing",isDashing);
 
         if (isDashing)
@@ -287,14 +297,38 @@ public class player : MonoBehaviour
         }        
     }
     #endregion
+
+    #region DASH METHODS
+
+    public void activateDash()
+    {
+        isDashEnabled = true;
+    }
     
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;
         isDashing = false;
+        isDashEnabled = false;
     }
+    #endregion 
+
+    //public void Flash()
+    //{
+    //    if(flashRoutine != null)
+    //    {
+    //        StopCoroutine(flashRoutine);
+    //    }
+    //    flashRoutine = StartCouroutine(FlashRoutine);
+    //}
     
+    //private IEnumerator FlashRoutine()
+    //{
+    //    spriteRenderer.material = flashMaterial;
+    //    yield return WaitForSecond;
+    //}
+
     #region GENERAL METHODS
     private bool IsGrounded()
     {

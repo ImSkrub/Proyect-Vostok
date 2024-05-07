@@ -49,8 +49,8 @@ public class Life : MonoBehaviour
     public void GetDamage(int value)
     {
         currentHealth -= value; //currentHealth = currentHealth - value; 
-        //spriteRenderer.color = damageColor;
-        //Invoke("RestoreColor", 0.5f);
+        spriteRenderer.color = damageColor;
+        Invoke("RestoreColor", 0.5f);
     }
 
     private void RestoreColor()
