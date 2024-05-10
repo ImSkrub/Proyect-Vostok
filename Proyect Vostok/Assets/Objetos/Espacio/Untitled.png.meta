@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 036ce18c7ed978b41a37ceb304db7f7b
+guid: 24cfbd653650d3b4c95fcf4dea933727
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bola -8_0
+      name: Untitled_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 13
-        width: 189
-        height: 215
+        x: 20
+        y: 539
+        width: 101
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82ed00eadc1782a4c9b24642ef7cf74f
-      internalID: -113449465
+      spriteID: 1174d2d844f99334e8d5cdef9ed53b35
+      internalID: -2132289370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola -8_1
+      name: Untitled_1
       rect:
         serializedVersion: 2
-        x: 205
-        y: 7
-        width: 157
-        height: 235
+        x: 150
+        y: 539
+        width: 100
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: feee472deb853094f9baed2a9aafd63e
-      internalID: 677426055
+      spriteID: 91f89ac493f73404293de8cffafc8666
+      internalID: -2118364311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola -8_2
+      name: Untitled_2
       rect:
         serializedVersion: 2
-        x: 403
-        y: 2
-        width: 131
-        height: 247
+        x: 272
+        y: 539
+        width: 108
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1474a58d65f179c48a3a491154a9a4e9
-      internalID: -1212330930
+      spriteID: 36345e35e88b84740941bfd5120e1e8e
+      internalID: 101693824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola -8_3
+      name: Untitled_3
       rect:
         serializedVersion: 2
-        x: 614
-        y: 0
-        width: 136
-        height: 250
+        x: 404
+        y: 539
+        width: 107
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 997fb5607fbf1c44897a01dde1ab6c5b
-      internalID: -1206717324
+      spriteID: ce934b158554c6d419675abc055a212f
+      internalID: 219095505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola -8_4
+      name: Untitled_4
       rect:
         serializedVersion: 2
-        x: 809
-        y: 13
-        width: 157
-        height: 235
+        x: 30
+        y: 420
+        width: 103
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa1bea23defd1c24f8ed573d757abff1
-      internalID: -1657435445
+      spriteID: f42a2687db3e5ae409bd61fa84d2cc41
+      internalID: -1524545674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola -8_5
+      name: Untitled_5
       rect:
         serializedVersion: 2
-        x: 994
-        y: 36
-        width: 188
-        height: 215
+        x: 148
+        y: 419
+        width: 113
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +224,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0cb384d8449a0e4d8afea9694dd0f5c
-      internalID: -619956058
+      spriteID: c275b6a8523825645bf40d7acf694109
+      internalID: -69836724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Untitled_6
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 420
+        width: 110
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc51213c8eb61e4ba3be22c2ef4b818
+      internalID: -352789656
       vertices: []
       indices: 
       edges: []
@@ -241,12 +262,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bola -8_0: -113449465
-      bola -8_1: 677426055
-      bola -8_2: -1212330930
-      bola -8_3: -1206717324
-      bola -8_4: -1657435445
-      bola -8_5: -619956058
+      Untitled_0: -2132289370
+      Untitled_1: -2118364311
+      Untitled_2: 101693824
+      Untitled_3: 219095505
+      Untitled_4: -1524545674
+      Untitled_5: -69836724
+      Untitled_6: -352789656
+      Untitled_7: 1498601227
+      Untitled_8: 969619939
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

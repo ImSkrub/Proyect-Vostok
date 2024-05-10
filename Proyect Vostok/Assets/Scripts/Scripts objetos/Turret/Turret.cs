@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
     public float attackDelay = 1f;
     
     Rigidbody2D rb;
+    Animator anim;
     Vector3 enemyDirection;
     private float currentTime;
 
@@ -28,7 +29,7 @@ public class Turret : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-       
+        anim = GetComponent<Animator>();
     }
 
    void Update()
@@ -39,9 +40,13 @@ public class Turret : MonoBehaviour
         {
             if(currentTime >= attackDelay)
             {
+                anim.SetBool("Shooting",true);
                 Instantiate(bulletPrefab,weaponSlot.position,transform.rotation);
                 transform.right = Vector3.Lerp(transform.right, enemyDirection, lerpSpeedRotation * Time.deltaTime);
                 currentTime = 0f;
+            }else
+            {
+                anim.SetBool("Shooting", false);
             }
         }
        

@@ -29,7 +29,8 @@ public class Life : MonoBehaviour
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
+        originalColor = spriteRenderer.color;
+
     }
 
     private void Update()
