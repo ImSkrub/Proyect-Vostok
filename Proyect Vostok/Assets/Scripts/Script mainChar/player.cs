@@ -9,7 +9,7 @@ public class player : MonoBehaviour
 {
     [Header("Variables")]
     public PlayerData Data;
-   
+
     /*
      *Variables you have to access player data:
      *runMaxSpeed,runAccelAmount,runDeccelAmount,accelInAir,deccelInAir,jumpHangTimeThreshold.
@@ -17,7 +17,7 @@ public class player : MonoBehaviour
     */
 
     [SerializeField] GameObject gameManager;
-    private GameManager gameManagerInstance;
+    private GameManager gameManagerInstance = GameManager.Instance;
 
     #region VARIABLES
     [SerializeField] private Rigidbody2D RB;
@@ -37,7 +37,7 @@ public class player : MonoBehaviour
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
-    [SerializeField]private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+    [SerializeField] private Vector2 wallJumpingPower = new Vector2(8f, 16f);
 
 
     [Header("Checks")]
@@ -59,32 +59,35 @@ public class player : MonoBehaviour
     private bool isDashing;
     private bool canDash = true;
     private bool isDashEnabled = false;
+    public bool _isDashEnabled => isDashEnabled;
+    private Vector3 starPos;
 
-    [Header ("DashColor")]
-    [Tooltip("Material to switch during dash")]
-    [SerializeField] private Material flashMaterial;
-    private SpriteRenderer spriteRenderer;
-    private Material originalMaterial;
-    private Coroutine flashRoutine;
+    //[Header("DashColor")]
+    //[Tooltip("Material to switch during dash")]
+    //[SerializeField] private Material flashMaterial;
+    //private SpriteRenderer spriteRenderer;
+    //private Material originalMaterial;
+   
 
 
 
     //evento plataformas
     public event EventHandler OnJump;
-        
+
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
 
- 
-    
+
+
     //last position
     private Vector2 firstPosition;
     private Vector2 lastPosition;
 
     //Listas que guardan el movimiento del jugador.
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
+    //public List<Vector3> listPosition = new List<Vector3>();
     //public List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
-    
+
     /*COPIA
     En vez de lista, usar Queue, despues tener una variable para limitar a la cola, despues guardo por posiciones, hace de pos1 a pos2.
     Puedo ponerle una cantidad maxima de posiciones a guardar, a modo de que se vaya eliminando las anteriores posiciones.
@@ -105,20 +108,21 @@ public class player : MonoBehaviour
     private void Start()
     {
         IsFacingRight = true;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalMaterial=spriteRenderer.material;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+        //originalMaterial = spriteRenderer.material;
+        starPos = transform.position;
     }
 
     //Update del juego.
     private void Update()
     {
-         
+
         ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-        
-        
-       
+
+
+
 
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -134,14 +138,18 @@ public class player : MonoBehaviour
         }
 
         //Copia
-        if (Input.GetButtonDown("Reset"))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            //gameManagerInstance.UpdateListOfPositions(listCopyDataModels);
+            //gameManager.TryGetComponent<GameManager>(out GameManager component);
+            GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
+            GameManager.Instance._Reset();
+            transform.position = starPos;
+            listCopyDataModels.Clear();
         }
 
         #region DASH
         //dash
-        
+
         var dashInput = Input.GetButtonDown("Dash");
         if (isDashEnabled)
         {
@@ -171,7 +179,7 @@ public class player : MonoBehaviour
             canDash = true;
         }
         #endregion
-       
+
         WallSlide();
         WallJump();
 
@@ -179,18 +187,20 @@ public class player : MonoBehaviour
         {
             Turn();
         }
-       
+
     }
 
     private void FixedUpdate()
     {
+        CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
         if (!IsWallJumping)
         {
             Run();
         }
-        //playerPositions.Add(new CopyDataModel(transform.position, "default"));
+        listCopyDataModels.Add(copyDataModel);
+        //listPosition.Add(transform.position);
 
-     }
+    }
 
     #region RUN METHOD
     private void Run()
@@ -244,7 +254,7 @@ public class player : MonoBehaviour
     //trampolin
     public void ForcedJump()
     {
-      RB.AddForce(Vector2.up * 600);
+        RB.AddForce(Vector2.up * 600);
     }
 
     private void WallJump()
@@ -262,13 +272,13 @@ public class player : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if(Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
             IsWallJumping = true;
             RB.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
 
-            if(transform.localScale.x != wallJumpingDirection)
+            if (transform.localScale.x != wallJumpingDirection)
             {
                 IsFacingRight = !IsFacingRight;
                 Vector3 localScale = transform.localScale;
@@ -294,7 +304,7 @@ public class player : MonoBehaviour
         else
         {
             IsWallSliding = false;
-        }        
+        }
     }
     #endregion
 
@@ -304,7 +314,7 @@ public class player : MonoBehaviour
     {
         isDashEnabled = true;
     }
-    
+
     private IEnumerator StopDashing()
     {
         yield return new WaitForSeconds(dashingTime);
@@ -312,7 +322,7 @@ public class player : MonoBehaviour
         isDashing = false;
         isDashEnabled = false;
     }
-    #endregion 
+    #endregion
 
     //public void Flash()
     //{
@@ -322,7 +332,7 @@ public class player : MonoBehaviour
     //    }
     //    flashRoutine = StartCouroutine(FlashRoutine);
     //}
-    
+
     //private IEnumerator FlashRoutine()
     //{
     //    spriteRenderer.material = flashMaterial;
@@ -340,8 +350,8 @@ public class player : MonoBehaviour
     }
     private void Turn()
     {
-     
-        if(IsFacingRight && moveInput.x < 0f|| !IsFacingRight && moveInput.x > 0f)
+
+        if (IsFacingRight && moveInput.x < 0f || !IsFacingRight && moveInput.x > 0f)
         {
             IsFacingRight = !IsFacingRight;
             Vector3 scale = transform.localScale;
@@ -349,7 +359,7 @@ public class player : MonoBehaviour
             transform.localScale = scale;
         }
     }
-      
+
     #endregion
 
 }

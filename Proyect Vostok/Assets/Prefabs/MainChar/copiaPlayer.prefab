@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 643768789788759568}
   - component: {fileID: 1810575873809254152}
   - component: {fileID: 2405073801166336413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: copiaPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

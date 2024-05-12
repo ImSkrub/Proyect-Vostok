@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] GameObject player;
-    private GameObject copiaPlayer;
+    //[SerializeField] GameObject copiaPlayer;
     [SerializeField] GameObject copiaPlayerPrefab;
 
     public static List<Vector3> playerPositions = new List<Vector3>();
     public static List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
     public static List<GameObject> copiaPlayers = new List<GameObject>();
 
-    private int counter;
+    private static int counter;
 
     //Variables globales
 
@@ -52,20 +52,25 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    
-    public void UpdateListOfPositions(List<Vector3> listOfPositions)
+
+    public void UpdateListOfPositions(List<CopyDataModel> listPos)
     {
-        print(listOfPositions.Count);
         var listPositions = new List<Vector3>();
-        foreach (var item in listOfPositions)
+        foreach (var item in listPos)
         {
-            listPositions.Add(item);
+            listPositions.Add(item.Pos);
         }
-        print(playerPositions.Count);
+        //print(playerPositions.Count);
         listPlayerPositions.Add(listPositions);
         print(listPlayerPositions.Count);
         copiaPlayers.Add(new GameObject("copia" + counter.ToString()));
+        print(copiaPlayers.Count);
         counter++;
+    }
+
+    public void _Reset()
+    {
+        instantiateListOfObjects();
     }
 
     private void instantiateCopiaPlayer(GameObject player, List<Vector3> listOfPositions)
@@ -78,21 +83,26 @@ public class GameManager : MonoBehaviour
 
     public void instantiateListOfObjects()
     {
-        foreach (var player in copiaPlayers)
+        foreach (var copia in copiaPlayers)
         {
             foreach (var listPos in listPlayerPositions)
             {
-                print(listPos.Count);
-                instantiateCopiaPlayer(player, listPos);
+                instantiateCopiaPlayer(copia, listPos);
             }
         }
     }
 
+    public void ResetList()
+    {
+        listPlayerPositions.Clear();
+        copiaPlayers.Clear();
+        playerPositions.Clear();
+    }
+
     public List<GameObject> getCopiaPlayers() { return copiaPlayers; }
-    
+
     void FinishGame()
     {
         SceneManager.LoadScene(3);
     }
-
 }
