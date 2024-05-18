@@ -323,7 +323,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   jumpForce: 15
-  playerPositions: []
+  dashingVelocity: 24
+  dashingTime: 0.3
+  jetPack: {fileID: 0}
+  jetPackForce: 15
+  jetPackFuel: 0
+  listCopyDataModels: []
 --- !u!1 &8992324603850636657
 GameObject:
   m_ObjectHideFlags: 0

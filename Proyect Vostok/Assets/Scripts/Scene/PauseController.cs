@@ -16,7 +16,7 @@ public class PauseController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (isPaused)
             {

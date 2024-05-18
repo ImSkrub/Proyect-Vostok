@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666345742029529908}
   - component: {fileID: 1666345742029529907}
-  - component: {fileID: 1666345742029529909}
+  - component: {fileID: 2208467587540162234}
   m_Layer: 2
   m_Name: CM vcam
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1666345741827953578}
---- !u!114 &1666345742029529909
+--- !u!114 &2208467587540162234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

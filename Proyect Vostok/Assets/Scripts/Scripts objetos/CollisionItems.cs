@@ -16,7 +16,7 @@ public class CollisionItems : MonoBehaviour
 
     public enum StatType
     {
-        life,dash
+        life,dash,jetpack
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,6 +44,10 @@ public class CollisionItems : MonoBehaviour
                 break;
             case StatType.dash:
                 _player.GetComponent<player>().activateDash();
+                break;
+            case StatType.jetpack:
+                _player.GetComponent<player>().jetPackFuel = item.amount;
+                _player.GetComponent<player>().activateJetPack();
                 break;
         }
     }

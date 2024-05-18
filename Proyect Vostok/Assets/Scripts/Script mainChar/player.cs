@@ -67,8 +67,12 @@ public class player : MonoBehaviour
     //[SerializeField] private Material flashMaterial;
     //private SpriteRenderer spriteRenderer;
     //private Material originalMaterial;
-   
 
+    [Header("JetPack")]
+   // public GameObject jetPack;
+    [SerializeField] private float jetPackForce = 15f;
+    public float jetPackFuel;
+    private bool jetPackOn = false;
 
 
     //evento plataformas
@@ -85,17 +89,13 @@ public class player : MonoBehaviour
 
     //Listas que guardan el movimiento del jugador.
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
-    //public List<Vector3> listPosition = new List<Vector3>();
-    //public List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
-
+  
     /*COPIA
     En vez de lista, usar Queue, despues tener una variable para limitar a la cola, despues guardo por posiciones, hace de pos1 a pos2.
     Puedo ponerle una cantidad maxima de posiciones a guardar, a modo de que se vaya eliminando las anteriores posiciones.
     Pregunto diferencias si tengo que ajustar o no. Para manejar las animaciones
     Crear un script de modelo(Como el PlayerData), que tenga la posicion, accion y lo que quiere hacer. 
     Y hago una Queue de ese modelo
-
-    Buscar como hacer el reset de escena y implementarlo en el update de lista de posiciones.
      */
 
     //Start del juego.
@@ -103,6 +103,7 @@ public class player : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
+        //jetPack.SetActive(false);
     }
 
     private void Start()
@@ -129,6 +130,16 @@ public class player : MonoBehaviour
         {
             RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             OnJump?.Invoke(this, EventArgs.Empty);
+        }
+        var jetPackInput = Input.GetButton("Jump");
+        if (jetPackOn)
+        {
+            if (jetPackInput && !IsGrounded())
+            {
+                RB.AddForce(Vector2.up * jetPackForce);
+                
+            }
+            StartCoroutine(stopJetPack());
         }
 
         if (IsJumping && RB.velocity.y < 0)
@@ -182,6 +193,9 @@ public class player : MonoBehaviour
 
         WallSlide();
         WallJump();
+
+
+
 
         if (!IsWallJumping)
         {
@@ -338,6 +352,21 @@ public class player : MonoBehaviour
     //    spriteRenderer.material = flashMaterial;
     //    yield return WaitForSecond;
     //}
+
+    public void activateJetPack()
+    {
+       // jetPack.SetActive(true);
+        jetPackOn = true;
+    }
+
+    private IEnumerator stopJetPack()
+    {
+        yield return new WaitForSeconds(jetPackFuel);
+        // jetPack.SetActive(false);
+        jetPackOn = false;
+        //Zona de animaciones.
+        
+    }
 
     #region GENERAL METHODS
     private bool IsGrounded()
