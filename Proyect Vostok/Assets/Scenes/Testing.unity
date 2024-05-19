@@ -193,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6541553750563336596, guid: 6f8793cc697efce4cb2ea214da5be746, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6541553750563336596, guid: 6f8793cc697efce4cb2ea214da5be746, type: 3}
       propertyPath: m_LocalPosition.x
@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1666345742821854172, guid: 06219f80eb3e46747b50712a9d5b2e19, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1666345742821854172, guid: 06219f80eb3e46747b50712a9d5b2e19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1691,7 +1691,7 @@ PrefabInstance:
       objectReference: {fileID: 1153818988}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: jetPackForce
-      value: 5
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3934229451992896901, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_Layer
@@ -1806,7 +1806,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8971673243197022824
 PrefabInstance:

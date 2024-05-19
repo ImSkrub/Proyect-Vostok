@@ -15,7 +15,7 @@ public class Life : MonoBehaviour
     public event Action OnDeath; //Muerte del jugador como evento.
     //public DeathCounter deathCounter;
 
-    public Transform respawn;
+   public Transform respawn;
 
     //Color al recibir daño.
     public Color damageColor = Color.red;
@@ -35,7 +35,7 @@ public class Life : MonoBehaviour
 
     private void Update()
     {
-        lifebar.fillAmount = currentHealth / maxHealth;
+        //lifebar.fillAmount = currentHealth / maxHealth;
 
         currentTime += Time.deltaTime;
 
@@ -63,7 +63,7 @@ public class Life : MonoBehaviour
    //Muere.
     public void Die()
     {
-        gameObject.transform.position = respawn.position;
+        //gameObject.transform.position = respawn.position;
         currentHealth = maxHealth;
         OnDeath?.Invoke();
     }

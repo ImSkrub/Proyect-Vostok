@@ -191,7 +191,16 @@ public class player : MonoBehaviour
         }
         #endregion
 
-        WallSlide();
+        if (IsWalled() && !IsGrounded())
+        {
+            IsWallSliding = true;
+            WallSlide();
+        }
+        else
+        {
+            IsWallSliding = false;
+        }
+
         WallJump();
 
 
@@ -310,15 +319,8 @@ public class player : MonoBehaviour
 
     private void WallSlide()
     {
-        if (IsWalled() && !IsGrounded() && moveInput.x != 0f)
-        {
-            IsWallSliding = true;
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Clamp(RB.velocity.y, -wallSlidingSpeed, float.MaxValue));
-        }
-        else
-        {
-            IsWallSliding = false;
-        }
+        RB.velocity = new Vector2(RB.velocity.x, Mathf.Clamp(RB.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        
     }
     #endregion
 
