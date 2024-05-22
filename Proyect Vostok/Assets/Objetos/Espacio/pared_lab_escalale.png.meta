@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0162b4f020f5cd2479547133a78a1f6a
+guid: 0cafe7bf436054f499539befbeb19af6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,253 +105,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_0
+      name: pared_lab_escalale_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 499
-        width: 239
-        height: 238
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6963db53e794b62468f96613b1549c3f
-      internalID: 1163629749
+      spriteID: 925e9e265cd1b5147b6b8e10f97272cf
+      internalID: 145305188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_1
+      name: pared_lab_escalale_1
       rect:
         serializedVersion: 2
-        x: 245
-        y: 498
-        width: 239
-        height: 240
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3d3bfea629858c40a6d38a4f7b718ed
-      internalID: 1283638123
+      spriteID: ca156908fc684d54caad19dff5bdd66c
+      internalID: 975609184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_2
+      name: pared_lab_escalale_2
       rect:
         serializedVersion: 2
-        x: 494
-        y: 499
-        width: 239
-        height: 239
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f727f1bcd17b5c648ba2d6f6546b532e
-      internalID: -1406963821
+      spriteID: ad631dbfb5bf5c848a174b6016ff4cc1
+      internalID: -1295241448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_3
+      name: pared_lab_escalale_3
       rect:
         serializedVersion: 2
-        x: 743
-        y: 498
-        width: 238
-        height: 238
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b06ede47c44ab94e83bb7bd5ca52258
-      internalID: 45204271
+      spriteID: fe032400bea3b0e4093f3ab14fe200a2
+      internalID: 1186198572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_4
+      name: pared_lab_escalale_4
       rect:
         serializedVersion: 2
-        x: 992
-        y: 495
-        width: 237
-        height: 239
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a87510e8c7c66d43b493febadd4ecd3
-      internalID: 1448739173
+      spriteID: 129eb04a8e67e574d89b96f59b182b36
+      internalID: -1267767003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_5
+      name: pared_lab_escalale_5
       rect:
         serializedVersion: 2
-        x: 1257
-        y: 495
-        width: 238
-        height: 238
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87f5f6949c21e6b488b08832936e9ddc
-      internalID: -1335069400
+      spriteID: 9ddf47f85145b90468282c6a9c6253eb
+      internalID: 1368890135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_6
+      name: pared_lab_escalale_6
       rect:
         serializedVersion: 2
-        x: 53
-        y: 270
-        width: 356
-        height: 93
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 205be092158fffd4fae28890a6d5fb35
-      internalID: 247241738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_7
-      rect:
-        serializedVersion: 2
-        x: 44
+        x: 0
         y: 0
-        width: 312
-        height: 130
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b33c0fa4d48ac864caa86b2d6d50ee1d
-      internalID: -868245960
+      spriteID: 178d08f0962f51e4e8d1413ecd7777aa
+      internalID: -2124195682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_8
+      name: pared_lab_escalale_7
       rect:
         serializedVersion: 2
-        x: 418
+        x: 32
         y: 0
-        width: 312
-        height: 131
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 256652d4db0a400418b203d8e674be1c
-      internalID: -1535076148
+      spriteID: 86e443e983d92d7459a605781aa7e958
+      internalID: -2083766080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_9
+      name: pared_lab_escalale_8
       rect:
         serializedVersion: 2
-        x: 788
-        y: 2
-        width: 312
-        height: 128
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7f6799728cb0954cabc3ab8a6442958
-      internalID: 241482331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_10
-      rect:
-        serializedVersion: 2
-        x: 1157
-        y: 3
-        width: 312
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66294d2cbf00d9644be3cf1f9c7bac6a
-      internalID: -1303656216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_11
-      rect:
-        serializedVersion: 2
-        x: 1525
-        y: 5
-        width: 312
-        height: 125
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e938363686f7ac4a938bcf898a192f9
-      internalID: -729489436
+      spriteID: 7fa89b613ab1dba419ba97662fb673f9
+      internalID: -390753225
       vertices: []
       indices: 
       edges: []
@@ -367,18 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprite_0: 1163629749
-      sprite_1: 1283638123
-      sprite_10: -1303656216
-      sprite_11: -729489436
-      sprite_2: -1406963821
-      sprite_3: 45204271
-      sprite_4: 1448739173
-      sprite_5: -1335069400
-      sprite_6: 247241738
-      sprite_7: -868245960
-      sprite_8: -1535076148
-      sprite_9: 241482331
+      pared_lab_escalale_0: 145305188
+      pared_lab_escalale_1: 975609184
+      pared_lab_escalale_2: -1295241448
+      pared_lab_escalale_3: 1186198572
+      pared_lab_escalale_4: -1267767003
+      pared_lab_escalale_5: 1368890135
+      pared_lab_escalale_6: -2124195682
+      pared_lab_escalale_7: -2083766080
+      pared_lab_escalale_8: -390753225
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

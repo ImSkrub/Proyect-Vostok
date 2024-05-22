@@ -1678,6 +1678,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2043032094}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: wallCheck
       value: 
       objectReference: {fileID: 986100578}
@@ -1691,7 +1695,11 @@ PrefabInstance:
       objectReference: {fileID: 1153818988}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: jetPackForce
-      value: 3.25
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093592406548828474, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3934229451992896901, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_Layer

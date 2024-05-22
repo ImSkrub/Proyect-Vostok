@@ -103,7 +103,7 @@ public class player : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-        //jetPack.SetActive(false);
+     
     }
 
     private void Start()
