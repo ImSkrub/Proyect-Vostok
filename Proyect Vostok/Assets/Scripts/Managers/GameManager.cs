@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -57,10 +59,16 @@ public class GameManager : MonoBehaviour
     public void UpdateListOfPositions(List<CopyDataModel> listPos)
     {
         var listPositions = new List<Vector3>();
-        foreach (var item in listPos)
+        if (listPos != null)
         {
-            listPositions.Add(item.Pos);
+            foreach (var item in listPos)
+            {
+                //print(item);
+                listPositions.Add(item.Pos);
+            }
         }
+        
+        
         //print(playerPositions.Count);
         listPlayerPositions.Add(listPositions);
         print(listPlayerPositions.Count);

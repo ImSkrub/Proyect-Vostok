@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -151,6 +152,7 @@ public class player : MonoBehaviour
         //Copia
         if (Input.GetKeyDown(KeyCode.R))
         {
+            print(listCopyDataModels); 
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
             GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
@@ -216,6 +218,7 @@ public class player : MonoBehaviour
     private void FixedUpdate()
     {
         CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
+        
         if (!IsWallJumping)
         {
             Run();

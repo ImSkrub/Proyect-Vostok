@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2588473920654120608}
   - component: {fileID: 2588473920654120623}
   - component: {fileID: 2715564331240754627}
-  - component: {fileID: -7706333598182015393}
+  - component: {fileID: 2181074681830770572}
   m_Layer: 7
   m_Name: pinchos
   m_TagString: Untagged
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e86a5d84a042a4384bb2018af615a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
---- !u!61 &-7706333598182015393
-BoxCollider2D:
+  damage: 100
+--- !u!60 &2181074681830770572
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,6 +144,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.56, y: 0.93}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5375461, y: -0.009795904}
+      - {x: 0.39101207, y: 0.12836514}
+      - {x: 0.26330197, y: -0.0062412173}
+      - {x: 0.11763147, y: 0.12667549}
+      - {x: -0.014902945, y: 0.0036030859}
+      - {x: -0.16327445, y: 0.12741932}
+      - {x: -0.31115448, y: 0.006374255}
+      - {x: -0.44391122, y: 0.13709}
+      - {x: -0.60292804, y: -0.009077802}
+      - {x: -0.72440636, y: 0.14257003}
+      - {x: -0.89772487, y: 0.01144556}
+      - {x: -0.8888142, y: -0.099999994}
+      - {x: 0.83, y: -0.099999994}
+      - {x: 0.84, y: -0.08}
+      - {x: 0.84, y: 0}
+      - {x: 0.6709471, y: 0.14771098}
