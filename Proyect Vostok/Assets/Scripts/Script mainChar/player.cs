@@ -75,6 +75,9 @@ public class player : MonoBehaviour
     public float jetPackFuel;
     private bool jetPackOn = false;
 
+    [Header("PowerUp")]
+    [SerializeField] GameObject powerUp;
+    
 
     //evento plataformas
     public event EventHandler OnJump;
@@ -152,12 +155,13 @@ public class player : MonoBehaviour
         //Copia
         if (Input.GetKeyDown(KeyCode.R))
         {
-            print(listCopyDataModels); 
+            //print(listCopyDataModels); 
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
             GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
             transform.position = starPos;
             listCopyDataModels.Clear();
+            GameManager.Instance.ActivatePowerUp();         
         }
 
         #region DASH
@@ -203,6 +207,7 @@ public class player : MonoBehaviour
             IsWallSliding = false;
         }
 
+        WallSlide();
         WallJump();
 
 

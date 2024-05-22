@@ -6,7 +6,7 @@ public class CollisionItems : MonoBehaviour
 {
     //Lista.
     [SerializeField] List<ItemData> items;
-
+   
     [System.Serializable]
     public class ItemData
     {
@@ -19,8 +19,8 @@ public class CollisionItems : MonoBehaviour
         life,dash,jetpack
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+     private void OnCollisionEnter2D(Collision2D collision)
+     { 
         if (collision.gameObject.CompareTag("Player"))
         {
             
@@ -30,10 +30,9 @@ public class CollisionItems : MonoBehaviour
             {
                 ApplyItemEffect(_player, item);
             }
-
-            Destroy(gameObject,0.2f);
+            PowerUpManager.Instance.DeactivatePowerUp();
         }
-    }
+     }
 
     private void ApplyItemEffect(player _player, ItemData item)
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2451511618786221504}
   - component: {fileID: 643768789788759568}
   - component: {fileID: 1810575873809254152}
-  - component: {fileID: 2405073801166336413}
+  - component: {fileID: 725541655629774984}
   m_Layer: 10
   m_Name: copiaPlayer
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7171040691376268400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.68, y: 0.01, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalPosition: {x: -8.7434, y: -0.0843, z: 0}
+  m_LocalScale: {x: 0.5736, y: 0.5736, z: 0.5736}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974e27eda81d28c43b026047d53c50d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &2405073801166336413
-CapsuleCollider2D:
+--- !u!61 &725541655629774984
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,6 +133,16 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.054883957, y: -0.08116245}
-  m_Size: {x: 0.9266535, y: 4.542376}
-  m_Direction: 0
+  m_Offset: {x: -0.045452476, y: -0.030302405}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.8, y: 7.14}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3152647, y: 4.6249285}
+  m_EdgeRadius: 0

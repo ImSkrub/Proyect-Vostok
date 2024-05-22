@@ -12,18 +12,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Copia")]
     [SerializeField] GameObject player;
     //[SerializeField] GameObject copiaPlayer;
     [SerializeField] GameObject copiaPlayerPrefab;
-
+   
+    //Beta cambiar a queue
     public static List<Vector3> playerPositions = new List<Vector3>();
     public static List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
     public static List<GameObject> copiaPlayers = new List<GameObject>();
 
     private static int counter;
 
-    //Variables globales
-
+    [Header("PowerUp")]
+    public List<GameObject> powerUpDisabled = new List<GameObject>();
+    
     private void Awake()
     {
         if (Instance != null)
@@ -63,13 +66,9 @@ public class GameManager : MonoBehaviour
         {
             foreach (var item in listPos)
             {
-                //print(item);
                 listPositions.Add(item.Pos);
             }
         }
-        
-        
-        //print(playerPositions.Count);
         listPlayerPositions.Add(listPositions);
         print(listPlayerPositions.Count);
         copiaPlayers.Add(new GameObject("copia" + counter.ToString()));
@@ -101,6 +100,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ActivatePowerUp()
+    {
+        foreach(var powerUp in powerUpDisabled)
+        {
+            powerUp.SetActive(true);
+        }
+    }
     
 
     public void ResetList()
@@ -108,6 +114,7 @@ public class GameManager : MonoBehaviour
         listPlayerPositions.Clear();
         copiaPlayers.Clear();
         playerPositions.Clear();
+        powerUpDisabled.Clear();
     }
 
     public List<GameObject> getCopiaPlayers() { return copiaPlayers; }
