@@ -45,7 +45,7 @@ public class CollisionItems : MonoBehaviour
                 _player.GetComponent<player>().activateDash();
                 break;
             case StatType.jetpack:
-                _player.GetComponent<player>().jetPackFuel = item.amount;
+                _player.GetComponent<player>().jetPackFuel += item.amount;
                 _player.GetComponent<player>().activateJetPack();
                 break;
         }

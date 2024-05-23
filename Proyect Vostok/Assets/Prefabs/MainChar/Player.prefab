@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
@@ -313,12 +313,12 @@ MonoBehaviour:
   IsFacingRight: 1
   IsWallSliding: 0
   wallJumpingPower: {x: 6, y: 12}
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 2178810712503718089}
   groundCheckRadius: 0.03
   groundLayer:
     serializedVersion: 2
     m_Bits: 1088
-  wallCheck: {fileID: 0}
+  wallCheck: {fileID: 6824700258079545132}
   wallLayer:
     serializedVersion: 2
     m_Bits: 1152
@@ -327,7 +327,6 @@ MonoBehaviour:
   dashingTime: 0.3
   jetPackForce: 10
   jetPackFuel: 0
-  powerUp: {fileID: 0}
   listCopyDataModels: []
 --- !u!1 &8992324603850636657
 GameObject:

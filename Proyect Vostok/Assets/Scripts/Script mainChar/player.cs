@@ -75,8 +75,7 @@ public class player : MonoBehaviour
     public float jetPackFuel;
     private bool jetPackOn = false;
 
-    [Header("PowerUp")]
-    [SerializeField] GameObject powerUp;
+    
     
 
     //evento plataformas
