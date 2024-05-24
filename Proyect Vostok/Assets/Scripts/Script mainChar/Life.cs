@@ -35,7 +35,7 @@ public class Life : MonoBehaviour
 
     private void Update()
     {
-        //lifebar.fillAmount = currentHealth / maxHealth;
+        lifebar.fillAmount = currentHealth / maxHealth;
 
         currentTime += Time.deltaTime;
 

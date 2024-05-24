@@ -326,7 +326,7 @@ MonoBehaviour:
   jumpForce: 12
   dashingVelocity: 25
   dashingTime: 0.3
-  jetPackForce: 10
+  jetPackForce: 5
   jetPackFuel: 0
   listCopyDataModels: []
 --- !u!1 &8992324603850636657
