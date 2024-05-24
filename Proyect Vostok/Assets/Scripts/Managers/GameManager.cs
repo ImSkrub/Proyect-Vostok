@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         player.GetComponent<Life>().OnDeath += FinishGame;
+        
     }
 
     private void Start()
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             ResetList();
+            PowerUpManager.Instance.DeactivatePowerUp();
         }
     }
 
@@ -108,7 +110,12 @@ public class GameManager : MonoBehaviour
             powerUp.SetActive(true);
         }
     }
-    
+
+    public void ResetLife()
+    {
+       
+    }
+
 
     public void ResetList()
     {
@@ -116,6 +123,7 @@ public class GameManager : MonoBehaviour
         copiaPlayers.Clear();
         playerPositions.Clear();
         powerUpDisabled.Clear();
+        
     }
 
     public List<GameObject> getCopiaPlayers() { return copiaPlayers; }

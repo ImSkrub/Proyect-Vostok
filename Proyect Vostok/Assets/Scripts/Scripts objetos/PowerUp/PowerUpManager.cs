@@ -6,7 +6,7 @@ public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager Instance;
     //Lista que guarda los powerUp.
-    [SerializeField] List<GameObject> powerUp = new List<GameObject>();
+    [SerializeField] public List<GameObject> powerUp = new List<GameObject>();
 
     void Start()
     {

@@ -11263,11 +11263,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &986100578 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6824700258079545132, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &997504433
 GameObject:
   m_ObjectHideFlags: 0
@@ -11378,11 +11373,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104793896}
   m_CullTransparentMesh: 1
---- !u!4 &1153818988 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2178810712503718089, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253144787
 GameObject:
   m_ObjectHideFlags: 0
@@ -22563,36 +22553,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: RB
-      value: 
-      objectReference: {fileID: 2043032094}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: jumpForce
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: wallCheck
-      value: 
-      objectReference: {fileID: 986100578}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 1153818988}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: jetPackForce
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: wallJumpingPower.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: wallJumpingPower.y
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3093592406548828474, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_Mass
@@ -22688,11 +22654,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
---- !u!50 &2043032094 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 3093592406548828474, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086960801
 GameObject:
   m_ObjectHideFlags: 0

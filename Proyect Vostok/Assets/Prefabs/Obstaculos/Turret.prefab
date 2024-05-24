@@ -178,13 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e5879d7d027e44c921c536d4752557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follow: {fileID: 0}
-  player: {fileID: 0}
+  follow: {fileID: 7112444899507809896, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+  player: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
   distToAttack: 20
   attackVel: 15
   closestDist: 5
   lerpSpeedRotation: 0
   attackDelay: 0.5
-  weaponsSlot: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  weaponsSlot: {fileID: 2671977860390751045, guid: 85cf65a0364964b4fb5d65c0e0cd06b6, type: 3}
+  bulletPrefab: {fileID: 2042160657482259301, guid: 85cf65a0364964b4fb5d65c0e0cd06b6, type: 3}
   weaponSlot: {fileID: 7769497908183718804}

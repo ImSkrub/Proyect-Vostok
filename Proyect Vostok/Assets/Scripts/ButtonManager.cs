@@ -11,7 +11,7 @@ public class ButtonManager : MonoBehaviour
     public void GoToMenu()
     {
         LevelManager.instance.LoadLevel(0);
-        DeathCounter.instance.contadorMuertes = 0;
+        
     }
     public void ButtonPlay()
     {

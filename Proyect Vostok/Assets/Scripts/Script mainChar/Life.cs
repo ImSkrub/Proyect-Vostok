@@ -64,6 +64,7 @@ public class Life : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
+  
    //Muere.
     public void Die()
     {

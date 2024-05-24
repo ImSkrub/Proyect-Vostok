@@ -11,6 +11,7 @@ public class NextScene : MonoBehaviour
         {
             LevelManager.instance.LoadNextLevel();
             GameManager.Instance.ResetList();
+            PowerUpManager.Instance.powerUp.Clear();
         }
     }
 }

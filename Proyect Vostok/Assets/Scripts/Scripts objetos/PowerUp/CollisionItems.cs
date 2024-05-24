@@ -6,7 +6,7 @@ public class CollisionItems : MonoBehaviour
 {
     //Lista.
     [SerializeField] List<ItemData> items;
-   
+    public bool pickUpJetpack = false;
     [System.Serializable]
     public class ItemData
     {
@@ -30,7 +30,7 @@ public class CollisionItems : MonoBehaviour
             {
                 ApplyItemEffect(_player, item);
             }
-            PowerUpManager.Instance.DeactivatePowerUp();
+            
         }
      }
 
@@ -43,11 +43,15 @@ public class CollisionItems : MonoBehaviour
                 break;
             case StatType.dash:
                 _player.GetComponent<player>().activateDash();
+                PowerUpManager.Instance.DeactivatePowerUp();
                 break;
             case StatType.jetpack:
                 _player.GetComponent<player>().jetPackFuel += item.amount;
                 _player.GetComponent<player>().activateJetPack();
+                PowerUpManager.Instance.DeactivatePowerUp();
+                pickUpJetpack =true;
                 break;
+            
         }
     }
 }

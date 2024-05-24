@@ -74,13 +74,14 @@ public class player : MonoBehaviour
    // public GameObject jetPack;
     [SerializeField] private float jetPackForce = 15f;
     public float jetPackFuel;
-    private bool jetPackOn = false;
-
+    public bool jetPackOn = false;
+    [SerializeField] private ParticleSystem jetPackParticle;
     
     
 
     //evento plataformas
     public event EventHandler OnJump;
+    public event Action OnReset;
 
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
@@ -107,7 +108,7 @@ public class player : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-     
+        
     }
 
     private void Start()
@@ -117,18 +118,15 @@ public class player : MonoBehaviour
         //spriteRenderer = GetComponent<SpriteRenderer>();
         //originalMaterial = spriteRenderer.material;
         starPos = transform.position;
+        jetPackParticle.Stop();
     }
 
     //Update del juego.
     private void Update()
     {
-
-        ///////Movimiento y teclas//////.     
+          ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-
-
-
 
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -142,10 +140,15 @@ public class player : MonoBehaviour
             if (jetPackInput && !IsGrounded())
             {
                 RB.AddForce(Vector2.up * jetPackForce);
-                
+                jetPackParticle.Play();
+
+            }else if (Input.GetButtonUp("Jump"))
+            {
+                jetPackParticle.Stop();
             }
             StartCoroutine(stopJetPack());
         }
+        
 
         if (IsJumping && RB.velocity.y < 0)
         {
@@ -160,9 +163,11 @@ public class player : MonoBehaviour
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
             GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
+            GameManager.Instance.ResetLife();
             transform.position = starPos;
             listCopyDataModels.Clear();
-            GameManager.Instance.ActivatePowerUp();         
+            GameManager.Instance.ActivatePowerUp();
+            
         }
 
         #region DASH
@@ -358,7 +363,7 @@ public class player : MonoBehaviour
         isDashing = false;
         isDashEnabled = false;
     }
-    #endregion
+
 
     //public void Flash()
     //{
@@ -374,28 +379,30 @@ public class player : MonoBehaviour
     //    spriteRenderer.material = flashMaterial;
     //    yield return WaitForSecond;
     //}
+    #endregion
 
+    #region JETPACK
     public void activateJetPack()
     {
-       // jetPack.SetActive(true);
-        jetPackOn = true;
+       jetPackOn = true;
+        
     }
 
     private IEnumerator stopJetPack()
     {
         yield return new WaitForSeconds(jetPackFuel);
-        // jetPack.SetActive(false);
         jetPackOn = false;
         //Zona de animaciones.
         
     }
 
+    #endregion 
+
+    #region GENERAL METHODS
     public void SetGravityScale(float scale)
     {
         RB.gravityScale = scale;
     }
-
-    #region GENERAL METHODS
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -421,7 +428,6 @@ public class player : MonoBehaviour
     #region EDITOR METHODS
     private void OnDrawGizmosSelected()
     {
-        
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheck.position, _wallCheckSize);        
     }
