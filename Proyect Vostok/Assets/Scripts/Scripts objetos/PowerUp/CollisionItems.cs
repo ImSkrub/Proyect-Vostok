@@ -6,7 +6,8 @@ public class CollisionItems : MonoBehaviour
 {
     //Lista.
     [SerializeField] List<ItemData> items;
-    public bool pickUpJetpack = false;
+    private GameObject powerUp;
+    public int indexList;
     [System.Serializable]
     public class ItemData
     {
@@ -19,11 +20,16 @@ public class CollisionItems : MonoBehaviour
         life,dash,jetpack
     }
 
-     private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
+    {
+        PowerUpManager.Instance.powerUp.Add(this.gameObject);
+        indexList = PowerUpManager.Instance.powerUp.Count -1;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
      { 
         if (collision.gameObject.CompareTag("Player"))
         {
-            
+            powerUp = collision.gameObject;
             player _player = collision.gameObject.GetComponent<player>();
 
             foreach (ItemData item in items)
@@ -43,13 +49,15 @@ public class CollisionItems : MonoBehaviour
                 break;
             case StatType.dash:
                 _player.GetComponent<player>().activateDash();
-                PowerUpManager.Instance.DeactivatePowerUp();
+                PowerUpManager.Instance.powerUp[indexList].SetActive(false);
+               
                 break;
             case StatType.jetpack:
                 _player.GetComponent<player>().jetPackFuel += item.amount;
                 _player.GetComponent<player>().activateJetPack();
-                PowerUpManager.Instance.DeactivatePowerUp();
-                pickUpJetpack =true;
+                PowerUpManager.Instance.powerUp[indexList].SetActive(false);
+               
+                
                 break;
             
         }

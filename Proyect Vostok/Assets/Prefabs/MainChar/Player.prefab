@@ -313,7 +313,7 @@ MonoBehaviour:
   RB: {fileID: 3093592406548828474}
   IsFacingRight: 1
   IsWallSliding: 0
-  wallJumpingPower: {x: 7, y: 14}
+  wallJumpingPower: {x: 7, y: 20.19}
   groundCheck: {fileID: 2178810712503718089}
   groundCheckRadius: 0.03
   groundLayer:
@@ -327,7 +327,7 @@ MonoBehaviour:
   jumpForce: 14
   dashingVelocity: 25
   dashingTime: 0.3
-  jetPackForce: 5
+  jetPackForce: 25
   jetPackFuel: 0
   jetPackOn: 0
   jetPackParticle: {fileID: 6946813910549245393}

@@ -17,14 +17,19 @@ public class PowerUpManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
     public void DeactivatePowerUp()
     {
-        foreach (var powerUp in powerUp)
+        foreach (var _powerUp in powerUp)
         {
-            powerUp.SetActive(false);
-            GameManager.Instance.powerUpDisabled.Add(powerUp);
+            _powerUp.SetActive(false);
+            GameManager.Instance.powerUpDisabled.Add(_powerUp);
+            if(_powerUp.TryGetComponent<CollisionItems>(out CollisionItems component))
+            {
+                component.indexList = powerUp.Count - 1;
+            }
         }
     }
 }

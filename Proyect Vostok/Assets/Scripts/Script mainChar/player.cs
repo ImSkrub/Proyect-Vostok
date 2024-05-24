@@ -81,7 +81,7 @@ public class player : MonoBehaviour
 
     //evento plataformas
     public event EventHandler OnJump;
-    public event Action OnReset;
+  
 
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
@@ -140,12 +140,13 @@ public class player : MonoBehaviour
             if (jetPackInput && !IsGrounded())
             {
                 RB.AddForce(Vector2.up * jetPackForce);
-                jetPackParticle.Play();
+                //jetPackParticle.Play();
 
-            }else if (Input.GetButtonUp("Jump"))
-            {
-                jetPackParticle.Stop();
             }
+            //if (Input.GetButtonUp("Jump"))
+            //{
+            //    jetPackParticle.Stop();
+            //}
             StartCoroutine(stopJetPack());
         }
         
@@ -161,12 +162,11 @@ public class player : MonoBehaviour
         {
             //print(listCopyDataModels); 
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
+            GameManager.Instance.ActivatePowerUp();
             GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
-            GameManager.Instance.ResetLife();
             transform.position = starPos;
             listCopyDataModels.Clear();
-            GameManager.Instance.ActivatePowerUp();
             
         }
 

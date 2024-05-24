@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             ResetList();
-            PowerUpManager.Instance.DeactivatePowerUp();
+            
         }
     }
 
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     public void ActivatePowerUp()
     {
-        foreach(var powerUp in powerUpDisabled)
+        foreach(GameObject powerUp in PowerUpManager.Instance.powerUp)
         {
             powerUp.SetActive(true);
         }
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         copiaPlayers.Clear();
         playerPositions.Clear();
         powerUpDisabled.Clear();
-        
+        PowerUpManager.Instance.powerUp.Clear();
     }
 
     public List<GameObject> getCopiaPlayers() { return copiaPlayers; }

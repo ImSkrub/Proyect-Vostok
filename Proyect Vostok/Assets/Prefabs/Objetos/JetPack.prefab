@@ -127,3 +127,4 @@ MonoBehaviour:
   items:
   - type: 2
     amount: 5
+  indexList: 0
