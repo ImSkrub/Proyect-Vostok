@@ -134,10 +134,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_Mass: 1.5
+  m_LinearDrag: 1.5
+  m_AngularDrag: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 69bf7122315c61242b2da1236e6865dc, type: 2}
   gameManager: {fileID: 0}
-  RB: {fileID: 0}
+  RB: {fileID: 3093592406548828474}
   IsFacingRight: 1
   IsWallSliding: 0
   wallJumpingPower: {x: 6, y: 12}
@@ -322,7 +322,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 1152
-  jumpForce: 20
+  _wallCheckSize: {x: 0.5, y: 1}
+  jumpForce: 12
   dashingVelocity: 25
   dashingTime: 0.3
   jetPackForce: 10

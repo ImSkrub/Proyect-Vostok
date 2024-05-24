@@ -1205,11 +1205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3231361130203648130, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.7
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 3231361130203648130, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.8
+      value: -7.4
       objectReference: {fileID: 0}
     - target: {fileID: 3231361130203648130, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1251,6 +1251,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2043032100}
+    - target: {fileID: 5733894738501539552, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
+      propertyPath: attackVel
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733894738501539552, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
+      propertyPath: attackDelay
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5733894738501539552, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
       propertyPath: weaponsSlot
       value: 
@@ -1389,32 +1397,6 @@ Transform:
   m_Father: {fileID: 2034858845}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1625213518 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6200894109943104042, guid: d14eb5fec392b1c4181db95a4615a9fa, type: 3}
-  m_PrefabInstance: {fileID: 1347718916}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1625213524
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625213518}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a697ac8a333fbad4a99e41937a4d208f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1721754559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1671,7 @@ PrefabInstance:
       objectReference: {fileID: 2043032094}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: jumpForce
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: wallCheck
@@ -1709,7 +1691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093592406548828474, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3934229451992896901, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_Layer
@@ -1819,7 +1801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086960801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.62, y: -6.5, z: 0.18059307}
+  m_LocalPosition: {x: 11.5, y: -7.5, z: 0.18059307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

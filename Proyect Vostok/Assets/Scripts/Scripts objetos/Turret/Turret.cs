@@ -37,8 +37,8 @@ public class Turret : MonoBehaviour
        currentTime += Time.deltaTime;
        enemyDirection= follow.transform.position - transform.position;
        if(enemyDirection.magnitude < distToAttack && enemyDirection.magnitude > closestDist)
-        {
-            if (currentTime >= attackDelay)
+       {
+            if(currentTime >= attackDelay)
             {
                 //anim.SetBool("Shooting",true);
                 Instantiate(bulletPrefab, weaponSlot.position, transform.rotation);
@@ -50,7 +50,7 @@ public class Turret : MonoBehaviour
             //{
             //    anim.SetBool("Shooting", false);
             //}
-        }
+       }
        
    }
     private void OnDrawGizmos()

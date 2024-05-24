@@ -26,7 +26,18 @@ public class ButtonManager : MonoBehaviour
     {
         LevelManager.instance.LoadLevel(1);
     }
-    public void GiveUp()
+
+    public void Level2()
+    {
+        LevelManager.instance.LoadLevel(2);
+    }
+
+    public void Level3()
+    {
+        LevelManager.instance.LoadLevel(3);
+    }
+
+    public void LevelSelect()
     {
         LevelManager.instance.LoadLevel(6);
     }

@@ -47,6 +47,7 @@ public class player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
     #endregion
 
     //Salto
@@ -111,6 +112,7 @@ public class player : MonoBehaviour
 
     private void Start()
     {
+        //SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
         //spriteRenderer = GetComponent<SpriteRenderer>();
         //originalMaterial = spriteRenderer.material;
@@ -206,17 +208,28 @@ public class player : MonoBehaviour
             IsWallSliding = false;
         }
 
-        WallSlide();
+        
         WallJump();
-
-
-
 
         if (!IsWallJumping)
         {
             Turn();
         }
 
+        //#region GRAVITY 
+        //       else if (RB.velocity.y < 0)
+        //{
+        //    //Higher gravity if falling
+        //    SetGravityScale(Data.gravityScale * Data.fallGravityMult);
+        //    //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+        //    RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
+        //}
+        //else
+        //{ 
+        //    SetGravityScale(Data.gravityScale); 
+        //}
+
+        //#endregion
     }
 
     private void FixedUpdate()
@@ -377,6 +390,11 @@ public class player : MonoBehaviour
         
     }
 
+    public void SetGravityScale(float scale)
+    {
+        RB.gravityScale = scale;
+    }
+
     #region GENERAL METHODS
     private bool IsGrounded()
     {
@@ -400,4 +418,12 @@ public class player : MonoBehaviour
 
     #endregion
 
+    #region EDITOR METHODS
+    private void OnDrawGizmosSelected()
+    {
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(wallCheck.position, _wallCheckSize);        
+    }
+    #endregion
 }

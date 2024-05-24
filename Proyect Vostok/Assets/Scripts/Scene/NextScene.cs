@@ -10,6 +10,7 @@ public class NextScene : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             LevelManager.instance.LoadNextLevel();
+            GameManager.Instance.ResetList();
         }
     }
 }
