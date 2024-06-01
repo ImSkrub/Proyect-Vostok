@@ -48,6 +48,10 @@ public class Life : MonoBehaviour
         {
             GameManager.Instance.LoseGame();
         }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     //Recibie daño

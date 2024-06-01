@@ -5,22 +5,24 @@ using UnityEngine;
 public class CamTransition : MonoBehaviour
 {
 
-    public GameObject VirtualCam;
+    public Camera cam;
+   
+    [SerializeField] List<Vector3> positions = new List<Vector3>();
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            VirtualCam.SetActive(true);
+            
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+           
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger)
-        {
-            VirtualCam.SetActive(false);
-        }
-    }
 
 }

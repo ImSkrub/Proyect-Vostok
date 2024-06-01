@@ -16,11 +16,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     //[SerializeField] GameObject copiaPlayer;
     [SerializeField] GameObject copiaPlayerPrefab;
+    [SerializeField] int copyLimit = 5;
    
     //Beta cambiar a queue
     public static List<Vector3> playerPositions = new List<Vector3>();
-    public static List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
-    public static List<GameObject> copiaPlayers = new List<GameObject>();
+    //public static List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
+    //public static List<GameObject> copiaPlayers = new List<GameObject>();
+
+    public static Queue<List<Vector3>> _listPlayerPositions = new Queue<List<Vector3>>();
+    public static Queue<GameObject> _copiaPlayers = new Queue<GameObject>();
 
     private static int counter;
 
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateListOfPositions(List<CopyDataModel> listPos)
+    public void UpdateQueueOfPositions(List<CopyDataModel> listPos)
     {
         var listPositions = new List<Vector3>();
         if (listPos != null)
@@ -72,12 +76,33 @@ public class GameManager : MonoBehaviour
                 listPositions.Add(item.Pos);
             }
         }
-        listPlayerPositions.Add(listPositions);
-        print(listPlayerPositions.Count);
-        copiaPlayers.Add(new GameObject("copia" + counter.ToString()));
-        print(copiaPlayers.Count);
-        counter++;
+        if(_listPlayerPositions.Count < copyLimit)
+        {
+            _listPlayerPositions.Enqueue(listPositions);
+            _copiaPlayers.Enqueue(new GameObject());
+        }
+        if(_listPlayerPositions.Count== copyLimit)
+        {
+            _listPlayerPositions.Dequeue();
+        }
     }
+
+    //public void UpdateListOfPositions(List<CopyDataModel> listPos)
+    //{
+    //    var listPositions = new List<Vector3>();
+    //    if (listPos != null)
+    //    {
+    //        foreach (var item in listPos)
+    //        {
+    //            listPositions.Add(item.Pos);
+    //        }
+    //    }
+    //    listPlayerPositions.Add(listPositions);
+    //    print(listPlayerPositions.Count);
+    //    copiaPlayers.Add(new GameObject("copia" + counter.ToString()));
+    //    print(copiaPlayers.Count);
+    //    counter++;
+    //}
 
     public void _Reset()
     {
@@ -92,11 +117,13 @@ public class GameManager : MonoBehaviour
         copiaPlayer.setListOfPositions(listOfPositions);
     }
 
+
+
     public void instantiateListOfObjects()
     {
-        foreach (var copia in copiaPlayers)
+        foreach (var copia in _copiaPlayers)
         {
-            foreach (var listPos in listPlayerPositions)
+            foreach (var listPos in _listPlayerPositions)
             {
                 instantiateCopiaPlayer(copia, listPos);
             }
@@ -111,22 +138,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ResetLife()
-    {
-       
-    }
-
-
     public void ResetList()
     {
-        listPlayerPositions.Clear();
-        copiaPlayers.Clear();
+        _listPlayerPositions.Clear();
+        _copiaPlayers.Clear();
         playerPositions.Clear();
         powerUpDisabled.Clear();
         PowerUpManager.Instance.powerUp.Clear();
     }
 
-    public List<GameObject> getCopiaPlayers() { return copiaPlayers; }
+    public Queue<GameObject> getCopiaPlayers() { return _copiaPlayers; }
 
     void FinishGame()
     {

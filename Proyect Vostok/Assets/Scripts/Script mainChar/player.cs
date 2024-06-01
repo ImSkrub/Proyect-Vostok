@@ -79,10 +79,6 @@ public class player : MonoBehaviour
     
     
 
-    //evento plataformas
-    public event EventHandler OnJump;
-  
-
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
 
@@ -132,23 +128,9 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            OnJump?.Invoke(this, EventArgs.Empty);
+            
         }
-        var jetPackInput = Input.GetButton("Jump");
-        if (jetPackOn)
-        {
-            if (jetPackInput && !IsGrounded())
-            {
-                RB.AddForce(Vector2.up * jetPackForce);
-                //jetPackParticle.Play();
-
-            }
-            //if (Input.GetButtonUp("Jump"))
-            //{
-            //    jetPackParticle.Stop();
-            //}
-            StartCoroutine(stopJetPack());
-        }
+        
         
 
         if (IsJumping && RB.velocity.y < 0)
@@ -162,11 +144,11 @@ public class player : MonoBehaviour
         {
             //print(listCopyDataModels); 
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
-            GameManager.Instance.ActivatePowerUp();
-            GameManager.Instance.UpdateListOfPositions(listCopyDataModels);
+            GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
             transform.position = starPos;
             listCopyDataModels.Clear();
+            GameManager.Instance.ActivatePowerUp();
             
         }
 
@@ -213,13 +195,15 @@ public class player : MonoBehaviour
             IsWallSliding = false;
         }
 
-        
         WallJump();
 
         if (!IsWallJumping)
         {
             Turn();
         }
+
+
+
 
         //#region GRAVITY 
         //       else if (RB.velocity.y < 0)
@@ -246,8 +230,24 @@ public class player : MonoBehaviour
             Run();
         }
         listCopyDataModels.Add(copyDataModel);
-        //listPosition.Add(transform.position);
+       
 
+        var jetPackInput = Input.GetButton("Jump");
+        if (jetPackOn)
+        {
+           
+            if (jetPackInput && !IsGrounded())
+            {
+                RB.AddForce(Vector2.up * jetPackForce);
+                jetPackParticle.Play();
+                
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                jetPackParticle.Stop();
+            }
+            StartCoroutine(stopJetPack());
+        }
     }
 
     #region RUN METHOD

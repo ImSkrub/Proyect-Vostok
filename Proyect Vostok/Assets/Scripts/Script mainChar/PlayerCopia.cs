@@ -22,8 +22,6 @@ public class PlayerCopia : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        
         if (posCounter < listOfPositions.Count) 
         { 
             gameObject.transform.position = listOfPositions[posCounter];
