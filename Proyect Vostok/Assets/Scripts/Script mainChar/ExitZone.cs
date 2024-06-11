@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ExitZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //layer 10 = layer copia
+        if(collision.gameObject.layer == 10)
+        {
+            collision.GetComponentInParent<PlayerCopia>().GetComponent<Collider2D>().enabled = true;
+        }
     }
 }
