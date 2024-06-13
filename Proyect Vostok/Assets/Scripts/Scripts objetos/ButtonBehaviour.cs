@@ -16,7 +16,12 @@ public class ButtonBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")||collision.gameObject.layer==10)
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            button.SetBool("On", true);
+            door.SetActive(false);
+        }
+        if (collision.gameObject.layer==10)
         {
             button.SetBool("On", true);
             door.SetActive(false);

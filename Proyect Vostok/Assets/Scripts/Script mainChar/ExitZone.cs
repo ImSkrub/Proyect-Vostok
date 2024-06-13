@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExitZone : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         //layer 10 = layer copia
         if(collision.gameObject.layer == 10)
