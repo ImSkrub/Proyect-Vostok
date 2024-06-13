@@ -4,40 +4,27 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-    private Animator anim;
+    public Animator button;
+    public GameObject door;
+    //Por si queremos mas puertas activadas
+    //[SerializeField] List<GameObject> doors = new List<GameObject>();
 
-    public enum Object
+    private void Start()
     {
-        box,player,copy
-    }
-
-    void Start()
-    {
-      anim = GetComponent<Animator>();  
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        button.SetBool("On", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*switch(collision)
-            case Object.box:
-                    if(collision.gameObject.layer == 5)
-                      {
-
-                      }
-                    break;
-            case Object.player:
-            if(collision.gameObject.CompareTag("Player"))
-            {
-
-            }
-            break;
-            case Object.copy:
-            break;*/
+        if (collision.gameObject.CompareTag("Player")||collision.gameObject.layer==10)
+        {
+            button.SetBool("On", true);
+            door.SetActive(false);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        door.SetActive(true);
+        button.SetBool("On",false);
     }
 }
