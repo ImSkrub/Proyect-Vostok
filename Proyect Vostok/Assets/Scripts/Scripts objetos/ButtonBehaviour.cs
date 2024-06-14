@@ -21,11 +21,20 @@ public class ButtonBehaviour : MonoBehaviour
             button.SetBool("On", true);
             door.SetActive(false);
         }
-        if (collision.gameObject.layer==10)
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 10)
         {
             button.SetBool("On", true);
             door.SetActive(false);
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        door.SetActive(true);
+        button.SetBool("On", false);
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
