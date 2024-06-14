@@ -8,6 +8,7 @@ public class CollisionItems : MonoBehaviour
     [SerializeField] List<ItemData> items;
     private GameObject powerUp;
     public int indexList;
+    
     [System.Serializable]
     public class ItemData
     {

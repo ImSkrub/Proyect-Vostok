@@ -10,6 +10,7 @@ public class player : MonoBehaviour
 {
     [Header("Variables")]
     public PlayerData Data;
+     
 
     /*
      *Variables you have to access player data:
@@ -90,29 +91,23 @@ public class player : MonoBehaviour
 
     //Listas que guardan el movimiento del jugador.
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
-  
-    /*COPIA
-    En vez de lista, usar Queue, despues tener una variable para limitar a la cola, despues guardo por posiciones, hace de pos1 a pos2.
-    Puedo ponerle una cantidad maxima de posiciones a guardar, a modo de que se vaya eliminando las anteriores posiciones.
-    Pregunto diferencias si tengo que ajustar o no. Para manejar las animaciones
-    Crear un script de modelo(Como el PlayerData), que tenga la posicion, accion y lo que quiere hacer. 
-    Y hago una Queue de ese modelo
-     */
+
+    private Animator anim;
 
     //Start del juego.
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-        
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
         //SetGravityScale(Data.gravityScale);
-        IsFacingRight = true;
         //spriteRenderer = GetComponent<SpriteRenderer>();
         //originalMaterial = spriteRenderer.material;
+        IsFacingRight = true;
         starPos = transform.position;
         jetPackParticle.Stop();
     }
@@ -123,12 +118,20 @@ public class player : MonoBehaviour
           ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
+       
+        if(moveInput.x != 0) {
+            anim.SetBool("Run", true);
+        }
+        else
+        {
+            anim.SetBool("Run", false);   
+        }
 
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            
+            //anim.SetBool("Jump",true);
         }
         
         
@@ -385,6 +388,7 @@ public class player : MonoBehaviour
     public void activateJetPack()
     {
        jetPackOn = true;
+       anim.SetBool("Jetpack", true);
         
     }
 
@@ -393,7 +397,7 @@ public class player : MonoBehaviour
         yield return new WaitForSeconds(jetPackFuel);
         jetPackOn = false;
         //Zona de animaciones.
-        
+        anim.SetBool("Jetpack",false);
     }
 
     #endregion 

@@ -13,6 +13,10 @@ public class ButtonManager : MonoBehaviour
         LevelManager.instance.LoadLevel(0);
         
     }
+    public void RestartLevel()
+    {
+        LevelManager.instance.RestartLevel();
+    }
     public void ButtonPlay()
     {
         LevelManager.instance.LoadLevel(1);
@@ -33,6 +37,18 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void Level3()
+    {
+        LevelManager.instance.LoadLevel(3);
+    }
+    public void Level4()
+    {
+        LevelManager.instance.LoadLevel(3);
+    }
+    public void Level5()
+    {
+        LevelManager.instance.LoadLevel(3);
+    }
+    public void Level6()
     {
         LevelManager.instance.LoadLevel(3);
     }

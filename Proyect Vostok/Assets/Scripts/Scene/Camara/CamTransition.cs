@@ -6,6 +6,7 @@ public class CamTransition : MonoBehaviour
 {
     public Camera cam;
     public GameObject positions;
+ 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
