@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1db1c5f269e93a24c908bce5cf2cd833
+guid: e0bd9a90f1093df43bff9e865292fb10
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,10 +108,10 @@ TextureImporter:
       name: Jetpack_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 44
-        width: 230
-        height: 552
+        x: 132
+        y: 61
+        width: 187
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f13aaeba7129d649928ea52aaa09053
-      internalID: 641131188
+      spriteID: 463a24a555321f742b07634d41e96be4
+      internalID: -198176793
       vertices: []
       indices: 
       edges: []
@@ -129,10 +129,10 @@ TextureImporter:
       name: Jetpack_1
       rect:
         serializedVersion: 2
-        x: 656
-        y: 45
-        width: 232
-        height: 551
+        x: 539
+        y: 37
+        width: 187
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 562a65ec8e1b9f741ac23e100b9273f7
-      internalID: -881800140
+      spriteID: 91d6293dab6afb841ae0f1238ae55698
+      internalID: 1055822978
       vertices: []
       indices: 
       edges: []
@@ -150,10 +150,10 @@ TextureImporter:
       name: Jetpack_2
       rect:
         serializedVersion: 2
-        x: 1315
-        y: 45
-        width: 236
-        height: 551
+        x: 929
+        y: 37
+        width: 187
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60ef9673011f8dc4fb2466cf7b7b3260
-      internalID: 1421884178
+      spriteID: b677b12e3f4abe84a884a2e1f521676b
+      internalID: 385060337
       vertices: []
       indices: 
       edges: []
@@ -171,10 +171,10 @@ TextureImporter:
       name: Jetpack_3
       rect:
         serializedVersion: 2
-        x: 1898
-        y: 45
-        width: 237
-        height: 560
+        x: 1319
+        y: 61
+        width: 187
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5eb305117d04e8458b850dd907b6efc
-      internalID: -2096172545
+      spriteID: 11ffbe18ebb11f8418c80e8c53b14ffb
+      internalID: 1662878459
       vertices: []
       indices: 
       edges: []
@@ -199,10 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jetpack_0: 641131188
-      Jetpack_1: -881800140
-      Jetpack_2: 1421884178
-      Jetpack_3: -2096172545
+      Jetpack_0: -198176793
+      Jetpack_1: 1055822978
+      Jetpack_2: 385060337
+      Jetpack_3: 1662878459
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
