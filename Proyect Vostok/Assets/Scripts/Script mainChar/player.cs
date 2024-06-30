@@ -63,7 +63,9 @@ public class player : MonoBehaviour
     private bool canDash = true;
     private bool isDashEnabled = false;
     public bool _isDashEnabled => isDashEnabled;
-    private Vector3 starPos;
+    private Vector3 startPos;
+
+    public Vector3 StartPos { get { return startPos; } set {  startPos = value; } }
 
     //[Header("DashColor")]
     //[Tooltip("Material to switch during dash")]
@@ -108,7 +110,7 @@ public class player : MonoBehaviour
         //spriteRenderer = GetComponent<SpriteRenderer>();
         //originalMaterial = spriteRenderer.material;
         IsFacingRight = true;
-        starPos = transform.position;
+        startPos = transform.position;
         jetPackParticle.Stop();
     }
 
@@ -149,10 +151,12 @@ public class player : MonoBehaviour
             //gameManager.TryGetComponent<GameManager>(out GameManager component);
             GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
             GameManager.Instance._Reset();
-            transform.position = starPos;
+            transform.position = startPos;
             listCopyDataModels.Clear();
             GameManager.Instance.ActivatePowerUp();
-            
+            jetPackParticle.Stop();
+            jetPackOn = false;
+            isDashEnabled = false;
         }
 
         #region DASH

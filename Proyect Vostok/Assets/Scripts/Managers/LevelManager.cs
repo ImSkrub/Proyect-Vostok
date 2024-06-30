@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     private int currentLevelIndex = 1;
+    public int currentLevel => currentLevelIndex;
 
     private void Awake()
     {

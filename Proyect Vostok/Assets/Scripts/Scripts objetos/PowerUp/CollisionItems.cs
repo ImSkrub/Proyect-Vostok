@@ -6,7 +6,7 @@ public class CollisionItems : MonoBehaviour
 {
     //Lista.
     [SerializeField] List<ItemData> items;
-    private GameObject powerUp;
+    private GameObject playerGameObject;
     public int indexList;
     
     [System.Serializable]
@@ -30,7 +30,7 @@ public class CollisionItems : MonoBehaviour
      { 
         if (collision.gameObject.CompareTag("Player"))
         {
-            powerUp = collision.gameObject;
+            playerGameObject = collision.gameObject;
             player _player = collision.gameObject.GetComponent<player>();
 
             foreach (ItemData item in items)
@@ -47,18 +47,19 @@ public class CollisionItems : MonoBehaviour
         {
             case StatType.life:
                 _player.GetComponent<Life>().currentHealth += item.amount;
+                this.gameObject.SetActive(false);
                 break;
             case StatType.dash:
                 _player.GetComponent<player>().activateDash();
-                PowerUpManager.Instance.powerUp[indexList].SetActive(false);
-               
+                this.gameObject.SetActive(false);
+
                 break;
             case StatType.jetpack:
                 _player.GetComponent<player>().jetPackFuel += item.amount;
                 _player.GetComponent<player>().activateJetPack();
-                PowerUpManager.Instance.powerUp[indexList].SetActive(false);
-               
-                
+                this.gameObject.SetActive(false);
+
+
                 break;
             
         }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     //[SerializeField] GameObject copiaPlayer;
     [SerializeField] GameObject copiaPlayerPrefab;
-    [SerializeField] int copyLimit = 5;
+    [SerializeField] int copyLimit = 10;
    
     //Beta cambiar a queue
     public static List<Vector3> playerPositions = new List<Vector3>();
@@ -156,5 +156,14 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         SceneManager.LoadScene("Lose");
+    }
+
+    public void CopyNumberChange(int newCopyLimit)
+    {
+        if (LevelManager.instance.currentLevel >= 1)
+        {
+            copyLimit = newCopyLimit;
+        }
+              
     }
 }

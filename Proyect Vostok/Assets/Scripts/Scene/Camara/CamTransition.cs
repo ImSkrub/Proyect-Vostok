@@ -15,6 +15,5 @@ public class CamTransition : MonoBehaviour
           cam.transform.position=positions.transform.position;
         }
     }
-
-
+    
 }
