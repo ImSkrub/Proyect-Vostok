@@ -5,21 +5,20 @@ using UnityEngine.UI;
 
 public class TextAppear : MonoBehaviour
 {
-    private float currentTime;
-    public float timer = 30;
-    public GameObject _texto;
+    public GameObject text;
 
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        currentTime += Time.deltaTime;
-        FinishTime();
-    }
-
-    private void FinishTime()
-    {
-        if (currentTime == timer)
+        if (collision.CompareTag("Player"))
         {
-            _texto.SetActive(false);
+            text.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            text.SetActive(false);
         }
     }
 }
