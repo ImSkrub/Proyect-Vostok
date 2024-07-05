@@ -419,7 +419,7 @@ MonoBehaviour:
     m_Bits: 1152
   _wallCheckSize: {x: 0.35, y: 2.35}
   jumpForce: 14
-  dashingVelocity: 25
+  dashingVelocity: 40
   dashingTime: 0.3
   jetPackForce: 100
   jetPackFuel: 0

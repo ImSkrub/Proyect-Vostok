@@ -40377,12 +40377,12 @@ GameObject:
   - component: {fileID: 1403636351}
   - component: {fileID: 1403636350}
   m_Layer: 5
-  m_Name: TEXTO Reset
+  m_Name: TEXTO Walljump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1403636349
 RectTransform:
   m_ObjectHideFlags: 0

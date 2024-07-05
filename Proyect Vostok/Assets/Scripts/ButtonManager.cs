@@ -42,20 +42,15 @@ public class ButtonManager : MonoBehaviour
     }
     public void Level4()
     {
-        LevelManager.instance.LoadLevel(3);
+        LevelManager.instance.LoadLevel(4);
     }
     public void Level5()
     {
-        LevelManager.instance.LoadLevel(3);
+        LevelManager.instance.LoadLevel(5);
     }
-    public void Level6()
-    {
-        LevelManager.instance.LoadLevel(3);
-    }
-
     public void LevelSelect()
     {
-        LevelManager.instance.LoadLevel(6);
+        LevelManager.instance.LoadLevel(8);
     }
 
 }

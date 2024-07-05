@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        player.GetComponent<Life>().OnDeath += FinishGame;
+        player.GetComponent<Life>().OnDeath += LoseGame;
         
     }
 
@@ -143,19 +143,21 @@ public class GameManager : MonoBehaviour
         _listPlayerPositions.Clear();
         _copiaPlayers.Clear();
         playerPositions.Clear();
-        powerUpDisabled.Clear();
-        PowerUpManager.Instance.powerUp.Clear();
+        //powerUpDisabled.Clear();
+        //PowerUpManager.Instance.powerUp.Clear();
     }
 
     public Queue<GameObject> getCopiaPlayers() { return _copiaPlayers; }
 
     void FinishGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Win");
+        ResetList();
     }
     public void LoseGame()
     {
         SceneManager.LoadScene("Lose");
+        ResetList();
     }
 
     public void CopyNumberChange(int newCopyLimit)
