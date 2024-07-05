@@ -350,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153934061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -183.4, y: -14.2, z: -10}
+  m_LocalPosition: {x: -182.43, y: -14.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40382,7 +40382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1403636349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40400,8 +40400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198.3645, y: 75.396484}
-  m_SizeDelta: {x: 556.729, y: 180.7929}
+  m_AnchoredPosition: {x: -264, y: -155}
+  m_SizeDelta: {x: 708.9236, y: 294.1927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403636350
 MonoBehaviour:
@@ -40427,7 +40427,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
     m_FontSize: 85
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 0
@@ -40436,9 +40436,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HOLA AAAAAAAAAA
-
-'
+  m_Text: "\"Los problemas de humedad llevaron al descubrimiento de las capacidades
+    atleticas de nuesto modelo\xA1Vaya sorpresa!\" El Space sera de ayuda con las
+    paredes musgosas\n"
 --- !u!222 &1403636351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -62437,7 +62437,7 @@ RectTransform:
   - {fileID: 150112039}
   - {fileID: 1403636349}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -62484,7 +62484,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2588473920654120609, guid: 97277c9a4a36f1f4e86c6ece2e312798, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2588473920654120609, guid: 97277c9a4a36f1f4e86c6ece2e312798, type: 3}
       propertyPath: m_LocalScale.x

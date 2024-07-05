@@ -123,6 +123,87 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &37929124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37929125}
+  - component: {fileID: 37929127}
+  - component: {fileID: 37929126}
+  m_Layer: 5
+  m_Name: TEXTO Boton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &37929125
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37929124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2034858845}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -207, y: -189}
+  m_SizeDelta: {x: 996.4938, y: 180.7929}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &37929126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37929124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '"Los mecanismos de presion requieren de corriente constante para mantenerse
+    activos"'
+--- !u!222 &37929127
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37929124}
+  m_CullTransparentMesh: 1
 --- !u!1001 &95590192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -482,6 +563,92 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd4daf3f7b62b6247a23e6a8b6e72524, type: 3}
+--- !u!1 &363477917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363477920}
+  - component: {fileID: 363477919}
+  - component: {fileID: 363477918}
+  m_Layer: 5
+  m_Name: TEXTO Clon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &363477918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363477917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
+    m_FontSize: 42
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'En nuestro afan por conquistar las estrellas nuestra familia de camaradas
+    8K73R posee capacidades cognitivas de iteracion para aprender de forma independiente.
+
+    Presione
+    R para comprobar
+
+'
+--- !u!222 &363477919
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363477917}
+  m_CullTransparentMesh: 1
+--- !u!224 &363477920
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363477917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2034858845}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 244, y: -139}
+  m_SizeDelta: {x: 760.678, y: 266.8337}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &400854394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39629,7 +39796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271838008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -121.4, y: -12.7, z: 0}
+  m_LocalPosition: {x: -121.2, y: -12.37, z: 0}
   m_LocalScale: {x: 2.8584, y: 2.8584, z: 2.8584}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39997,7 +40164,7 @@ GameObject:
   - component: {fileID: 1403636351}
   - component: {fileID: 1403636350}
   m_Layer: 5
-  m_Name: TEXTO Reset
+  m_Name: TEXTO Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40020,8 +40187,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198.3645, y: 75.396484}
-  m_SizeDelta: {x: 556.729, y: 180.7929}
+  m_AnchoredPosition: {x: -243.755, y: -193}
+  m_SizeDelta: {x: 829.715, y: 216.2331}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403636350
 MonoBehaviour:
@@ -40036,7 +40203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40045,8 +40212,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8a2b9e2a607dd2143b58c44bc32410b4, type: 3}
-    m_FontSize: 85
-    m_FontStyle: 0
+    m_FontSize: 44
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
@@ -40056,9 +40223,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HOLA AAAAAAAAAA
-
-'
+  m_Text: '"El nuevo modelo 8K73R presenta capacidades atleticas mejoradas" Presione
+    space para comprobar'
 --- !u!222 &1403636351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40078,13 +40244,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster
       objectReference: {fileID: 0}
+    - target: {fileID: 5404457610113108135, guid: 056319470526a704e9abf3562485e7b5, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 363477917}
     - target: {fileID: 7052481256728518917, guid: 056319470526a704e9abf3562485e7b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7052481256728518917, guid: 056319470526a704e9abf3562485e7b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 85.5
+      value: 64.34
       objectReference: {fileID: 0}
     - target: {fileID: 7052481256728518917, guid: 056319470526a704e9abf3562485e7b5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40352,7 +40522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521390523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -190.71, y: -12.78, z: 0}
+  m_LocalPosition: {x: -191.96, y: -9.76, z: 0}
   m_LocalScale: {x: 2.7454, y: 2.7454, z: 2.7454}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40370,6 +40540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poster
       objectReference: {fileID: 0}
+    - target: {fileID: 5404457610113108135, guid: 056319470526a704e9abf3562485e7b5, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 37929124}
     - target: {fileID: 7052481256728518917, guid: 056319470526a704e9abf3562485e7b5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -40609,7 +40783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829465396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -172.9951, y: -17.181, z: 0}
+  m_LocalPosition: {x: -166.23, y: -14.42, z: 0}
   m_LocalScale: {x: 2.23, y: 2.23, z: 2.23}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60391,6 +60565,8 @@ RectTransform:
   - {fileID: 1909245991}
   - {fileID: 150112039}
   - {fileID: 1403636349}
+  - {fileID: 37929125}
+  - {fileID: 363477920}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
