@@ -53816,7 +53816,7 @@ GameObject:
   - component: {fileID: 708532817}
   - component: {fileID: 708532816}
   - component: {fileID: 708532818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plataforma pasar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53883,8 +53883,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708532815}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 65.4459, y: -14.48, z: 2.1104813}
-  m_LocalScale: {x: 0.3652431, y: 2.2418785, z: 0.4057}
+  m_LocalPosition: {x: 65.4644, y: -14.4122, z: 2.1104813}
+  m_LocalScale: {x: 0.41820335, y: 2.3429537, z: 0.4057}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 752880597}

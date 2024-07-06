@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        player.GetComponent<Life>().OnDeath += LoseGame;
+        player.GetComponent<Life>().OnDeath += FinishGame;
         
     }
 

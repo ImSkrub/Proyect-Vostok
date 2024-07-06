@@ -952,8 +952,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Project Vostok '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -977,10 +977,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 195.23
+  m_fontSize: 136
   m_fontSizeBase: 195.23
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 136
   m_fontStyle: 2
@@ -1833,3 +1833,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15855cc9d00950f4ca87bd6a92087021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &63454217795543952
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2034055570760573243, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -40.56833
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.28267
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13903263
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}

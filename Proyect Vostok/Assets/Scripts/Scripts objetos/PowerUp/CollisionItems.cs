@@ -21,10 +21,10 @@ public class CollisionItems : MonoBehaviour
         life,dash,jetpack
     }
 
-    private void Start()
+    private void Awake()
     {
         PowerUpManager.Instance.powerUp.Add(this.gameObject);
-        indexList = PowerUpManager.Instance.powerUp.Count -1;
+        indexList = PowerUpManager.Instance.powerUp.Count - 1;
     }
     private void OnCollisionEnter2D(Collision2D collision)
      { 
@@ -63,5 +63,10 @@ public class CollisionItems : MonoBehaviour
                 break;
             
         }
+    }
+    public void Initialize()
+    {
+        PowerUpManager.Instance.powerUp.Add(this.gameObject);
+        indexList = PowerUpManager.Instance.powerUp.Count - 1;
     }
 }

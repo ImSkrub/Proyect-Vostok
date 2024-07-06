@@ -1721,8 +1721,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132, y: 382}
-  m_SizeDelta: {x: 1075.4001, y: 183.8533}
+  m_AnchoredPosition: {x: 122, y: 374.1268}
+  m_SizeDelta: {x: 1227.2107, y: 199.5998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827471648
 MonoBehaviour:
@@ -1744,10 +1744,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Project Vostok
+  m_text: PROJECT VOSTOK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba2d1d4fcb5ac874c95ddfb8131622be, type: 2}
+  m_sharedMaterial: {fileID: -303618085560493267, guid: ba2d1d4fcb5ac874c95ddfb8131622be, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1771,8 +1771,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 175
-  m_fontSizeBase: 175
+  m_fontSize: 162.41
+  m_fontSizeBase: 162.41
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

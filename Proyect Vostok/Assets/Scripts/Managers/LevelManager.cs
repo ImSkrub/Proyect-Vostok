@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         LoadLevel(currentLevelIndex);
+        
     }
 
     public void LoadLevel(int levelIndex)
@@ -45,8 +46,8 @@ public class LevelManager : MonoBehaviour
     public void LoadMainMenu()
     {
         currentLevelIndex = 1;
-       
         LoadLevel(0);
+        
     }
 
     public void QuitGame()
