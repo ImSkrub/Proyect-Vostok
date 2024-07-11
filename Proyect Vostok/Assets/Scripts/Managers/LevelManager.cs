@@ -42,7 +42,10 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelIndex);
         currentLevelIndex = levelIndex;
-        AudioManager.instance.PlayMusic("Music2");
+        if (levelIndex != 8)
+        {
+            AudioManager.instance.PlayMusic("Music2");
+        }
     }
 
     public void LoadMainMenu()

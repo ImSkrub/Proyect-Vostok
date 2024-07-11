@@ -72,6 +72,20 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public bool isMusicPlaying(string name)
+    {
+        Console.WriteLine("hola que tal");
+        if (MusicSource.name == name)
+        {
+            Console.WriteLine("hola");
+            return true;
+        } else
+        {
+            Console.WriteLine("chau");
+            return false;
+        }
+    }
+
     public void ToggleMusic()
     {
         MusicSource.mute = !MusicSource.mute;
