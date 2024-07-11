@@ -1917,13 +1917,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7702980572895567689, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8604384325522142284, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8604384325522142284, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604384325522142284, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 75e1f3c8e1287d04e93c0d54c9fb8241, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}

@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        AudioManager.instance.PlayMusic("Music1");
 
     }
 
