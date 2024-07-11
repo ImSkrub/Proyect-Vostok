@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        AudioManager.instance.PlayMusic("Music1");
 
     }
 
@@ -41,12 +42,14 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelIndex);
         currentLevelIndex = levelIndex;
+        AudioManager.instance.PlayMusic("Music2");
     }
 
     public void LoadMainMenu()
     {
         currentLevelIndex = 1;
         LoadLevel(0);
+        AudioManager.instance.PlayMusic("Music1");
         
     }
 
