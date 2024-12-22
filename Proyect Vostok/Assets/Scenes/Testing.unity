@@ -801,11 +801,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e45ee737a3c8c849bc326e4fbed4290, type: 3}
---- !u!1 &758806779 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8501883897790424285, guid: 8e45ee737a3c8c849bc326e4fbed4290, type: 3}
-  m_PrefabInstance: {fileID: 758806778}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &893265168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,16 +1671,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 758806779}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: wallLayer.m_Bits
-      value: 1152
+      propertyPath: groundCheckRadius
+      value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 1088
+    - target: {fileID: 2178810712503718089, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.305
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178810712503718089, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.274
       objectReference: {fileID: 0}
     - target: {fileID: 6645384971999338413, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: lifebar
