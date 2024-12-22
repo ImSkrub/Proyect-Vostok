@@ -8,7 +8,7 @@ public class CollisionItems : MonoBehaviour
     [SerializeField] List<ItemData> items;
     private GameObject playerGameObject;
     public int indexList;
-    
+
     [System.Serializable]
     public class ItemData
     {
@@ -18,16 +18,11 @@ public class CollisionItems : MonoBehaviour
 
     public enum StatType
     {
-        life,dash,jetpack
+        life, dash, jetpack
     }
 
-    private void Awake()
-    {
-        PowerUpManager.Instance.powerUp.Add(this.gameObject);
-        indexList = PowerUpManager.Instance.powerUp.Count - 1;
-    }
     private void OnCollisionEnter2D(Collision2D collision)
-     { 
+    {
         if (collision.gameObject.CompareTag("Player"))
         {
             playerGameObject = collision.gameObject;
@@ -37,9 +32,9 @@ public class CollisionItems : MonoBehaviour
             {
                 ApplyItemEffect(_player, item);
             }
-            
+
         }
-     }
+    }
 
     private void ApplyItemEffect(player _player, ItemData item)
     {
@@ -61,12 +56,8 @@ public class CollisionItems : MonoBehaviour
 
 
                 break;
-            
+
         }
     }
-    public void Initialize()
-    {
-        PowerUpManager.Instance.powerUp.Add(this.gameObject);
-        indexList = PowerUpManager.Instance.powerUp.Count - 1;
-    }
+  
 }

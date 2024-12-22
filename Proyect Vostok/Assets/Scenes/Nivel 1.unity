@@ -618,7 +618,7 @@ MonoBehaviour:
     8K73R posee capacidades cognitivas de iteracion para aprender de forma independiente.
 
     Presione
-    R para comprobar
+    *R* para comprobar
 
 '
 --- !u!222 &363477919
@@ -40224,7 +40224,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '"El nuevo modelo 8K73R presenta capacidades atleticas mejoradas" Presione
-    space para comprobar'
+    *SPACE* para comprobar'
 --- !u!222 &1403636351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40365,11 +40365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -199.85
+      value: -197.79
       objectReference: {fileID: 0}
     - target: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23.64
+      value: -23.57
       objectReference: {fileID: 0}
     - target: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: m_LocalPosition.z
