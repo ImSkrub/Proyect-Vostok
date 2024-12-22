@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class Life : MonoBehaviour
+public class PlayerLife : MonoBehaviour
 {
     public float CurrentHealth => currentHealth;
     public float maxHealth = 100; //Maximo de vida
@@ -13,14 +13,12 @@ public class Life : MonoBehaviour
     private SpriteRenderer spriteRenderer; //Renderizado barra
     private float currentTime;
     public event Action OnDeath; //Muerte del jugador como evento.
-    //public DeathCounter deathCounter;
     private int deathCount=0;
     public Transform respawn;
 
     //Color al recibir daño.
     public Color damageColor = Color.red;
     private Color originalColor;
-
 
     //Stat de vida en Canvas
     public Image lifebar;

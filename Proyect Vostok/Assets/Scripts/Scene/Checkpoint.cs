@@ -13,11 +13,11 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             respawn.transform.position = collision.transform.position;
-            player.GetComponent<player>().StartPos = respawn.transform.position;
+            player.GetComponent<PlayerController>().StartPos = respawn.transform.position;
             if (!isReseted)
             {
                 GameManager.Instance.ResetList();
-                player.GetComponent<player>().listCopyDataModels.Clear();
+                player.GetComponent<PlayerController>().listCopyDataModels.Clear();
                 isReseted =true;
             }
         }

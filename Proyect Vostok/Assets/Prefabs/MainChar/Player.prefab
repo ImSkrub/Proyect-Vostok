@@ -381,12 +381,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7112444899507809896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7cd36532c060c4ea1931588ca261c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 613c3be2c36c2b54d9bc7135cac49ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
   damageCooldown: 1
-  currentHealth: 100
+  currentHealth: 0
   respawn: {fileID: 0}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   lifebar: {fileID: 0}
@@ -399,15 +399,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7112444899507809896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b136f2f0719fe4c41b6afb18d16f1c1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bf74dc968ec1f14aa443f15748c4524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 69bf7122315c61242b2da1236e6865dc, type: 2}
-  gameManager: {fileID: 0}
-  RB: {fileID: 3093592406548828474}
+  rb: {fileID: 3093592406548828474}
   IsFacingRight: 1
+  IsWallJumping: 0
   IsWallSliding: 0
-  wallJumpingPower: {x: 10, y: 20}
+  wallJumpingPower: {x: 8, y: 16}
   groundCheck: {fileID: 2178810712503718089}
   groundCheckRadius: 0.03
   groundLayer:
@@ -417,15 +417,17 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 1152
-  _wallCheckSize: {x: 0.35, y: 2.35}
-  jumpForce: 14
-  dashingVelocity: 40
+  _wallCheckSize: {x: 0.5, y: 1}
+  jumpForce: 15
+  dashingVelocity: 24
   dashingTime: 0.3
-  jetPackForce: 100
+  jetPackForce: 15
   jetPackFuel: 0
   jetPackOn: 0
   jetPackParticle: {fileID: 6946813910549245393}
+  moveInput: {x: 0, y: 0}
   listCopyDataModels: []
+  anim: {fileID: 4254116484597841909}
 --- !u!1 &8992324603850636657
 GameObject:
   m_ObjectHideFlags: 0
