@@ -7,12 +7,13 @@ public class PlayerCopia : MonoBehaviour
     private List<Vector3> listOfPositions;
     private int posCounter = 0;
     private bool enableCollision = true;
+    private bool fastForward = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        posCounter = 0;
     }
     private void Awake()
     {
@@ -22,15 +23,9 @@ public class PlayerCopia : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (posCounter < listOfPositions.Count) 
-        { 
-            gameObject.transform.position = listOfPositions[posCounter];
-            posCounter++;
-            
-        }
-        if (posCounter == listOfPositions.Count)
+        if (!fastForward)
         {
-            gameObject.SetActive(false);
+            updateCopyPos();
         }
 
     }
@@ -47,6 +42,18 @@ public class PlayerCopia : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
+        if (Input.GetKeyDown(KeyCode.B)) 
+        {
+            fastForward = true;
+        }
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            fastForward = false;
+        }
+        if (fastForward)
+        {
+            updateCopyPos();
+        }
     }
 
     public void setListOfPositions(List<Vector3> list)
@@ -60,5 +67,19 @@ public class PlayerCopia : MonoBehaviour
         yield return new WaitForSeconds(delay);
         
         collider2D.enabled = true;
+    }
+
+    private void updateCopyPos()
+    {
+        if (posCounter < listOfPositions.Count)
+        {
+            gameObject.transform.position = listOfPositions[posCounter];
+            posCounter++;
+
+        }
+        //if (posCounter == listOfPositions.Count)
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 }
