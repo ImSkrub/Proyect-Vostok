@@ -11,6 +11,9 @@ public class PlayerAnim : MonoBehaviour
     public bool startedJumping {  get; private set; }
     public bool justLanded { get; private set; }
 
+    public bool jetpackActive = false;
+
+
     public float currentVelY;
 
 
@@ -22,6 +25,7 @@ public class PlayerAnim : MonoBehaviour
     }
     private void CheckAnimationState()
     {
+        //Agregar funciones para pasar a Run y idle
         if (startedJumping)
         {
             anim.SetTrigger("Jump");

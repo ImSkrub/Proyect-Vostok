@@ -48,5 +48,10 @@ public class Bullet : MonoBehaviour
             collision.gameObject.GetComponent<PlayerLife>().GetDamage(damage);
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("toque pared");
+            Destroy(gameObject);
+        }
     }
 }

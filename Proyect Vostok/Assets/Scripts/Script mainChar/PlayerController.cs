@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]
     public PlayerData Data;
-     
+    public PlayerAnim animHandler;
 
     /*
      *Variables you have to access player data:
@@ -86,21 +86,18 @@ public class PlayerController : MonoBehaviour
     //Listas que guardan el movimiento del jugador.
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
 
-    private Animator anim;
+    
 
     //Start del juego.
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-        anim = GetComponent<Animator>();
+        animHandler = GetComponent<PlayerAnim>();
     }
 
     private void Start()
     {
-        //SetGravityScale(Data.gravityScale);
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //originalMaterial = spriteRenderer.material;
         IsFacingRight = true;
         startPos = transform.position;
         jetPackParticle.Stop();
@@ -112,14 +109,7 @@ public class PlayerController : MonoBehaviour
           ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-       
-        if(moveInput.x != 0) {
-            anim.SetBool("Run", true);
-        }
-        else
-        {
-            anim.SetBool("Run", false);   
-        }
+             
 
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -348,20 +338,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //public void Flash()
-    //{
-    //    if(flashRoutine != null)
-    //    {
-    //        StopCoroutine(flashRoutine);
-    //    }
-    //    flashRoutine = StartCouroutine(FlashRoutine);
-    //}
-
-    //private IEnumerator FlashRoutine()
-    //{
-    //    spriteRenderer.material = flashMaterial;
-    //    yield return WaitForSecond;
-    //}
     #endregion
 
     #region JETPACK
@@ -392,7 +368,7 @@ public class PlayerController : MonoBehaviour
     public void activateJetPack()
     {
         jetPackOn = true;
-        anim.SetBool("Jetpack", true);
+        animHandler.jetpackActive = true;
         jetPackParticle.Play(); // Start particles when activating the jetpack
     }
 
