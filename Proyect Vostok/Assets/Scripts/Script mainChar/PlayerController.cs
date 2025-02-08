@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 
 
-public class player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]
     public PlayerData Data;
@@ -22,7 +22,7 @@ public class player : MonoBehaviour
     private GameManager gameManagerInstance = GameManager.Instance;
 
     #region VARIABLES
-    [SerializeField] private Rigidbody2D RB;
+    [SerializeField] public Rigidbody2D rb;
     private TrailRenderer trailRenderer;
 
     //Jump
@@ -66,13 +66,7 @@ public class player : MonoBehaviour
     private Vector3 startPos;
 
     public Vector3 StartPos { get { return startPos; } set {  startPos = value; } }
-
-    //[Header("DashColor")]
-    //[Tooltip("Material to switch during dash")]
-    //[SerializeField] private Material flashMaterial;
-    //private SpriteRenderer spriteRenderer;
-    //private Material originalMaterial;
-
+        
     [Header("JetPack")]
    // public GameObject jetPack;
     [SerializeField] private float jetPackForce = 15f;
@@ -80,8 +74,6 @@ public class player : MonoBehaviour
     public bool jetPackOn = false;
     [SerializeField] private ParticleSystem jetPackParticle;
     
-    
-
     private Vector2 moveInput;
     public float LastPressedJumpTime { get; private set; }
 
@@ -99,7 +91,7 @@ public class player : MonoBehaviour
     //Start del juego.
     private void Awake()
     {
-        RB = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
         anim = GetComponent<Animator>();
     }
@@ -132,13 +124,13 @@ public class player : MonoBehaviour
         //Saltar
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            RB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             //anim.SetBool("Jump",true);
         }
         
         
 
-        if (IsJumping && RB.velocity.y < 0)
+        if (IsJumping && rb.velocity.y < 0)
         {
             IsJumping = false;
 
@@ -183,7 +175,7 @@ public class player : MonoBehaviour
 
         if (isDashing)
         {
-            RB.velocity = dashingDir.normalized * dashingVelocity;
+            rb.velocity = dashingDir.normalized * dashingVelocity;
             return;
         }
         if (IsGrounded())
@@ -230,31 +222,15 @@ public class player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
-        
         if (!IsWallJumping)
         {
             Run();
         }
+        
+        CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
         listCopyDataModels.Add(copyDataModel);
-       
 
-        var jetPackInput = Input.GetButton("Jump");
-        if (jetPackOn)
-        {
-           
-            if (jetPackInput && !IsGrounded())
-            {
-                RB.AddForce(Vector2.up * jetPackForce);
-                jetPackParticle.Play();
-                
-            }
-            else if (Input.GetButtonUp("Jump"))
-            {
-                jetPackParticle.Stop();
-            }
-            StartCoroutine(stopJetPack());
-        }
+        HandleJetPack();
     }
 
     #region RUN METHOD
@@ -276,7 +252,7 @@ public class player : MonoBehaviour
 
         #region Add Bonus Jump Apex Acceleration
         //Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
-        if ((IsJumping || IsWallJumping) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
+        if ((IsJumping || IsWallJumping) && Mathf.Abs(rb.velocity.y) < Data.jumpHangTimeThreshold)
         {
             accelRate *= Data.jumpHangAccelerationMult;
             targetSpeed *= Data.jumpHangMaxSpeedMult;
@@ -285,7 +261,7 @@ public class player : MonoBehaviour
 
         #region Conserve Momentum
         //We won't slow the player down if they are moving in their desired direction but at a greater speed than their maxSpeed
-        if (Data.doConserveMomentum && Mathf.Abs(RB.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(RB.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && LastOnGroundTime < 0)
+        if (Data.doConserveMomentum && Mathf.Abs(rb.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(rb.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && LastOnGroundTime < 0)
         {
             //Prevent any deceleration from happening, or in other words conserve are current momentum
             accelRate = 0;
@@ -293,13 +269,13 @@ public class player : MonoBehaviour
         #endregion
 
         //Calculate difference between current velocity and desired velocity
-        float speedDif = targetSpeed - RB.velocity.x;
+        float speedDif = targetSpeed - rb.velocity.x;
         //Calculate force along x-axis to apply to thr player
 
         float movement = speedDif * accelRate;
 
         //Convert this to a vector and apply to rigidbody
-        RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
+        rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
     }
     #endregion
@@ -309,7 +285,7 @@ public class player : MonoBehaviour
     //trampolin
     public void ForcedJump()
     {
-        RB.AddForce(Vector2.up * 600);
+        rb.AddForce(Vector2.up * 600);
     }
 
     private void WallJump()
@@ -330,7 +306,7 @@ public class player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
             IsWallJumping = true;
-            RB.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
 
             if (transform.localScale.x != wallJumpingDirection)
@@ -351,7 +327,7 @@ public class player : MonoBehaviour
 
     private void WallSlide()
     {
-        RB.velocity = new Vector2(RB.velocity.x, Mathf.Clamp(RB.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
         
     }
     #endregion
@@ -389,19 +365,35 @@ public class player : MonoBehaviour
     #endregion
 
     #region JETPACK
+    public void HandleJetPack()
+    {
+        var jetPackInput = Input.GetButton("Jump");
+        if (jetPackOn)
+        {
+            if (jetPackInput && jetPackFuel > 0)
+            {
+                rb.AddForce(Vector2.up * jetPackForce);
+                jetPackParticle.Play();
+                jetPackFuel -= Time.deltaTime; // Decrease fuel over time while the button is held
+            }
+            else
+            {
+                jetPackParticle.Stop(); // Stop particles if the button is released
+            }
+            // If fuel runs out, stop the jetpack
+            if (jetPackFuel <= 0)
+            {
+                jetPackOn = false; // Disable the jetpack
+                jetPackParticle.Stop(); // Stop particles
+            }
+        }
+
+    }
     public void activateJetPack()
     {
-       jetPackOn = true;
-       anim.SetBool("Jetpack", true);
-        
-    }
-
-    private IEnumerator stopJetPack()
-    {
-        yield return new WaitForSeconds(jetPackFuel);
-        jetPackOn = false;
-        //Zona de animaciones.
-        anim.SetBool("Jetpack",false);
+        jetPackOn = true;
+        anim.SetBool("Jetpack", true);
+        jetPackParticle.Play(); // Start particles when activating the jetpack
     }
 
     #endregion 
@@ -409,7 +401,7 @@ public class player : MonoBehaviour
     #region GENERAL METHODS
     public void SetGravityScale(float scale)
     {
-        RB.gravityScale = scale;
+        rb.gravityScale = scale;
     }
     private bool IsGrounded()
     {

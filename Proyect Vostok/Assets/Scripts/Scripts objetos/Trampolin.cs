@@ -13,7 +13,7 @@ public class Trampolin : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        player Jugador = collision.collider.GetComponent<player>();
+        PlayerController Jugador = collision.collider.GetComponent<PlayerController>();
         if (Jugador != null)
         {
             Jugador.ForcedJump();

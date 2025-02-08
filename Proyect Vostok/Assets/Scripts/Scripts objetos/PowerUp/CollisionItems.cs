@@ -26,7 +26,7 @@ public class CollisionItems : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerGameObject = collision.gameObject;
-            player _player = collision.gameObject.GetComponent<player>();
+            PlayerController _player = collision.gameObject.GetComponent<PlayerController>();
 
             foreach (ItemData item in items)
             {
@@ -36,22 +36,22 @@ public class CollisionItems : MonoBehaviour
         }
     }
 
-    private void ApplyItemEffect(player _player, ItemData item)
+    private void ApplyItemEffect(PlayerController _player, ItemData item)
     {
         switch (item.type)
         {
             case StatType.life:
-                _player.GetComponent<Life>().currentHealth += item.amount;
+                _player.GetComponent<PlayerLife>().currentHealth += item.amount;
                 this.gameObject.SetActive(false);
                 break;
             case StatType.dash:
-                _player.GetComponent<player>().activateDash();
+                _player.GetComponent<PlayerController>().activateDash();
                 this.gameObject.SetActive(false);
 
                 break;
             case StatType.jetpack:
-                _player.GetComponent<player>().jetPackFuel += item.amount;
-                _player.GetComponent<player>().activateJetPack();
+                _player.GetComponent<PlayerController>().jetPackFuel += item.amount;
+                _player.GetComponent<PlayerController>().activateJetPack();
                 this.gameObject.SetActive(false);
 
 
