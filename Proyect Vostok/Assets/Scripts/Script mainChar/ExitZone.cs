@@ -9,7 +9,7 @@ public class ExitZone : MonoBehaviour
         //layer 10 = layer copia
         if(collision.gameObject.layer == 10)
         {
-            collision.GetComponentInParent<PlayerCopia>().GetComponent<Collider2D>().enabled = true;
+            collision.GetComponentInParent<PlayerCopia>().GetComponent<Collider2D>().enabled = false;
         }
     }
 }

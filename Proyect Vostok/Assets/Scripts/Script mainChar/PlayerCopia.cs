@@ -31,12 +31,7 @@ public class PlayerCopia : MonoBehaviour
     }
     private void Update()
     {
-        if (enableCollision)
-        {
-            this.TryGetComponent<BoxCollider2D>(out BoxCollider2D colliderComponent);
-            activateCollision(0.2f, colliderComponent);
-            enableCollision = false;
-        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             gameObject.SetActive(false);
