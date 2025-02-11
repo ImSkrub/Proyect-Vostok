@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
     public static Queue<List<Vector3>> _listPlayerPositions = new Queue<List<Vector3>>();
     public static Queue<GameObject> _copiaPlayers = new Queue<GameObject>();
 
-    private static int counter;
-
     [Header("PowerUp")]
     public List<GameObject> powerUpDisabled = new List<GameObject>();
     
@@ -44,11 +42,6 @@ public class GameManager : MonoBehaviour
         }
         player.GetComponent<PlayerLife>().OnDeath += FinishGame;
         
-    }
-
-    private void Start()
-    {
-        counter = 0;
     }
     private void FixedUpdate()
     {

@@ -23,21 +23,19 @@ public class PlayerAnim : MonoBehaviour
         anim = GetComponent<Animator>();
 
     }
-    private void CheckAnimationState()
+    public void TriggerJumpAnimation()
     {
-        //Agregar funciones para pasar a Run y idle
-        if (startedJumping)
-        {
-            anim.SetTrigger("Jump");
-            startedJumping = false;
-            return;
-        }
-        if (justLanded)
-        {
-            anim.SetTrigger("Land");
-            justLanded = false;
-            return ;
-        }
-        anim.SetFloat("Vel Y", controller.rb.velocity.y);
+        anim.SetTrigger("Jump");
+    }
+
+    public void TriggerLandAnimation()
+    {
+        anim.SetTrigger("Land");
+    }
+
+    public void UpdateMovementAnimation(float moveSpeed, float velocityY)
+    {
+        anim.SetBool("IsRunning", moveSpeed > 0.1f); // Run animation
+        anim.SetFloat("VelY", velocityY); // Vertical velocity for jump/fall
     }
 }

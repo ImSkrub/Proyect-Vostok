@@ -50,7 +50,6 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("toque pared");
             Destroy(gameObject);
         }
     }

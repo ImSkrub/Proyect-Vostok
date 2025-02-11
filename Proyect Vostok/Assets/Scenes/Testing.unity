@@ -1786,6 +1786,18 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 758806779}
+    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: _wallCheckSize.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: _wallCheckSize.y
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: groundCheckRadius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6645384971999338413, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: lifebar
       value: 

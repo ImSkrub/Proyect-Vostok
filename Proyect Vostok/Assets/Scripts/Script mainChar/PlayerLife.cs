@@ -87,8 +87,9 @@ public class PlayerLife : MonoBehaviour
         {
             Debug.Log("No saved states available. Player is dead.");
             isDead = true;
-            anim.SetBool("IsDead", isDead);
-            Invoke("InvokeEvent", 2.5f);
+            // anim.SetBool("IsDead", isDead);
+            // Invoke("InvokeEvent", 2.5f);
+            InvokeEvent();
             //modificar tiempo del invoke en relacion a la duracion de la anim muerte
         }
         deathCount++;

@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -18,8 +16,8 @@ public class PlayerController : MonoBehaviour
      *jumpHangAccelerationMult,jumpHangMaxSpeedMult,doConserveMomentum,
     */
 
-    [SerializeField] GameObject gameManager;
-    private GameManager gameManagerInstance = GameManager.Instance;
+    [SerializeField] GameManager gameManager;
+    
 
     #region VARIABLES
     [SerializeField] public Rigidbody2D rb;
@@ -32,15 +30,17 @@ public class PlayerController : MonoBehaviour
     public float LastOnGroundTime { get; private set; }
     public float LastOnWallTime { get; private set; }
     //wallSlide
-    public bool IsWallSliding;
-    private float wallSlidingSpeed = 5f;
+    public bool IsWallSliding = false;
+    private float wallSlidingSpeed = 0f;
     //wallJump
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(8f, 16f);
-
+    // Wall jump cooldown
+    private float wallJumpCooldown = 0.2f;
+    private float lastWallJumpTime;
 
     [Header("Checks")]
     [SerializeField] private Transform groundCheck;
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
         animHandler = GetComponent<PlayerAnim>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     private void Start()
@@ -109,21 +110,29 @@ public class PlayerController : MonoBehaviour
           ///////Movimiento y teclas//////.     
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-             
 
-        //Saltar
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            //anim.SetBool("Jump",true);
-        }
-        
-        
+            Debug.Log("Jump button pressed");
 
-        if (IsJumping && rb.velocity.y < 0)
+
+            if (IsGrounded() && !IsJumping)
+            {
+                Debug.Log("Jump executed");
+                rb.velocity = new Vector2(rb.velocity.x, 0); // Reset vertical velocity
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                IsJumping = true;
+                animHandler.TriggerJumpAnimation();
+            }
+        }
+       
+
+        if (IsGrounded() && IsJumping)
         {
             IsJumping = false;
-
+            IsWallJumping = false;
+            animHandler.TriggerLandAnimation();
         }
 
         //Copia
@@ -174,15 +183,15 @@ public class PlayerController : MonoBehaviour
         }
         #endregion
 
-        if (IsWalled() && !IsGrounded())
-        {
-            IsWallSliding = true;
-            WallSlide();
-        }
-        else
-        {
-            IsWallSliding = false;
-        }
+        //if (IsWalled() && !IsGrounded())
+        //{
+        //    IsWallSliding = true;
+        //    WallSlide();
+        //}
+        //else
+        //{
+        //    IsWallSliding = false;
+        //}
 
         WallJump();
 
@@ -208,19 +217,20 @@ public class PlayerController : MonoBehaviour
         //}
 
         //#endregion
+
+        animHandler.UpdateMovementAnimation(MathF.Abs(moveInput.x), rb.velocity.y);
     }
 
     private void FixedUpdate()
     {
-        if (!IsWallJumping)
-        {
-            Run();
-        }
-        
+        Run();
+
+
         CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
         listCopyDataModels.Add(copyDataModel);
 
         HandleJetPack();
+
     }
 
     #region RUN METHOD
@@ -230,14 +240,14 @@ public class PlayerController : MonoBehaviour
         float targetSpeed = moveInput.x * Data.runMaxSpeed;
 
         #region Calculate AccelRate
-        float accelRate;
+        float accelRate = IsGrounded() ? Data.runAccelAmount : Data.runAccelAmount* Data.accelInAir;
 
-        //Gets an acceleration value based on if we are accelerating (includes turning) 
-        //or trying to decelerate (stop). As well as applying a multiplier if we're air borne.
-        if (LastOnGroundTime > 0)
-            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
-        else
-            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.accelInAir : Data.runDeccelAmount * Data.deccelInAir;
+        ////Gets an acceleration value based on if we are accelerating (includes turning) 
+        ////or trying to decelerate (stop). As well as applying a multiplier if we're air borne.
+        //if (LastOnGroundTime > 0)
+        //    accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount : Data.runDeccelAmount;
+        //else
+        //    accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.accelInAir : Data.runDeccelAmount * Data.deccelInAir;
         #endregion
 
         #region Add Bonus Jump Apex Acceleration
@@ -280,9 +290,8 @@ public class PlayerController : MonoBehaviour
 
     private void WallJump()
     {
-        if (IsWallSliding)
+        if (IsWalled() && !IsGrounded()) // Only check if touching wall & not grounded
         {
-            IsWallJumping = false;
             wallJumpingDirection = -transform.localScale.x;
             wallJumpingCounter = wallJumpingTime;
 
@@ -293,12 +302,15 @@ public class PlayerController : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        // Check if the player can wall jump (cooldown and input)
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f && Time.time - lastWallJumpTime > wallJumpCooldown)
         {
             IsWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
+            lastWallJumpTime = Time.time;
 
+            // Flip the player direction on jump
             if (transform.localScale.x != wallJumpingDirection)
             {
                 IsFacingRight = !IsFacingRight;
@@ -306,6 +318,7 @@ public class PlayerController : MonoBehaviour
                 localScale.x *= -1f;
                 transform.localScale = localScale;
             }
+
             Invoke(nameof(StopWallJumping), wallJumpingDuration);
         }
     }
@@ -315,11 +328,10 @@ public class PlayerController : MonoBehaviour
         IsWallJumping = false;
     }
 
-    private void WallSlide()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-        
-    }
+    //private void WallSlide()
+    //{
+    //    rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+    //}
     #endregion
 
     #region DASH METHODS
@@ -368,7 +380,6 @@ public class PlayerController : MonoBehaviour
     public void activateJetPack()
     {
         jetPackOn = true;
-        animHandler.jetpackActive = true;
         jetPackParticle.Play(); // Start particles when activating the jetpack
     }
 
@@ -381,15 +392,20 @@ public class PlayerController : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        Vector2 boxSize = new Vector2(groundCheckRadius * 2, 0.1f);
+        bool grounded = Physics2D.OverlapBox(groundCheck.position, boxSize, 0f, groundLayer);
+        Debug.Log("IsGrounded: " + grounded);
+        return grounded;
     }
+
     public bool IsWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        // Define the size of the box for wall check
+        Vector2 boxSize = new Vector2(_wallCheckSize.x, _wallCheckSize.y); 
+        return Physics2D.OverlapBox(wallCheck.position, boxSize, 0f, wallLayer);
     }
     private void Turn()
     {
-
         if (IsFacingRight && moveInput.x < 0f || !IsFacingRight && moveInput.x > 0f)
         {
             IsFacingRight = !IsFacingRight;
@@ -404,8 +420,14 @@ public class PlayerController : MonoBehaviour
     #region EDITOR METHODS
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.green;
+        Vector2 groundBoxSize = new Vector2(groundCheckRadius * 2, 0.1f);
+        Gizmos.DrawWireCube(groundCheck.position, groundBoxSize);
+
+        // Draw wall check box
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(wallCheck.position, _wallCheckSize);        
+        Vector2 wallBoxSize = new Vector2(_wallCheckSize.x, _wallCheckSize.y);
+        Gizmos.DrawWireCube(wallCheck.position, wallBoxSize);
     }
     #endregion
 }
