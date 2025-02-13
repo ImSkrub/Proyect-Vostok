@@ -44,14 +44,14 @@ public class CollisionItems : MonoBehaviour
                 _player.GetComponent<PlayerLife>().currentHealth += item.amount;
                 this.gameObject.SetActive(false);
                 break;
-            case StatType.dash:
-                _player.GetComponent<PlayerController>().activateDash();
-                this.gameObject.SetActive(false);
+            //case StatType.dash:
+            //    _player.GetComponent<PlayerController>().activateDash();
+            //    this.gameObject.SetActive(false);
 
-                break;
+                //break;
             case StatType.jetpack:
-                _player.GetComponent<PlayerController>().jetPackFuel += item.amount;
-                _player.GetComponent<PlayerController>().activateJetPack();
+                _player.GetComponent<Player>().jetpackFuel += item.amount;
+                _player.GetComponent<Player>().activateJetPack();
                 this.gameObject.SetActive(false);
 
 

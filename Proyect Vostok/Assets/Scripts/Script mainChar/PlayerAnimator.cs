@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAnim : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour
 {
     private PlayerController controller;
     private Animator anim;
@@ -23,16 +23,15 @@ public class PlayerAnim : MonoBehaviour
         anim = GetComponent<Animator>();
 
     }
-    public void TriggerJumpAnimation()
+    public void TriggerJetpackAnimation()
     {
-        anim.SetTrigger("Jump");
+        anim.SetTrigger("JetpackOn");
     }
 
     public void TriggerLandAnimation()
     {
         anim.SetTrigger("Land");
     }
-
     public void UpdateMovementAnimation(float moveSpeed, float velocityY)
     {
         anim.SetBool("IsRunning", moveSpeed > 0.1f); // Run animation
