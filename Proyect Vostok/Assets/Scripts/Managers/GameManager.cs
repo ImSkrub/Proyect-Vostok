@@ -110,8 +110,6 @@ public class GameManager : MonoBehaviour
         copiaPlayer.setListOfPositions(listOfPositions);
     }
 
-
-
     public void instantiateListOfObjects()
     {
         foreach (var copia in _copiaPlayers)
@@ -123,13 +121,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void ActivatePowerUp()
-    //{
-    //    foreach(GameObject powerUp in PowerUpManager.Instance.powerUp)
-    //    {
-    //        powerUp.SetActive(true);
-    //    }
-    //}
+    public void ActivatePowerUp()
+    {
+        foreach (GameObject powerUp in PowerUpManager.Instance.powerUp)
+        {
+            powerUp.SetActive(true);
+        }
+    }
 
     public void ResetList()
     {

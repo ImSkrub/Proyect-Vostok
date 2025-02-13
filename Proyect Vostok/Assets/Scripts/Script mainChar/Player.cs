@@ -29,12 +29,13 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-
+        rb=GetComponent<Rigidbody2D>();
         jetpackParticle.Stop();
 
     }
     private void Update()
     {
+        
         //Copia
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
             GameManager.Instance._Reset();
             transform.position = startPos;
             listCopyDataModels.Clear();
-            //GameManager.Instance.ActivatePowerUp();
+            GameManager.Instance.ActivatePowerUp();
             jetpackParticle.Stop();
             jetpackOn = false;
         }
@@ -57,12 +58,12 @@ public class Player : MonoBehaviour
     #region JETPACK
     public void HandleJetPack()
     {
-        var jetPackInput = Input.GetMouseButton(1);
+        var jetPackInput = Input.GetButton("Jump");
         if (jetpackOn)
         {
             if (jetPackInput && jetpackFuel > 0)
             {
-                rb.AddForce(Vector2.up * jetpackForce);
+                rb.AddForce(Vector2.up * jetpackForce,ForceMode2D.Impulse);
                 jetpackParticle.Play();
                 jetpackFuel -= Time.deltaTime; // Decrease fuel over time while the button is held
             }

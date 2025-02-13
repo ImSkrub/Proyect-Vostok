@@ -138,12 +138,17 @@ public class PlayerController : MonoBehaviour
             //Right Wall Check
             if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
                     || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)) && !IsWallJumping)
-                LastOnWallRightTime = Data.coyoteTime;
+            {
 
-            //Right Wall Check
+                LastOnWallRightTime = Data.coyoteTime;
+            }
+
+            //Left Wall Check
             if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
                 || (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)) && !IsWallJumping)
+            {
                 LastOnWallLeftTime = Data.coyoteTime;
+            }
 
             //Two checks needed for both left and right walls since whenever the play turns the wall checkPoints swap sides
             LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);

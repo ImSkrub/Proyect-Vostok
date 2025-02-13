@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 6645384971999338413}
   - component: {fileID: 177102051654736825}
   - component: {fileID: 1695616349564248220}
+  - component: {fileID: 2043032109}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -469,6 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: e6de6150ab38ff74b9ee0fa32028adf7, type: 2}
+  isDashEnabled: 0
   _groundCheckPoint: {fileID: 2178810712503718089}
   _groundCheckSize: {x: 0.49, y: 0.03}
   _frontWallCheckPoint: {fileID: 6824700258079545132}
@@ -476,7 +478,7 @@ MonoBehaviour:
   _wallCheckSize: {x: 0.3, y: 2.35}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 1216
 --- !u!114 &1695616349564248220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +493,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jetpackActive: 0
   currentVelY: 0
+--- !u!114 &2043032109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112444899507809896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3b55c0d3b2ee246ada13d95b1eb196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jetpackForce: 5
+  jetpackParticle: {fileID: 6946813910549245393}
+  jetpackFuel: 0
+  jetpackOn: 0
+  listCopyDataModels: []
 --- !u!1 &8992324603850636657
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +606,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402a052252a39447853d1ff819465e5, type: 3}
+--- !u!198 &6946813910549245393 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4289183484585748006, guid: 2402a052252a39447853d1ff819465e5, type: 3}
+  m_PrefabInstance: {fileID: 6624293491288771575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6946813910549245399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4289183484585748000, guid: 2402a052252a39447853d1ff819465e5, type: 3}
