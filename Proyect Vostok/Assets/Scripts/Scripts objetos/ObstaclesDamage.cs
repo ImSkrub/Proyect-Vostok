@@ -9,7 +9,7 @@ public class ObstaclesDamage : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Puedes mantener el código original si también deseas causar daño al jugador al colisionar
-        Life Jugador = collision.collider.GetComponent<Life>();
+        PlayerLife Jugador = collision.collider.GetComponent<PlayerLife>();
         if (Jugador != null)
         {
             Jugador.GetDamage(damage);
