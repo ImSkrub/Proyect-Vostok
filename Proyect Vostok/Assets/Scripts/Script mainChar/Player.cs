@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+        startPos = transform.position;
         jetpackParticle.Stop();
 
     }
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
             GameManager.Instance._Reset();
             transform.position = startPos;
             listCopyDataModels.Clear();
-            GameManager.Instance.ActivatePowerUp();
+          //  GameManager.Instance.ActivatePowerUp();
             jetpackParticle.Stop();
             jetpackOn = false;
         }

@@ -652,11 +652,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &525567547 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6946813910549245393, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &621495379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,10 +1892,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-      propertyPath: _groundLayer.m_Bits
-      value: 1216
-      objectReference: {fileID: 0}
     - target: {fileID: 6645384971999338413, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: lifebar
       value: 
@@ -1964,23 +1955,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
   m_PrefabInstance: {fileID: 2043032093}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2043032109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293428150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3b55c0d3b2ee246ada13d95b1eb196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jetpackForce: 15
-  jetpackParticle: {fileID: 525567547}
-  jetpackFuel: 0
-  jetpackOn: 0
-  listCopyDataModels: []
 --- !u!1 &2086960801
 GameObject:
   m_ObjectHideFlags: 0
