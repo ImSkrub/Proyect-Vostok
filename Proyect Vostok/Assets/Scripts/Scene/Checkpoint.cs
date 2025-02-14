@@ -17,7 +17,6 @@ public class Checkpoint : MonoBehaviour
         playerLife = FindObjectOfType<PlayerLife>();
         player = FindObjectOfType<Player>();
         playerLife.OnDeath += _Checkpoint;
-        player.onRestart += _Checkpoint;
     }
 
     public void _Checkpoint()

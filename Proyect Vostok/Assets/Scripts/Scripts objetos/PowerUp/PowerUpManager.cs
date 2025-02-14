@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PowerUpManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PowerUpManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        
     }
     public void DeactivatePowerUp()
     {

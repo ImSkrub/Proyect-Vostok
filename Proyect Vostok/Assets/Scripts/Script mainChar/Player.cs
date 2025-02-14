@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     [Header("Copia")]
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
     public Vector2 startPos;
-    public event Action onRestart;
     
     private void Awake()
     {
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
             GameManager.Instance._Reset();
             transform.position = startPos;
             listCopyDataModels.Clear();
-            onRestart?.Invoke();
           //  GameManager.Instance.ActivatePowerUp();
             jetpackParticle.Stop();
             jetpackOn = false;
