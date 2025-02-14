@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +10,19 @@ public class Player : MonoBehaviour
     private PlayerAnimator animHandler;
     private PlayerLife health;
     private GameManager gameManager;
-   
-
     private Rigidbody2D rb;
+   
     [Header("Jetpack")]
     [SerializeField] private float jetpackForce = 15f;
     [SerializeField] private ParticleSystem jetpackParticle;
     public float jetpackFuel = 1;
     public bool jetpackOn = false;
+    
     [Header("Copia")]
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
-    private Vector2 startPos;
+    public Vector2 startPos;
+    public event Action onRestart;
+    
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
             GameManager.Instance._Reset();
             transform.position = startPos;
             listCopyDataModels.Clear();
+            onRestart?.Invoke();
           //  GameManager.Instance.ActivatePowerUp();
             jetpackParticle.Stop();
             jetpackOn = false;

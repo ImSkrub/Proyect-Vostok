@@ -17,7 +17,7 @@ public class ButtonManager : MonoBehaviour
     public void RestartLevel()
     {
         LevelManager.instance.RestartLevel();
-        PowerUpManager.Instance.powerUp.Clear();
+       // PowerUpManager.Instance.powerUp.Clear();
     }
     public void ButtonPlay()
     {

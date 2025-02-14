@@ -5,7 +5,8 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     private Stack<PlayerMemento> savedStates = new Stack<PlayerMemento>();
-    public PlayerLife player;
+    public PlayerLife playerLife;
+    public Player player;
 
     [SerializeField] Transform spawnpoint;
 
@@ -13,8 +14,10 @@ public class Checkpoint : MonoBehaviour
     private void Start()
     {
         spawnpoint = this.transform;
-        player = FindObjectOfType<PlayerLife>();
-        player.OnDeath += _Checkpoint;
+        playerLife = FindObjectOfType<PlayerLife>();
+        player = FindObjectOfType<Player>();
+        playerLife.OnDeath += _Checkpoint;
+        player.onRestart += _Checkpoint;
     }
 
     public void _Checkpoint()
@@ -24,7 +27,8 @@ public class Checkpoint : MonoBehaviour
         if (HasSavedStates())
         {
             PlayerMemento lastSavedState =savedStates.Pop();
-            player.RestoreState(lastSavedState);
+            playerLife.RestoreState(lastSavedState);
+            player.startPos = spawnpoint.position;
             Debug.Log("Estado Restaurado");
         }
         else

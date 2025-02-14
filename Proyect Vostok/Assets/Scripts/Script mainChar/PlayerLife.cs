@@ -28,6 +28,7 @@ public class PlayerLife : MonoBehaviour
 
     private Checkpoint playerCheckpoint;
     public bool isDead =false;
+    private Player player;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class PlayerLife : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         anim= GetComponent<Animator>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -113,7 +115,7 @@ public class PlayerLife : MonoBehaviour
         if (state != null)
         {
             gameObject.SetActive(true);
-            transform.position = state.position;
+            player.startPos = state.position;
             currentHealth = state.health;
             isDead = false; // Aseg�rate de que el jugador est� vivo despu�s de restaurar
             Debug.Log("Player state restored.");
