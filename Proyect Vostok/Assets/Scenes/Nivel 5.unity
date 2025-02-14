@@ -61930,6 +61930,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2043032109, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: jetpackForce
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6645384971999338413, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: lifebar
       value: 
