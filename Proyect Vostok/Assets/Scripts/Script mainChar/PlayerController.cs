@@ -567,6 +567,7 @@ public class PlayerController : MonoBehaviour
         return _dashesLeft > 0;
     }
 
+    
     public bool CanSlide()
     {
         if (LastOnWallTime > 0 && !IsJumping && !IsWallJumping && !IsDashing && LastOnGroundTime <= 0)

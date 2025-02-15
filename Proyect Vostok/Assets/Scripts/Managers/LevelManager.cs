@@ -41,9 +41,18 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelIndex);
         currentLevelIndex = levelIndex;
+        if (PowerUpManager.Instance != null)
+        {
+            PowerUpManager.Instance.ReactivatePowerUps();
+        }
+        else
+        {
+            Debug.LogWarning("PowerUpManager.Instance es nulo. Asegúrate de que haya un PowerUpManager en la escena.");
+        }
+
         if (levelIndex != 8)
         {
-            AudioManager.instance.PlayMusic("Music2");
+            //AudioManager.instance.PlayMusic("Music2");
         }
     }
 
@@ -51,7 +60,7 @@ public class LevelManager : MonoBehaviour
     {
         currentLevelIndex = 1;
         LoadLevel(0);
-        AudioManager.instance.PlayMusic("Music1");
+       // AudioManager.instance.PlayMusic("Music1");
         
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Stack<PlayerMemento> savedStates = new Stack<PlayerMemento>();
+    public Stack<PlayerMemento> savedStates = new Stack<PlayerMemento>();
     public PlayerLife playerLife;
     public Player player;
 
@@ -18,25 +18,32 @@ public class Checkpoint : MonoBehaviour
         player = FindObjectOfType<Player>();
         playerLife.OnDeath += _Checkpoint;
     }
+    public void SaveState()
+    {
+        PlayerMemento memento = new PlayerMemento(player.transform.position, playerLife.currentHealth);
+        savedStates.Push(memento);
+        Debug.Log("Estado guardado en el checkpoint.");
+    }
 
     public void _Checkpoint()
     {
         if (isRestoring) return;
         isRestoring = true;
+
         if (HasSavedStates())
         {
-            PlayerMemento lastSavedState =savedStates.Pop();
+            PlayerMemento lastSavedState = savedStates.Pop();
             playerLife.RestoreState(lastSavedState);
-            player.startPos = spawnpoint.position;
-            Debug.Log("Estado Restaurado");
+            player.transform.position = lastSavedState.position; // Restaurar la posición del checkpoint
+            Debug.Log("Estado restaurado desde el checkpoint.");
         }
         else
         {
-            Debug.Log("No saved states available to restore.");
+            Debug.Log("No hay estados guardados para restaurar.");
         }
+
         isRestoring = false;
     }
-
 
     public bool HasSavedStates()
     {
@@ -49,7 +56,14 @@ public class Checkpoint : MonoBehaviour
         savedStates.Clear();
         Debug.Log("Saved states have been Reset.");
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            SaveState(); // Guardar el estado del jugador al activar el checkpoint
+            Debug.Log("Checkpoint activado.");
+        }
+    }
 }
 
 

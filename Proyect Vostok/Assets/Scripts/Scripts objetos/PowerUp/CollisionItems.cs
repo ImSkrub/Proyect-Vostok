@@ -25,14 +25,12 @@ public class CollisionItems : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerGameObject = collision.gameObject;
             PlayerController _player = collision.gameObject.GetComponent<PlayerController>();
-
             foreach (ItemData item in items)
             {
                 ApplyItemEffect(_player, item);
             }
-
+            this.gameObject.SetActive(false); // Desactiva el objeto
         }
     }
 
@@ -42,22 +40,15 @@ public class CollisionItems : MonoBehaviour
         {
             case StatType.life:
                 _player.GetComponent<PlayerLife>().currentHealth += item.amount;
-                this.gameObject.SetActive(false);
+                PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
                 break;
-            //case StatType.dash:
-            //    _player.GetComponent<PlayerController>().activateDash();
-            //    this.gameObject.SetActive(false);
-
-                //break;
             case StatType.jetpack:
-                _player.GetComponent<Player>().jetpackFuel += item.amount;
-                _player.GetComponent<Player>().activateJetPack();
-                this.gameObject.SetActive(false);
-
-
+                Player player = _player.GetComponent<Player>();
+                player.jetpackFuel += item.amount;
+                player.activateJetPack();
+                PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
                 break;
-
         }
     }
-  
+
 }

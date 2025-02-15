@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private PlayerLife health;
     private GameManager gameManager;
     private Rigidbody2D rb;
+    private PowerUpManager powerUpManager;
    
     [Header("Jetpack")]
     [SerializeField] private float jetpackForce = 15f;
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour
         animHandler = GetComponent<PlayerAnimator>();
         health = GetComponent<PlayerLife>();
         gameManager = FindObjectOfType<GameManager>();
+        powerUpManager = FindObjectOfType<PowerUpManager>();
+
     }
     private void Start()
     {
@@ -42,13 +45,7 @@ public class Player : MonoBehaviour
         //Copia
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
-            GameManager.Instance._Reset();
-            transform.position = startPos;
-            listCopyDataModels.Clear();
-          //  GameManager.Instance.ActivatePowerUp();
-            jetpackParticle.Stop();
-            jetpackOn = false;
+            HandleCopy();
         }
     }
 
@@ -58,6 +55,41 @@ public class Player : MonoBehaviour
         listCopyDataModels.Add(copyDataModel);
         HandleJetPack();
     }
+    
+    public void HandleCopy()
+    {
+        GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
+        GameManager.Instance._Reset();
+
+        // Restaurar la posición desde el último checkpoint
+        Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
+        if (checkpoint != null && checkpoint.HasSavedStates())
+        {
+            PlayerMemento lastSavedState = checkpoint.savedStates.Peek(); // Obtener el último estado sin eliminarlo
+            transform.position = lastSavedState.position;
+            Debug.Log("Posición restaurada desde el checkpoint.");
+        }
+        else
+        {
+            transform.position = startPos; // Volver a la posición inicial si no hay checkpoints
+            Debug.Log("No hay checkpoints, reiniciando a la posición inicial.");
+        }
+
+        listCopyDataModels.Clear();
+
+        if (powerUpManager != null)
+        {
+            powerUpManager.ReactivatePowerUps();
+        }
+        else
+        {
+            Debug.LogWarning("PowerUpManager no encontrado en la escena.");
+        }
+
+        jetpackParticle.Stop();
+        jetpackOn = false;
+    }
+
     #region JETPACK
     public void HandleJetPack()
     {

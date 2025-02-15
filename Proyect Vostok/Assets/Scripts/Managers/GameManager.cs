@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,20 +11,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Copia")]
     [SerializeField] GameObject player;
-    //[SerializeField] GameObject copiaPlayer;
     [SerializeField] GameObject copiaPlayerPrefab;
     [SerializeField] int copyLimit = 10;
    
     //Beta cambiar a queue
     public static List<Vector3> playerPositions = new List<Vector3>();
-    //public static List<List<Vector3>> listPlayerPositions = new List<List<Vector3>>();
-    //public static List<GameObject> copiaPlayers = new List<GameObject>();
-
+  
     public static Queue<List<Vector3>> _listPlayerPositions = new Queue<List<Vector3>>();
     public static Queue<GameObject> _copiaPlayers = new Queue<GameObject>();
 
-    [Header("PowerUp")]
-    public List<GameObject> powerUpDisabled = new List<GameObject>();
+ 
     
     private void Awake()
     {
@@ -43,11 +36,6 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerLife>().OnDeath += FinishGame;
         
     }
-    private void FixedUpdate()
-    {
-
-    }
-
     // Update is called once per frame
     private void Update()
     {
@@ -121,21 +109,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void ActivatePowerUp()
-    //{
-    //    foreach (GameObject powerUp in PowerUpManager.Instance.powerUp)
-    //    {
-    //        powerUp.SetActive(true);
-    //    }
-    //}
-
     public void ResetList()
     {
         _listPlayerPositions.Clear();
         _copiaPlayers.Clear();
         playerPositions.Clear();
-        //powerUpDisabled.Clear();
-        //PowerUpManager.Instance.powerUp.Clear();
+        PowerUpManager.Instance.powerUpDisabled.Clear();
+        PowerUpManager.Instance.powerUp.Clear();
     }
 
     public Queue<GameObject> getCopiaPlayers() { return _copiaPlayers; }
