@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        
         //Copia
         if (Input.GetKeyDown(KeyCode.R))
         {
