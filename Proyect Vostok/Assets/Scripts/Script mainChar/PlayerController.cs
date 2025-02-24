@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
     private bool _isDashAttacking;
     private TrailRenderer trailRenderer;
 
+    //Audio
+    private bool isRunning = false;
+
     #endregion
 
     #region INPUT PARAMETERS
@@ -104,6 +107,18 @@ public class PlayerController : MonoBehaviour
 
         if (_moveInput.x != 0)
             CheckDirectionToFace(_moveInput.x > 0);
+
+        if (_moveInput.x != 0 && !isRunning && !IsJumping && !IsWallJumping && !IsDashing)
+        {
+            AudioManager.instance.PlaySFX("Steps", true);
+            isRunning = true;
+        }
+
+        if (((_moveInput.x == 0) || IsJumping || IsWallJumping || IsDashing) && isRunning )
+        {
+            AudioManager.instance.StopSFX();
+            isRunning = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
