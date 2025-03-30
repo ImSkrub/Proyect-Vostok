@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("References")]
     private PlayerController controller;
-    private PlayerAnimator animHandler;
+    private PlayerView playerView;
     private PlayerLife health;
     private GameManager gameManager;
     private Rigidbody2D rb;
@@ -26,15 +26,14 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
-        animHandler = GetComponent<PlayerAnimator>();
+        playerView = GetComponent<PlayerView>();
         health = GetComponent<PlayerLife>();
         gameManager = FindObjectOfType<GameManager>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
-
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
         startPos = transform.position;
         jetpackParticle.Stop();
 
@@ -110,6 +109,7 @@ public class Player : MonoBehaviour
             {
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
+                playerView.SetJetpackState(true);
             }
         }
 
@@ -118,9 +118,9 @@ public class Player : MonoBehaviour
     {
         jetpackOn = true;
         jetpackParticle.Play(); // Start particles when activating the jetpack
+        playerView.SetJetpackState(true);
     }
 
     #endregion
-    //Aca va todo lo que no tenga que ver con el movimiento, copia, jetpack y colisiones.
 
 }

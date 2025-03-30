@@ -6,104 +6,100 @@ using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
+    [Header("Atributos")]
+    private PlayerView playerView;
     public float CurrentHealth => currentHealth;
-    public float maxHealth = 100; //Maximo de vida
-    public float damageCooldown = 1f; //Daño
-    public float currentHealth; //Vida que llevas en el juego
-    private SpriteRenderer spriteRenderer; //Renderizado barra
+    public float maxHealth = 100;
+    public float damageCooldown = 1f;
+    public float currentHealth;
+    private SpriteRenderer spriteRenderer;
     private float currentTime;
-    public event Action OnDeath; //Muerte del jugador como evento.
-    private Animator anim;
-   
-    private int deathCount=0;
+    public event Action OnDeath;
+
+    private int deathCount = 0;
     public Transform respawn;
 
-    //Color al recibir daño.
     public Color damageColor = Color.red;
     private Color originalColor;
 
-
-    //Stat de vida en Canvas
     public Image lifebar;
 
     private Checkpoint playerCheckpoint;
-    public bool isDead =false;
+    public bool isDead = false;
     private Player player;
+    [Space]
+    [Header("Death timer")]
+    public float deathAnimationDuration = 2.5f; // Duración de la animación de muerte
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
+        playerView = GetComponent<PlayerView>();
+    }
 
     private void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        anim= GetComponent<Animator>();
-        player = GetComponent<Player>();
     }
 
     private void Update()
     {
         lifebar.fillAmount = currentHealth / maxHealth;
-
         currentTime += Time.deltaTime;
 
-        //Daño
         if (currentHealth <= 0)
         {
-            Die();
+            HandleDeath();
         }
-        if(deathCount >=1)
+
+        if (deathCount >= 1)
         {
             GameManager.Instance.LoseGame();
         }
-        if(Input.GetKeyDown(KeyCode.R))
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             currentHealth = maxHealth;
         }
     }
 
-    //Recibie daño
     public void GetDamage(int value)
     {
-        currentHealth -= value; //currentHealth = currentHealth - value; 
+        currentHealth -= value;
         spriteRenderer.color = damageColor;
         Invoke("RestoreColor", 0.5f);
     }
 
     private void RestoreColor()
     {
-        // Restaurar el color original del sprite
         spriteRenderer.color = originalColor;
     }
 
-  
-   //Muere.
-    public void Die()
+    private void HandleDeath()
     {
         if (isDead) return;
-        if(playerCheckpoint != null && playerCheckpoint.HasSavedStates())
+
+        if (playerCheckpoint != null && playerCheckpoint.HasSavedStates())
         {
-            Debug.Log(playerCheckpoint.HasSavedStates());
-            playerCheckpoint._Checkpoint(); // Restore the last saved state
+            playerCheckpoint._Checkpoint();
             Debug.Log("Player restored from checkpoint.");
         }
         else
         {
             Debug.Log("No saved states available. Player is dead.");
             isDead = true;
-            // anim.SetBool("IsDead", isDead);
-            // Invoke("InvokeEvent", 2.5f);
-            InvokeEvent();
-            //modificar tiempo del invoke en relacion a la duracion de la anim muerte
+            deathCount++;
+            playerView.TriggerDeathAnimation();
+            Invoke("InvokeEvent", deathAnimationDuration); // Esperar antes de ejecutar el evento
         }
-        deathCount++;
-        isDead = true;
-        
     }
 
     private void InvokeEvent()
     {
         OnDeath?.Invoke();
     }
-
 
     public PlayerMemento SaveState(Vector3 position)
     {
@@ -117,7 +113,7 @@ public class PlayerLife : MonoBehaviour
             gameObject.SetActive(true);
             player.startPos = state.position;
             currentHealth = state.health;
-            isDead = false; // Aseg�rate de que el jugador est� vivo despu�s de restaurar
+            isDead = false;
             Debug.Log("Player state restored.");
         }
         else
@@ -125,5 +121,4 @@ public class PlayerLife : MonoBehaviour
             Debug.LogError("Cannot restore state: state is null.");
         }
     }
-
 }

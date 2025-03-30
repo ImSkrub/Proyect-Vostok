@@ -6,7 +6,6 @@ public class CollisionItems : MonoBehaviour
 {
     //Lista.
     [SerializeField] List<ItemData> items;
-    private GameObject playerGameObject;
     public int indexList;
 
     [System.Serializable]
