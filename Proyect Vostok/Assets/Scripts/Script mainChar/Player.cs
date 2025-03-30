@@ -9,6 +9,11 @@ public class Player : MonoBehaviour
     private PlayerController controller;
     private PlayerView playerView;
     private PlayerLife health;
+    public PlayerLife Health
+    {
+        get { return health; } 
+        private set { health = value; }
+    }
     private GameManager gameManager;
     private Rigidbody2D rb;
     private PowerUpManager powerUpManager;
@@ -121,6 +126,11 @@ public class Player : MonoBehaviour
         playerView.SetJetpackState(true);
     }
 
+    public void AddJetpackFuel(int value)
+    {
+        jetpackFuel += value;
+        activateJetPack();
+    }
     #endregion
 
 }

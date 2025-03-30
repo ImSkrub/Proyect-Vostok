@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         _copiaPlayers.Clear();
         playerPositions.Clear();
         PowerUpManager.Instance.powerUpDisabled.Clear();
-        PowerUpManager.Instance.powerUp.Clear();
+        PowerUpManager.Instance.activePowerUps.Clear();
     }
 
     public Queue<GameObject> getCopiaPlayers() { return _copiaPlayers; }

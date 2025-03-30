@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour
     public static PowerUpManager Instance;
 
     [Header("PowerUp")]
-    [SerializeField] public List<GameObject> powerUp = new List<GameObject>();
+    [SerializeField] public List<GameObject> activePowerUps = new List<GameObject>();
     [SerializeField] public List<GameObject> powerUpDisabled = new List<GameObject>();
 
     void Awake()
@@ -22,13 +22,11 @@ public class PowerUpManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        // Llena la lista de power-ups al inicio
-        FindPowerUpsInScene();
     }
 
     private void Start()
     {
+        FindPowerUpsInScene();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -37,43 +35,29 @@ public class PowerUpManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void DeactivatePowerUp()
+    public void NotifyPowerUpUsed(GameObject powerUp)
     {
-        foreach (var _powerUp in powerUp)
+        if (activePowerUps.Contains(powerUp))
         {
-            if (_powerUp.activeSelf)
-            {
-                _powerUp.SetActive(false);
-                powerUpDisabled.Add(_powerUp);
-
-                if (_powerUp.TryGetComponent<CollisionItems>(out CollisionItems component))
-                {
-                    component.indexList = powerUp.Count - 1;
-                }
-            }
+            activePowerUps.Remove(powerUp);
+            powerUpDisabled.Add(powerUp);
         }
     }
 
     public void ReactivatePowerUps()
     {
-        // Verifica si la lista está vacía antes de intentar reactivar
-        if (powerUp == null || powerUp.Count == 0)
+        foreach (var powerUp in powerUpDisabled)
         {
-            Debug.LogWarning("La lista de power-ups está vacía. Asegúrate de que FindPowerUpsInScene() se haya ejecutado.");
-            return;
-        }
-
-        foreach (var _powerUp in powerUp)
-        {
-            _powerUp.SetActive(true);
+            powerUp.SetActive(true);
+            activePowerUps.Add(powerUp);
         }
         powerUpDisabled.Clear();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Limpia y vuelve a llenar la lista al cargar una nueva escena
-        powerUp.Clear();
+        activePowerUps.Clear();
+        powerUpDisabled.Clear();
         FindPowerUpsInScene();
     }
 
@@ -83,12 +67,12 @@ public class PowerUpManager : MonoBehaviour
 
         foreach (CollisionItems item in powerUpItems)
         {
-            if (!powerUp.Contains(item.gameObject))
+            if (!activePowerUps.Contains(item.gameObject))
             {
-                powerUp.Add(item.gameObject);
+                activePowerUps.Add(item.gameObject);
             }
         }
 
-        Debug.Log($"Se encontraron {powerUp.Count} power-ups en la escena.");
+        Debug.Log($"Se encontraron {activePowerUps.Count} power-ups en la escena.");
     }
 }

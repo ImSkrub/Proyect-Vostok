@@ -2,52 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StatType
+{
+    life, dash, jetpack
+}
+
 public class CollisionItems : MonoBehaviour
 {
-    //Lista.
-    [SerializeField] List<ItemData> items;
-    public int indexList;
-
-    [System.Serializable]
-    public class ItemData
-    {
-        public StatType type;
-        public int amount;
-    }
-
-    public enum StatType
-    {
-        life, dash, jetpack
-    }
+    [SerializeField] private List<ItemData> items;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerController _player = collision.gameObject.GetComponent<PlayerController>();
-            foreach (ItemData item in items)
-            {
-                ApplyItemEffect(_player, item);
-            }
-            this.gameObject.SetActive(false); // Desactiva el objeto
-        }
-    }
+        if (!collision.gameObject.CompareTag("Player")) return;
 
-    private void ApplyItemEffect(PlayerController _player, ItemData item)
-    {
-        switch (item.type)
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        foreach (ItemData item in items)
         {
-            case StatType.life:
-                _player.GetComponent<PlayerLife>().currentHealth += item.amount;
-                PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
-                break;
-            case StatType.jetpack:
-                Player player = _player.GetComponent<Player>();
-                player.jetpackFuel += item.amount;
-                player.activateJetPack();
-                PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
-                break;
+            IItemEffect effect = item.CreateEffect();
+            effect?.ApplyEffect(player);
         }
+
+        PowerUpManager.Instance.powerUpDisabled.Add(gameObject); // Notifica al PowerUpManager
+        this.gameObject.SetActive(false); // Desactiva el objeto
     }
 
 }
