@@ -11,7 +11,7 @@ public class ButtonManager : MonoBehaviour
     public void GoToMenu()
     {
         LevelManager.instance.LoadLevel(0);
-        PowerUpManager.Instance.powerUp.Clear();
+        PowerUpManager.Instance.activePowerUps.Clear();
 
     }
     public void RestartLevel()

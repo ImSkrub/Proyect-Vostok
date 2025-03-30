@@ -541,11 +541,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7112444899507809896, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
   m_PrefabInstance: {fileID: 2043032093}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &330065514 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6824700258079545132, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &395869505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,11 +1046,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e45ee737a3c8c849bc326e4fbed4290, type: 3}
---- !u!4 &776567875 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 630601111719489423, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
-  m_PrefabInstance: {fileID: 2043032093}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &893265168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,28 +2420,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7112444899507809894, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
   m_PrefabInstance: {fileID: 2043032093}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2043032101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293428150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c359a363c2f9254790c1421d3f39f00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sideDistance: 1
-  _rightWallCheckPoint: {fileID: 330065514}
-  _leftWallCheckPoint: {fileID: 776567875}
-  copyLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _wallCheckSize: {x: 0.3, y: 2.35}
 --- !u!1 &2086960801
 GameObject:
   m_ObjectHideFlags: 0
