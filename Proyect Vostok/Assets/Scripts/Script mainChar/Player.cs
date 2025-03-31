@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private Rigidbody2D rb;
     private PowerUpManager powerUpManager;
+    private PlayerRaycast playerRaycast;
    
     [Header("Jetpack")]
     [SerializeField] private float jetpackForce = 15f;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         powerUpManager = FindObjectOfType<PowerUpManager>();
         rb = GetComponent<Rigidbody2D>();
+        playerRaycast = GetComponent<PlayerRaycast>();
     }
     private void Start()
     {
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             HandleCopy();
+            playerRaycast.ResetTimer();
         }
     }
 

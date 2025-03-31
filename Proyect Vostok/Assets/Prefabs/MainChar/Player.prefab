@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2912373801935042659
 Transform:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ GameObject:
   m_Component:
   - component: {fileID: 630601111719489423}
   m_Layer: 0
-  m_Name: Wall Back Check
+  m_Name: Wall Left Check
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6824700258079545132}
   m_Layer: 0
-  m_Name: Wall Front Check
+  m_Name: Wall Right Check
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -527,6 +527,7 @@ MonoBehaviour:
   sideDistance: 1
   _rightWallCheckPoint: {fileID: 6824700258079545132}
   _leftWallCheckPoint: {fileID: 630601111719489423}
+  _groundCheckPoint: {fileID: 2178810712503718089}
   copyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -559,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8992324603850636657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.254, y: -1.915, z: -0.005910595}
+  m_LocalPosition: {x: -0.254, y: -2.31, z: -0.005910595}
   m_LocalScale: {x: 1.4343086, y: 0.56022406, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

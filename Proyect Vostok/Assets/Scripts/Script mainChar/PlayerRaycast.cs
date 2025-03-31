@@ -6,9 +6,14 @@ public class PlayerRaycast : MonoBehaviour
 {
     private bool rightWall = false;
     private bool leftWall = false;
+    private bool rightCopy = false;
+    private bool leftCopy = false;
+    private bool timerEnded = false;
+    private bool timerStarted = false;
     [SerializeField] private float sideDistance = 1.0f;
     [SerializeField] private Transform _rightWallCheckPoint;
     [SerializeField] private Transform _leftWallCheckPoint;
+    [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private LayerMask copyLayer;    // Capa 10: Copias
     [SerializeField] private LayerMask wallLayer;    // Capa 7: Muros
     [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.3f, 2.35f);
@@ -31,93 +36,109 @@ public class PlayerRaycast : MonoBehaviour
         // 1. Detectar muros en los lados (usando wallLayer)
         rightWall = Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, wallLayer);
         leftWall = Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, wallLayer);
+        rightCopy = Physics2D.OverlapBox(_rightWallCheckPoint.position, _wallCheckSize, 0, copyLayer);
+        leftCopy = Physics2D.OverlapBox(_leftWallCheckPoint.position, _wallCheckSize, 0, copyLayer);
 
         // 2. Detectar copias en los lados y debajo (usando copyLayer)
         Collider2D[] rightCopies = Physics2D.OverlapBoxAll(_rightWallCheckPoint.position, _wallCheckSize, 0, copyLayer);
         Collider2D[] leftCopies = Physics2D.OverlapBoxAll(_leftWallCheckPoint.position, _wallCheckSize, 0, copyLayer);
-        Collider2D[] belowCopies = Physics2D.OverlapBoxAll(transform.position, _groundCheckSize, 0, copyLayer);
+        Collider2D[] belowCopies = Physics2D.OverlapBoxAll(_groundCheckPoint.position, _groundCheckSize, 0, copyLayer);
 
-        // Caso 1: Desactivar colisiones de copias en el lado opuesto al muro
-        HandleOppositeSideCollisions(rightCopies, leftCopies);
-
-        // Caso 2: Activar colisiones si el jugador está quieto en un muro
-        HandleStationaryWallCollisions(rightCopies, leftCopies, belowCopies);
-
-        // Caso 3: Activar colisiones si no hay muro en un lado
-        HandleNoWallCollisions(rightCopies, leftCopies);
-    }
-
-    private void HandleOppositeSideCollisions(Collider2D[] rightCopies, Collider2D[] leftCopies)
-    {
-        // Muro a la derecha → desactivar copias a la izquierda
-        if (rightWall)
+        if (timerEnded)
         {
-            foreach (Collider2D copy in leftCopies)
+            HandleCollisions(rightCopies, leftCopies, belowCopies);
+        } else
+        {
+            if (!timerStarted) 
             {
-                copy.GetComponent<BoxCollider2D>().enabled = false;
+                timerStarted = true;
+                StartCoroutine(activateCollision(3f));
             }
         }
+        
 
-        // Muro a la izquierda → desactivar copias a la derecha
-        if (leftWall)
-        {
-            foreach (Collider2D copy in rightCopies)
-            {
-                copy.GetComponent<BoxCollider2D>().enabled = false;
-            }
-        }
+        //// Caso 1: Desactivar colisiones de copias en el lado opuesto al muro
+        //HandleOppositeSideCollisions(rightCopies, leftCopies);
+
+        //// Caso 2: Activar colisiones si el jugador está quieto en un muro
+        //HandleStationaryWallCollisions(rightCopies, leftCopies, belowCopies);
+
+        //// Caso 3: Activar colisiones si no hay muro en un lado
+        //HandleNoWallCollisions(rightCopies, leftCopies);
     }
 
-    private void HandleStationaryWallCollisions(Collider2D[] rightCopies, Collider2D[] leftCopies, Collider2D[] belowCopies)
+    private void HandleCollisions(Collider2D[] rightCopies, Collider2D[] leftCopies, Collider2D[] belowCopies)
     {
-        // Verificar si el jugador está quieto (velocidad cercana a 0)
-        bool isStationary = rb.velocity.magnitude < 0.1f;
-
-        if ((rightWall || leftWall) && isStationary)
+        if (rightWall || leftWall)
         {
-            // Activar copias en el mismo lado del muro
+            // Muro a la derecha → desactivar copias a la izquierda
             if (rightWall)
-            {
-                foreach (Collider2D copy in rightCopies)
-                {
-                    copy.GetComponent<BoxCollider2D>().enabled = true;
-                }
-            }
-            if (leftWall)
             {
                 foreach (Collider2D copy in leftCopies)
                 {
-                    copy.GetComponent<BoxCollider2D>().enabled = true;
+                    copy.GetComponent<BoxCollider2D>().isTrigger = true;
                 }
             }
 
-            // Activar copias debajo del jugador
-            foreach (Collider2D copy in belowCopies)
+            // Muro a la izquierda → desactivar copias a la derecha
+            if (leftWall)
             {
-                copy.GetComponent<BoxCollider2D>().enabled = true;
+                foreach (Collider2D copy in rightCopies)
+                {
+                    copy.GetComponent<BoxCollider2D>().isTrigger = true;
+                }
             }
-        }
-    }
-
-    private void HandleNoWallCollisions(Collider2D[] rightCopies, Collider2D[] leftCopies)
-    {
-        // No hay muro a la derecha → activar copias en ese lado
-        if (!rightWall)
-        {
-            foreach (Collider2D copy in rightCopies)
-            {
-                copy.GetComponent<BoxCollider2D>().enabled = true;
-            }
-        }
-
-        // No hay muro a la izquierda → activar copias en ese lado
-        if (!leftWall)
+        } 
+        else if (leftCopy && rightCopy)
         {
             foreach (Collider2D copy in leftCopies)
             {
-                copy.GetComponent<BoxCollider2D>().enabled = true;
+                copy.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+            foreach (Collider2D copy in rightCopies)
+            {
+                copy.GetComponent<BoxCollider2D>().isTrigger = true;
             }
         }
+        else 
+        {
+            if (!leftWall)
+            {
+                foreach (Collider2D copy in rightCopies)
+                {
+                    copy.GetComponent<BoxCollider2D>().isTrigger = false;
+                }
+            }
+
+            // No hay muro a la izquierda → activar copias en ese lado
+            if (!rightWall)
+            {
+                foreach (Collider2D copy in leftCopies)
+                {
+                    copy.GetComponent<BoxCollider2D>().isTrigger = false;
+                }
+            }
+        }
+
+        
+        // Activar copias debajo del jugador
+        foreach (Collider2D copy in belowCopies)
+        {
+            copy.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+    }
+
+    IEnumerator activateCollision(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        timerStarted = false;
+        timerEnded = true;
+    }
+
+    public void ResetTimer()
+    {
+        timerEnded = false; 
     }
 
     private void OnDrawGizmosSelected()

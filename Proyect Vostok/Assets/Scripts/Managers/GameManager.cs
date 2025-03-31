@@ -87,12 +87,17 @@ public class GameManager : MonoBehaviour
 
     public void _Reset()
     {
+        foreach (var copia in _copiaPlayers)
+        {
+            Destroy(copia);
+        }
         instantiateListOfObjects();
     }
 
     private void instantiateCopiaPlayer(GameObject player, List<Vector3> listOfPositions)
     {
         print(listOfPositions.Count);
+        print(_copiaPlayers.Count);
         player = Instantiate(copiaPlayerPrefab);
         player.TryGetComponent<PlayerCopia>(out PlayerCopia copiaPlayer);
         copiaPlayer.setListOfPositions(listOfPositions);
@@ -100,18 +105,26 @@ public class GameManager : MonoBehaviour
 
     public void instantiateListOfObjects()
     {
-        foreach (var copia in _copiaPlayers)
+        print(_copiaPlayers.Count);
+        print(_listPlayerPositions.Count);
+        for (int i = 0; i < _copiaPlayers.Count; i++)
         {
-            foreach (var listPos in _listPlayerPositions)
-            {
-                instantiateCopiaPlayer(copia, listPos);
-            }
+            GameObject copia = _copiaPlayers.Dequeue();
+            List<Vector3> listPos = _listPlayerPositions.Dequeue();
+            instantiateCopiaPlayer(copia, listPos);
+            _copiaPlayers.Enqueue(copia);
+            _listPlayerPositions.Enqueue(listPos);
+
         }
     }
 
     public void ResetList()
     {
         _listPlayerPositions.Clear();
+        foreach (var copia in _copiaPlayers)
+        {
+            Destroy(copia);
+        }
         _copiaPlayers.Clear();
         playerPositions.Clear();
         PowerUpManager.Instance.powerUpDisabled.Clear();

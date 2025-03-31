@@ -57,12 +57,12 @@ public class PlayerCopia : MonoBehaviour
         listOfPositions = list;
     }
 
-    IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
-    {
-        yield return new WaitForSeconds(delay);
+    //IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
+    //{
+    //    yield return new WaitForSeconds(delay);
         
-        collider2D.enabled = true;
-    }
+    //    collider2D.isTrigger = false;
+    //}
 
     private void updateCopyPos()
     {
