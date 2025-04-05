@@ -97,31 +97,35 @@ public class Player : MonoBehaviour
     }
 
     #region JETPACK
+ 
     public void HandleJetPack()
     {
-        var jetPackInput = Input.GetButton("Jump");
+        var jetPackInput = Input.GetButtonDown("Jump");
         if (jetpackOn)
         {
+            
             if (jetPackInput && jetpackFuel > 0)
             {
+               
                 rb.AddForce(Vector2.up * jetpackForce,ForceMode2D.Impulse);
                 jetpackParticle.Play();
-                jetpackFuel -= Time.deltaTime; // Decrease fuel over time while the button is held
+                jetpackFuel -= Time.deltaTime;  
             }
             else
             {
-                jetpackParticle.Stop(); // Stop particles if the button is released
+                jetpackParticle.Stop();     
             }
-            // If fuel runs out, stop the jetpack
+            
             if (jetpackFuel <= 0)
             {
                 Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
                 playerView.SetJetpackState(false);
+                
             }
         }
-
+       
     }
     public void activateJetPack()
     {

@@ -348,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     //MOVEMENT METHODS
     #region RUN METHODS
-    private void Run(float lerpAmount)
+    public void Run(float lerpAmount)
     {
         //Calculate the direction we want to move in and our desired velocity
         float targetSpeed = _moveInput.x * Data.runMaxSpeed;
