@@ -292,6 +292,7 @@ public class PlayerController : MonoBehaviour
                 Run(Data.wallJumpRunLerp);
             else
                 Run(1);
+            Debug.Log("El jugador esta corriendo");
             playerView.UpdateMovementAnimation(_moveInput.x);
         }
         else if (_isDashAttacking)

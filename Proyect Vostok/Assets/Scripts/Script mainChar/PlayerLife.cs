@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -22,36 +23,52 @@ public class PlayerLife : MonoBehaviour
     public Color damageColor = Color.red;
     private Color originalColor;
 
-    public Image lifebar;
-
     private Checkpoint playerCheckpoint;
     public bool isDead = false;
     private Player player;
-    [Space]
-    [Header("Death timer")]
-    public float deathAnimationDuration = 2.5f; // Duración de la animación de muerte
+
+    [Header("Death Animation")]
+    public string deathAnimationName = "death"; 
+    public float deathAnimationDuration = 1.5f;
+
+    private Animator animator;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GetComponent<Player>();
         playerView = GetComponent<PlayerView>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         currentHealth = maxHealth;
         originalColor = spriteRenderer.color;
+
+        // Detectar duración de la animación de muerte
+        var clip = animator.runtimeAnimatorController.animationClips
+            .FirstOrDefault(c => c.name == deathAnimationName);
+
+        if (clip != null)
+        {
+            deathAnimationDuration = clip.length;
+            
+        }
+        else
+        {
+            Debug.LogWarning($"No se encontró el clip de animación '{deathAnimationName}'. Usando valor por defecto.");
+        }
     }
 
     private void Update()
     {
-        lifebar.fillAmount = currentHealth / maxHealth;
+       
         currentTime += Time.deltaTime;
 
         if (currentHealth <= 0)
         {
-            HandleDeath();
+            StartCoroutine(HandleDeath());
         }
 
         if (deathCount >= 1)
@@ -69,6 +86,7 @@ public class PlayerLife : MonoBehaviour
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
     }
+
     public void GetDamage(int value)
     {
         currentHealth -= value;
@@ -81,9 +99,9 @@ public class PlayerLife : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    private void HandleDeath()
+    private IEnumerator HandleDeath()
     {
-        if (isDead) return;
+        if (isDead) yield break;
 
         if (playerCheckpoint != null && playerCheckpoint.HasSavedStates())
         {
@@ -94,15 +112,16 @@ public class PlayerLife : MonoBehaviour
         {
             Debug.Log("No saved states available. Player is dead.");
             isDead = true;
-            deathCount++;
             playerView.TriggerDeathAnimation();
-            Invoke("InvokeEvent", deathAnimationDuration); // Esperar antes de ejecutar el evento
+            yield return new WaitForSeconds(deathAnimationDuration);
+            InvokeEvent();
         }
     }
 
     private void InvokeEvent()
     {
         OnDeath?.Invoke();
+        deathCount++;
     }
 
     public PlayerMemento SaveState(Vector3 position)

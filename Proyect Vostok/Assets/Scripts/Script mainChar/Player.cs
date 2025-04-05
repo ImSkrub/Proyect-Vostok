@@ -115,15 +115,17 @@ public class Player : MonoBehaviour
             // If fuel runs out, stop the jetpack
             if (jetpackFuel <= 0)
             {
+                Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
-                playerView.SetJetpackState(true);
+                playerView.SetJetpackState(false);
             }
         }
 
     }
     public void activateJetPack()
     {
+        Debug.Log("El jugador se puso el jetpack");
         jetpackOn = true;
         jetpackParticle.Play(); // Start particles when activating the jetpack
         playerView.SetJetpackState(true);

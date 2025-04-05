@@ -25,6 +25,6 @@ public class PlayerView : MonoBehaviour
 
     public void TriggerDeathAnimation()
     {
-        anim.SetTrigger("Dead"); // Activa la animación de muerte
+        anim.SetTrigger("Dead"); // Activa la animación de muerte    
     }
 }
