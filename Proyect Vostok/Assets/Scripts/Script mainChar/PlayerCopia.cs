@@ -23,11 +23,10 @@ public class PlayerCopia : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!fastForward)
+        if (!fastForward && listOfPositions != null)
         {
             updateCopyPos();
         }
-
     }
     private void Update()
     {
@@ -60,21 +59,18 @@ public class PlayerCopia : MonoBehaviour
     //IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
     //{
     //    yield return new WaitForSeconds(delay);
-        
+
     //    collider2D.isTrigger = false;
     //}
 
     private void updateCopyPos()
     {
+        if (listOfPositions == null || listOfPositions.Count == 0) return;
+
         if (posCounter < listOfPositions.Count)
         {
-            gameObject.transform.position = listOfPositions[posCounter];
+            transform.position = listOfPositions[posCounter];
             posCounter++;
-
         }
-        //if (posCounter == listOfPositions.Count)
-        //{
-        //    gameObject.SetActive(false);
-        //}
     }
 }
