@@ -481,10 +481,8 @@ public class PlayerController : MonoBehaviour
         {
             if (haveDashPowerUp) 
             {
-                RB.velocity = dir.normalized * Data.dashSpeed * dashPowerUp;
+                RB.velocity = dir.normalized * (Data.dashSpeed * dashPowerUp);
                 trailRenderer.emitting = true;
-                haveDashPowerUp = false;
-                dashPowerUp = 1;
             } else
             {
                 RB.velocity = dir.normalized * Data.dashSpeed;
@@ -512,6 +510,9 @@ public class PlayerController : MonoBehaviour
         //Dash over
         IsDashing = false;
         isDashEnabled = false;
+
+        haveDashPowerUp = false;
+        dashPowerUp = 1;
     }
 
     //Short period before the player is able to dash again
