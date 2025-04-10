@@ -188,6 +188,6 @@ public class Player : MonoBehaviour
     #endregion
     public void AddDashTime(int value)
     {
-        controller.Data.dashSpeed *= value;
+        controller.powerUpDash(value);
     }
 }
