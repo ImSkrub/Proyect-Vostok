@@ -2623,7 +2623,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.size
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.size
@@ -2632,34 +2632,106 @@ PrefabInstance:
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[0].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 94c48367aae2837418e92cd1afed4e09, type: 3}
+      objectReference: {fileID: 8300000, guid: face35bf4fee0324abb4e18a9801d46f, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[0].Name
-      value: Steps
+      value: buttonOff
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[1].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 94c48367aae2837418e92cd1afed4e09, type: 3}
+      objectReference: {fileID: 8300000, guid: 80d700644564eca4a962a6ce0ec0cd41, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[1].Name
-      value: Jump
+      value: buttonOn
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[2].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 94c48367aae2837418e92cd1afed4e09, type: 3}
+      objectReference: {fileID: 8300000, guid: 904a78ae7578139468fed181370117ad, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[2].Name
-      value: Die
+      value: dash
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[3].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 94c48367aae2837418e92cd1afed4e09, type: 3}
+      objectReference: {fileID: 8300000, guid: 4b6bfa80fbfafeb4888d7c3a24702320, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[3].Name
-      value: Dash
+      value: death
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[4].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 94c48367aae2837418e92cd1afed4e09, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[4].Name
+      value: footStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[5].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0c59a0a82597d644b7e8baa9d657ee6, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[5].Name
+      value: gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[6].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec407c53b90642241a5ae91f9959e7ba, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[6].Name
+      value: heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[7].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e2444297307a064994665623cfee09f, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[7].Name
+      value: jetpack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[8].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a1002c1af34878147907071be46204e2, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[8].Name
+      value: jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[9].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 92e572a556a29bd4da9f189d87d0f587, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[9].Name
+      value: pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[10].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e0a80eebbd93b604386586786a4fa7bf, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[10].Name
+      value: wallJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[11].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e586a3709c0156c42b0f392ca9e5b523, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[11].Name
+      value: dashCharged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[12].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a006a03081bf505428b8496ca28a17c5, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: SFXSounds.Array.data[12].Name
+      value: clone
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[0].Clip

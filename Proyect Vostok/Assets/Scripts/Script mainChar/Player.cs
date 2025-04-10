@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
         GameManager.Instance._Reset();
+        AudioManager.instance.PlaySFX("clone");
+
 
         // Restaurar la posición desde el último checkpoint
         Checkpoint checkpoint = FindObjectOfType<Checkpoint>();

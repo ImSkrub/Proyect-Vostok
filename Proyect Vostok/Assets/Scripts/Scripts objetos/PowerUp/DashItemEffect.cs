@@ -13,5 +13,6 @@ public class DashItemEffect : IItemEffect
     public void ApplyEffect(Player player)
     {
         player.AddDashTime(amount);
+        AudioManager.instance.PlaySFX("pickup");
     }
 }

@@ -14,5 +14,6 @@ public class LifeItemEffect : IItemEffect
     public void ApplyEffect(Player player)
     {
         player.Health.AddHealth(amount);
+        AudioManager.instance.PlaySFX("heal");
     }
 }

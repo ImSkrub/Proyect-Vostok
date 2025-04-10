@@ -441,6 +441,7 @@ public class PlayerController : MonoBehaviour
         LastOnWallLeftTime = 0;
 
         AudioManager.instance.PlaySFX("wallJump");
+        Debug.Log("wallJ");
         #region Perform Wall Jump
         Vector2 force = new Vector2(Data.wallJumpForce.x, Data.wallJumpForce.y);
         force.x *= dir; //apply force in opposite direction of wall
@@ -464,6 +465,8 @@ public class PlayerController : MonoBehaviour
     {
         //Overall this method of dashing aims to mimic Celeste, if you're looking for
         // a more physics-based approach try a method similar to that used in the jump
+
+        AudioManager.instance.PlaySFX("dash");
 
         LastOnGroundTime = 0;
         LastPressedDashTime = 0;
@@ -512,6 +515,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(Data.dashRefillTime);
         _dashRefilling = false;
         _dashesLeft = Mathf.Min(Data.dashAmount, _dashesLeft + 1);
+        AudioManager.instance.PlaySFX("dashCharged");
+
     }
     #endregion
 

@@ -107,12 +107,13 @@ public class PlayerLife : MonoBehaviour
 
         if (playerCheckpoint != null && playerCheckpoint.HasSavedStates())
         {
+            AudioManager.instance.PlaySFX("death");
             playerCheckpoint._Checkpoint();
-            Debug.Log("Player restored from checkpoint.");
         }
         else
         {
             Debug.Log("No saved states available. Player is dead.");
+            AudioManager.instance.PlaySFX("death");
             isDead = true;
             playerView.TriggerDeathAnimation();
             yield return new WaitForSeconds(deathAnimationDuration);

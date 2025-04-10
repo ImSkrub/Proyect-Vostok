@@ -14,5 +14,6 @@ public class JetpackItemEffect : IItemEffect
     public void ApplyEffect(Player player)
     {
         player.AddJetpackFuel(fuelAmount);
+        AudioManager.instance.PlaySFX("pickup");
     }
 }
