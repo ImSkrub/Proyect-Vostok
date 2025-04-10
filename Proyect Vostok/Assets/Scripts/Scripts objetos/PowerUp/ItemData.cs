@@ -13,6 +13,7 @@ public class ItemData
         return type switch
         {
             StatType.life => new LifeItemEffect(amount),
+            StatType.dash => new DashItemEffect(amount), 
             StatType.jetpack => new JetpackItemEffect(amount),
             _ => null
         };

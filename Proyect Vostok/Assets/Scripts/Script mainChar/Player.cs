@@ -182,5 +182,8 @@ public class Player : MonoBehaviour
         activateJetPack();
     }
     #endregion
-
+    public void AddDashTime(int value)
+    {
+        controller.Data.dashSpeed *= value;
+    }
 }
