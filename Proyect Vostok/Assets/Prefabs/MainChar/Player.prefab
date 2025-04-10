@@ -497,8 +497,8 @@ MonoBehaviour:
   currentHealth: 100
   respawn: {fileID: 0}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
-  lifebar: {fileID: 0}
   isDead: 0
+  deathAnimationName: death
   deathAnimationDuration: 2.5
 --- !u!114 &1695616349564248220
 MonoBehaviour:
