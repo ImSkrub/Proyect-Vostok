@@ -76,7 +76,7 @@ public class PlayerLife : MonoBehaviour
             GameManager.Instance.LoseGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.T))
         {
             currentHealth = maxHealth;
         }

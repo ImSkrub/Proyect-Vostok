@@ -8,12 +8,16 @@ public class PlayerCopia : MonoBehaviour
     private int posCounter = 0;
     private bool enableCollision = true;
     private bool fastForward = false;
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider2D;
 
 
     // Start is called before the first frame update
     void Start()
     {
         posCounter = 0;
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
     private void Awake()
     {
@@ -32,6 +36,11 @@ public class PlayerCopia : MonoBehaviour
     {
         
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (Input.GetKeyDown(KeyCode.T))
         {
             gameObject.SetActive(false);
             Destroy(this.gameObject);
@@ -71,6 +80,12 @@ public class PlayerCopia : MonoBehaviour
         {
             transform.position = listOfPositions[posCounter];
             posCounter++;
+        }else
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            boxCollider2D.isTrigger = false;
+            gameObject.layer = 11;
         }
+
     }
 }

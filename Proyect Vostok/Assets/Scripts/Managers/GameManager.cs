@@ -46,6 +46,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public void ClearListOfPositions()
+    {
+        _listPlayerPositions.Clear();
+    }
+
+    public void ClearCopiaPlayerList()
+    {
+        _copiaPlayers.Clear();
+    }
+
     public void UpdateQueueOfPositions(List<CopyDataModel> listPos)
     {
         var listPositions = new List<Vector3>();

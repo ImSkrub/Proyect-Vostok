@@ -53,6 +53,12 @@ public class Player : MonoBehaviour
             HandleCopy();
             playerRaycast.ResetTimer();
         }
+        //Copia
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            HardReset();
+            playerRaycast.ResetTimer();
+        }
     }
 
     private void FixedUpdate()
@@ -60,6 +66,41 @@ public class Player : MonoBehaviour
         CopyDataModel copyDataModel = new CopyDataModel(transform.position, "default");
         listCopyDataModels.Add(copyDataModel);
         HandleJetPack();
+    }
+
+    public void HardReset()
+    {
+        // Restaurar la posición desde el último checkpoint
+        Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
+        if (checkpoint != null && checkpoint.HasSavedStates())
+        {
+            PlayerMemento lastSavedState = checkpoint.savedStates.Peek(); // Obtener el último estado sin eliminarlo
+            transform.position = lastSavedState.position;
+            Debug.Log("Posición restaurada desde el checkpoint.");
+        }
+        else
+        {
+            transform.position = startPos; // Volver a la posición inicial si no hay checkpoints
+            Debug.Log("No hay checkpoints, reiniciando a la posición inicial.");
+        }
+
+        listCopyDataModels.Clear();
+
+        if (powerUpManager != null)
+        {
+            powerUpManager.ReactivatePowerUps();
+        }
+        else
+        {
+            Debug.LogWarning("PowerUpManager no encontrado en la escena.");
+        }
+
+        jetpackParticle.Stop();
+        jetpackOn = false;
+
+
+        GameManager.Instance.ClearListOfPositions();
+        GameManager.Instance.ClearCopiaPlayerList();
     }
     
     public void HandleCopy()

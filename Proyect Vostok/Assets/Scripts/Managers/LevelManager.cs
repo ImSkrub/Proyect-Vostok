@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private string[] nonPlayableScenes = { "Menu", "Lose", "Win", "LevelSelect"};
 
-    private int lastPlayableLevelIndex = 1;
+    private int lastPlayableLevelIndex;
     public int currentLevel => lastPlayableLevelIndex;
 
     private void Awake()
