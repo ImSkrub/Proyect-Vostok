@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     //just paste in all the parameters, though you will need to manuly change all references in this script
     public PlayerData Data;
 
+    public bool haveDashPowerUp = false;
+    public int dashPowerUp = 1;
+
     #region COMPONENTS
     public Rigidbody2D RB { get; private set; }
     //Script to handle all player animations, all references can be safely removed if you're importing into your own project.
@@ -476,8 +479,17 @@ public class PlayerController : MonoBehaviour
         //We keep the player's velocity at the dash speed during the "attack" phase (in celeste the first 0.15s)
         while (Time.time - startTime <= Data.dashAttackTime)
         {
-            RB.velocity = dir.normalized * Data.dashSpeed;
-            trailRenderer.emitting = true;
+            if (haveDashPowerUp) 
+            {
+                RB.velocity = dir.normalized * Data.dashSpeed * dashPowerUp;
+                trailRenderer.emitting = true;
+                haveDashPowerUp = false;
+                dashPowerUp = 1;
+            } else
+            {
+                RB.velocity = dir.normalized * Data.dashSpeed;
+                trailRenderer.emitting = true;
+            }
             //Pauses the loop until the next frame, creating something of a Update loop. 
             //This is a cleaner implementation opposed to multiple timers and this coroutine approach is actually what is used in Celeste :D
             yield return null;
@@ -511,6 +523,13 @@ public class PlayerController : MonoBehaviour
         _dashRefilling = false;
         _dashesLeft = Mathf.Min(Data.dashAmount, _dashesLeft + 1);
     }
+
+    public void powerUpDash(int amount)
+    {
+        haveDashPowerUp = true;
+        dashPowerUp = amount;
+    }
+
     #endregion
 
     #region OTHER MOVEMENT METHODS
