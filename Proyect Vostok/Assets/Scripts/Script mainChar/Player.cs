@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
  
     public void HandleJetPack()
     {
-        var jetPackInput = Input.GetButtonDown("Jump");
+        var jetPackInput = Input.GetButton("Jump");
         if (jetpackOn)
         {
             
@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
                
                 rb.AddForce(Vector2.up * jetpackForce,ForceMode2D.Impulse);
                 jetpackParticle.Play();
+                controller.SetGravityScale(0);
                 jetpackFuel -= Time.deltaTime;  
             }
             else
@@ -162,6 +163,7 @@ public class Player : MonoBehaviour
                 Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
+                controller.SetGravityScale(1);
                 playerView.SetJetpackState(false);
                 
             }
