@@ -22,6 +22,11 @@ public class ButtonBehaviourInverse : MonoBehaviour
             door.SetActive(true);
         }
 
+        if (collision.gameObject.layer == 11)
+        {
+            button.SetBool("On", true);
+            door.SetActive(true);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
