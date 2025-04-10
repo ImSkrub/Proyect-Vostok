@@ -8,12 +8,9 @@ public class Checkpoint : MonoBehaviour
     public PlayerLife playerLife;
     public Player player;
 
-    [SerializeField] Transform spawnpoint;
-
     private bool isRestoring =false;
     private void Start()
     {
-        spawnpoint = this.transform;
         playerLife = FindObjectOfType<PlayerLife>();
         player = FindObjectOfType<Player>();
         playerLife.OnDeath += _Checkpoint;
@@ -22,6 +19,7 @@ public class Checkpoint : MonoBehaviour
     {
         PlayerMemento memento = new PlayerMemento(player.transform.position, playerLife.currentHealth);
         savedStates.Push(memento);
+        player.listCopyDataModels.Clear();
         Debug.Log("Estado guardado en el checkpoint.");
     }
 
@@ -56,14 +54,7 @@ public class Checkpoint : MonoBehaviour
         savedStates.Clear();
         Debug.Log("Saved states have been Reset.");
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            SaveState(); // Guardar el estado del jugador al activar el checkpoint
-            Debug.Log("Checkpoint activado.");
-        }
-    }
+    
 }
 
 

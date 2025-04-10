@@ -3,107 +3,128 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerLife : MonoBehaviour
 {
+    [Header("Atributos")]
+    private PlayerView playerView;
     public float CurrentHealth => currentHealth;
-    public float maxHealth = 100; //Maximo de vida
-    public float damageCooldown = 1f; //Daño
-    public float currentHealth; //Vida que llevas en el juego
-    private SpriteRenderer spriteRenderer; //Renderizado barra
+    public float maxHealth = 100;
+    public float damageCooldown = 1f;
+    public float currentHealth;
+    private SpriteRenderer spriteRenderer;
     private float currentTime;
-    public event Action OnDeath; //Muerte del jugador como evento.
-    private Animator anim;
-   
-    private int deathCount=0;
+    public event Action OnDeath;
+
+    private int deathCount = 0;
     public Transform respawn;
 
-    //Color al recibir daño.
     public Color damageColor = Color.red;
     private Color originalColor;
 
-
-    //Stat de vida en Canvas
-    public Image lifebar;
-
     private Checkpoint playerCheckpoint;
-    public bool isDead =false;
+    public bool isDead = false;
     private Player player;
+
+    [Header("Death Animation")]
+    public string deathAnimationName = "death"; 
+    public float deathAnimationDuration = 1.5f;
+    public float deathAnimationAdjustment = 0.1f;
+
+    private Animator animator;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
+        playerView = GetComponent<PlayerView>();
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        anim= GetComponent<Animator>();
-        player = GetComponent<Player>();
+
+        // Detectar duración de la animación de muerte
+        var clip = animator.runtimeAnimatorController.animationClips
+            .FirstOrDefault(c => c.name == deathAnimationName);
+
+        if (clip != null)
+        {
+            //Con ajuste para que se vea acorde en pantalla
+            deathAnimationDuration = clip.length-deathAnimationAdjustment;
+            
+        }
+        else
+        {
+            Debug.LogWarning($"No se encontró el clip de animación '{deathAnimationName}'. Usando valor por defecto.");
+        }
     }
 
     private void Update()
     {
-        lifebar.fillAmount = currentHealth / maxHealth;
-
+       
         currentTime += Time.deltaTime;
 
-        //Daño
         if (currentHealth <= 0)
         {
-            Die();
+            StartCoroutine(HandleDeath());
         }
-        if(deathCount >=1)
+
+        if (deathCount >= 1)
         {
             GameManager.Instance.LoseGame();
         }
-        if(Input.GetKeyDown(KeyCode.R))
+
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.T))
         {
             currentHealth = maxHealth;
         }
     }
 
-    //Recibie daño
+    public void AddHealth(float amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+    }
+
     public void GetDamage(int value)
     {
-        currentHealth -= value; //currentHealth = currentHealth - value; 
+        currentHealth -= value;
         spriteRenderer.color = damageColor;
         Invoke("RestoreColor", 0.5f);
     }
 
     private void RestoreColor()
     {
-        // Restaurar el color original del sprite
         spriteRenderer.color = originalColor;
     }
 
-  
-   //Muere.
-    public void Die()
+    private IEnumerator HandleDeath()
     {
-        if (isDead) return;
-        if(playerCheckpoint != null && playerCheckpoint.HasSavedStates())
+        if (isDead) yield break;
+
+        if (playerCheckpoint != null && playerCheckpoint.HasSavedStates())
         {
-            Debug.Log(playerCheckpoint.HasSavedStates());
-            playerCheckpoint._Checkpoint(); // Restore the last saved state
+            playerCheckpoint._Checkpoint();
             Debug.Log("Player restored from checkpoint.");
         }
         else
         {
             Debug.Log("No saved states available. Player is dead.");
             isDead = true;
-            // anim.SetBool("IsDead", isDead);
-            // Invoke("InvokeEvent", 2.5f);
+            playerView.TriggerDeathAnimation();
+            yield return new WaitForSeconds(deathAnimationDuration);
             InvokeEvent();
-            //modificar tiempo del invoke en relacion a la duracion de la anim muerte
         }
-        deathCount++;
-        isDead = true;
-        
     }
 
     private void InvokeEvent()
     {
         OnDeath?.Invoke();
+        deathCount++;
     }
-
 
     public PlayerMemento SaveState(Vector3 position)
     {
@@ -117,7 +138,7 @@ public class PlayerLife : MonoBehaviour
             gameObject.SetActive(true);
             player.startPos = state.position;
             currentHealth = state.health;
-            isDead = false; // Aseg�rate de que el jugador est� vivo despu�s de restaurar
+            isDead = false;
             Debug.Log("Player state restored.");
         }
         else
@@ -125,5 +146,4 @@ public class PlayerLife : MonoBehaviour
             Debug.LogError("Cannot restore state: state is null.");
         }
     }
-
 }

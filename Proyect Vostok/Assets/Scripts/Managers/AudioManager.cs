@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
             MusicSource.Play();
         }
     }
-    public void PlaySFX(string name) 
+    public void PlaySFX(string name, bool loop = false) 
     {
         Sound s = Array.Find(SFXSounds, x => x.Name == name);
 
@@ -60,9 +60,15 @@ public class AudioManager : MonoBehaviour
 
         else
         {
+            SFXSource.loop = loop;
             SFXSource.PlayOneShot(s.Clip);
         }
 
+    }
+
+    public void StopSFX()
+    {
+        SFXSource.Stop();
     }
 
     public bool isMusicPlaying(string name)

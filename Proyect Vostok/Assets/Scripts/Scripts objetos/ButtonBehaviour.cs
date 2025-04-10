@@ -22,11 +22,16 @@ public class ButtonBehaviour : MonoBehaviour
             door.SetActive(false);
             AudioManager.instance.PlaySFX("buttonOn");
         }
-        
+        if (collision.gameObject.layer == 11)
+        {
+            button.SetBool("On", true);
+            door.SetActive(false);
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == 11)
         {
             button.SetBool("On", true);
             door.SetActive(false);

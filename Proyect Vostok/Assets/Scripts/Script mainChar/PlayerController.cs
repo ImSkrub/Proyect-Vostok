@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     #region COMPONENTS
     public Rigidbody2D RB { get; private set; }
     //Script to handle all player animations, all references can be safely removed if you're importing into your own project.
-    public PlayerAnimator AnimHandler { get; private set; }
+    public PlayerView AnimHandler { get; private set; }
+
+    [SerializeField] private PlayerView playerView;
     #endregion
 
     #region STATE PARAMETERS
@@ -76,8 +78,9 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        AnimHandler = GetComponent<PlayerAnimator>();
+        AnimHandler = GetComponent<PlayerView>();
         trailRenderer = GetComponent<TrailRenderer>();
+        playerView = GetComponent<PlayerView>();
     }
 
     private void Start()
@@ -105,17 +108,17 @@ public class PlayerController : MonoBehaviour
         if (_moveInput.x != 0)
             CheckDirectionToFace(_moveInput.x > 0);
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJumpInput();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             OnJumpUpInput();
         }
 
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             OnDashInput();
         }
@@ -289,6 +292,8 @@ public class PlayerController : MonoBehaviour
                 Run(Data.wallJumpRunLerp);
             else
                 Run(1);
+            Debug.Log("El jugador esta corriendo");
+            playerView.UpdateMovementAnimation(_moveInput.x);
         }
         else if (_isDashAttacking)
         {
@@ -343,7 +348,7 @@ public class PlayerController : MonoBehaviour
 
     //MOVEMENT METHODS
     #region RUN METHODS
-    private void Run(float lerpAmount)
+    public void Run(float lerpAmount)
     {
         //Calculate the direction we want to move in and our desired velocity
         float targetSpeed = _moveInput.x * Data.runMaxSpeed;

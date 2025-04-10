@@ -8,12 +8,16 @@ public class PlayerCopia : MonoBehaviour
     private int posCounter = 0;
     private bool enableCollision = true;
     private bool fastForward = false;
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider2D;
 
 
     // Start is called before the first frame update
     void Start()
     {
         posCounter = 0;
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
     private void Awake()
     {
@@ -23,16 +27,20 @@ public class PlayerCopia : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!fastForward)
+        if (!fastForward && listOfPositions != null)
         {
             updateCopyPos();
         }
-
     }
     private void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.SetActive(false);
+            Destroy(this.gameObject);
+        }
+        if (Input.GetKeyDown(KeyCode.T))
         {
             gameObject.SetActive(false);
             Destroy(this.gameObject);
@@ -57,24 +65,27 @@ public class PlayerCopia : MonoBehaviour
         listOfPositions = list;
     }
 
-    IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
-    {
-        yield return new WaitForSeconds(delay);
-        
-        collider2D.enabled = true;
-    }
+    //IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
+    //{
+    //    yield return new WaitForSeconds(delay);
+
+    //    collider2D.isTrigger = false;
+    //}
 
     private void updateCopyPos()
     {
+        if (listOfPositions == null || listOfPositions.Count == 0) return;
+
         if (posCounter < listOfPositions.Count)
         {
-            gameObject.transform.position = listOfPositions[posCounter];
+            transform.position = listOfPositions[posCounter];
             posCounter++;
-
+        }else
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            boxCollider2D.isTrigger = false;
+            gameObject.layer = 11;
         }
-        //if (posCounter == listOfPositions.Count)
-        //{
-        //    gameObject.SetActive(false);
-        //}
+
     }
 }

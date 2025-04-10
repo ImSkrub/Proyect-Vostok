@@ -828,6 +828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JetPack
       objectReference: {fileID: 0}
+    - target: {fileID: 3297402586572347924, guid: b8b86dd26231b664db2f79877bb0ecb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3297402586572347928, guid: b8b86dd26231b664db2f79877bb0ecb0, type: 3}
       propertyPath: m_RootOrder
       value: 1

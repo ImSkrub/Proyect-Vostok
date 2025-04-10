@@ -13,7 +13,7 @@ public class NextScene : MonoBehaviour
             LevelManager.instance.LoadNextLevel();
             GameManager.Instance.ResetList();
             GameManager.Instance.CopyNumberChange(newCopyNumber);
-            PowerUpManager.Instance.powerUp.Clear();
+            PowerUpManager.Instance.activePowerUps.Clear();
         }
     }
 }
