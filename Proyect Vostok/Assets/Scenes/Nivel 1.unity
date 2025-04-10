@@ -4413,6 +4413,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2013063827}
     m_Modifications:
     - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 0cc6358c808e4e64daebfe68f47cb50c, type: 2}
+    - target: {fileID: 177102051654736825, guid: 7310eddae6919f74e9d1440a90bd7463, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 0}
