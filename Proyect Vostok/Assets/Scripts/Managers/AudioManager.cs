@@ -6,10 +6,7 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    [Header("----Audio Source-----")]
-    [SerializeField] AudioSource MusicSource, SFXSource;
-    [Header("-----Audio CLip-----")]
-    //Sound maneja audioclip y nombre. Y lo guarda en un array.
+    public AudioSource MusicSource, SFXSource;
     public Sound[] MusicSounds, SFXSounds;
 
     
@@ -34,10 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //PlayMusic("Theme");
-        //playerCharacter.ChestSound.AddListener(ChestSound);
-        //playerCharacter.DoorSound.AddListener(DoorSound);
-
+        PlayMusic("menu");
     }
 
     public void PlayMusic(string name)
@@ -51,7 +45,6 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-
             MusicSource.clip = s.Clip;
             MusicSource.Play();
         }
@@ -102,14 +95,6 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float volume)
     {
         SFXSource.volume = volume;
-    }
-    public void DoorSound()
-    {
-        PlaySFX("Door");
-    }
-    public void ChestSound()
-    {
-        PlaySFX("Chest");
     }
 
 }

@@ -413,6 +413,7 @@ public class PlayerController : MonoBehaviour
         //Ensures we can't call Jump multiple times from one press
         LastPressedJumpTime = 0;
         LastOnGroundTime = 0;
+        AudioManager.instance.PlaySFX("jump");
 
         #region Perform Jump
         //We increase the force applied if we are falling
@@ -434,6 +435,7 @@ public class PlayerController : MonoBehaviour
         LastOnWallRightTime = 0;
         LastOnWallLeftTime = 0;
 
+        AudioManager.instance.PlaySFX("wallJump");
         #region Perform Wall Jump
         Vector2 force = new Vector2(Data.wallJumpForce.x, Data.wallJumpForce.y);
         force.x *= dir; //apply force in opposite direction of wall

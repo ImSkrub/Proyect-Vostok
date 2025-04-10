@@ -41,12 +41,14 @@ public class CollisionItems : MonoBehaviour
             case StatType.life:
                 _player.GetComponent<PlayerLife>().currentHealth += item.amount;
                 PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
+                AudioManager.instance.PlaySFX("heal");
                 break;
             case StatType.jetpack:
                 Player player = _player.GetComponent<Player>();
                 player.jetpackFuel += item.amount;
                 player.activateJetPack();
                 PowerUpManager.Instance.powerUpDisabled.Add(this.gameObject); // Notifica al PowerUpManager
+                AudioManager.instance.PlaySFX("pickup");
                 break;
         }
     }

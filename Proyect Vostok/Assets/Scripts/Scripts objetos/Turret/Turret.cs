@@ -40,6 +40,7 @@ public class Turret : MonoBehaviour
        {
             if(currentTime >= attackDelay)
             {
+                AudioManager.instance.PlaySFX("gun");
                 //anim.SetBool("Shooting",true);
                 Instantiate(bulletPrefab, weaponSlot.position, transform.rotation);
                 

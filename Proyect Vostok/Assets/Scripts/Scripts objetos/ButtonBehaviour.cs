@@ -20,6 +20,7 @@ public class ButtonBehaviour : MonoBehaviour
         {
             button.SetBool("On", true);
             door.SetActive(false);
+            AudioManager.instance.PlaySFX("buttonOn");
         }
         
     }
@@ -29,16 +30,20 @@ public class ButtonBehaviour : MonoBehaviour
         {
             button.SetBool("On", true);
             door.SetActive(false);
+            AudioManager.instance.PlaySFX("buttonOn");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         door.SetActive(true);
         button.SetBool("On", false);
+        AudioManager.instance.PlaySFX("buttonOff");
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         door.SetActive(true);
         button.SetBool("On",false);
+        AudioManager.instance.PlaySFX("buttonOff");
     }
 }
