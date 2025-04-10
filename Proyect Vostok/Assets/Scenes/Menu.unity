@@ -2739,7 +2739,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 75e1f3c8e1287d04e93c0d54c9fb8241, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[0].Name
-      value: Music1
+      value: menu
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[1].Clip
