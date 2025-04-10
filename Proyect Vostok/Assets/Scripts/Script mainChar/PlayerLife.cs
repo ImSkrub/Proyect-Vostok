@@ -30,6 +30,7 @@ public class PlayerLife : MonoBehaviour
     [Header("Death Animation")]
     public string deathAnimationName = "death"; 
     public float deathAnimationDuration = 1.5f;
+    public float deathAnimationAdjustment = 0.1f;
 
     private Animator animator;
 
@@ -52,7 +53,8 @@ public class PlayerLife : MonoBehaviour
 
         if (clip != null)
         {
-            deathAnimationDuration = clip.length;
+            //Con ajuste para que se vea acorde en pantalla
+            deathAnimationDuration = clip.length-deathAnimationAdjustment;
             
         }
         else

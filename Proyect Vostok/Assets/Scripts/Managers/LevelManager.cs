@@ -78,6 +78,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        Debug.Log($"Me resetee en el nivel {lastPlayableLevelIndex}");
         LoadLevel(lastPlayableLevelIndex);
     }
 
@@ -85,6 +86,20 @@ public class LevelManager : MonoBehaviour
     {
         if (Application.CanStreamedLevelBeLoaded(levelIndex))
         {
+            string sceneName = SceneUtility.GetScenePathByBuildIndex(levelIndex);
+            string trimmedSceneName = System.IO.Path.GetFileNameWithoutExtension(sceneName);
+
+            if (!IsNonPlayableScene(trimmedSceneName))
+            {
+                // Guardamos antes de cargar si es jugable
+                lastPlayableLevelIndex = levelIndex;
+                Debug.Log($"[LevelManager] Guardando índice jugable ANTES de cargar: {lastPlayableLevelIndex}");
+            }
+            else
+            {
+                Debug.Log($"[LevelManager] Cargando escena NO jugable (índice guardado sigue en: {lastPlayableLevelIndex})");
+            }
+
             SceneManager.LoadScene(levelIndex);
         }
         else
