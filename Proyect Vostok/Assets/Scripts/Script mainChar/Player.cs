@@ -107,8 +107,6 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
         GameManager.Instance._Reset();
-        AudioManager.instance.PlaySFX("clone");
-
 
         // Restaurar la posición desde el último checkpoint
         Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
@@ -143,16 +141,13 @@ public class Player : MonoBehaviour
  
     public void HandleJetPack()
     {
-        var jetPackInput = Input.GetButton("Jump");
         if (jetpackOn)
         {
             
-            if (jetPackInput && jetpackFuel > 0)
+            if (Input.GetButton("Jump") && jetpackFuel > 0)
             {
-               
                 rb.AddForce(Vector2.up * jetpackForce,ForceMode2D.Impulse);
                 jetpackParticle.Play();
-                //controller.SetGravityScale(0.5f);
                 jetpackFuel -= Time.deltaTime;
                 AudioManager.instance.PlayLoopSFX("jetpack");
             }
@@ -167,7 +162,6 @@ public class Player : MonoBehaviour
                 Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
-                //controller.SetGravityScale(1);
                 playerView.SetJetpackState(false);
                 
             }
