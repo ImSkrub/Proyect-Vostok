@@ -244,39 +244,39 @@ public class PlayerController : MonoBehaviour
         if (!_isDashAttacking)
         {
             //Higher gravity if we've released the jump input or are falling
-            if (IsSliding)
-            {
-                SetGravityScale(0);
-            }
-            else if (RB.velocity.y < 0 && _moveInput.y < 0)
-            {
-                //Much higher gravity if holding down
-                SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
-                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
-                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
-            }
-            else if (_isJumpCut)
-            {
-                //Higher gravity if jump button released
-                SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
-                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-            }
-            else if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
-            {
-                SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-            }
-            else if (RB.velocity.y < 0)
-            {
-                //Higher gravity if falling
-                SetGravityScale(Data.gravityScale * Data.fallGravityMult);
-                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
-                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-            }
-            else
-            {
-                //Default gravity if standing on a platform or moving upwards
-                SetGravityScale(Data.gravityScale);
-            }
+            //if (IsSliding)
+            //{
+            //    SetGravityScale(0);
+            //}
+            //else if (RB.velocity.y < 0 && _moveInput.y < 0)
+            //{
+            //    //Much higher gravity if holding down
+            //    SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
+            //    //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+            //    RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
+            //}
+            //else if (_isJumpCut)
+            //{
+            //    //Higher gravity if jump button released
+            //    SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
+            //    RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
+            //}
+            //else if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
+            //{
+            //    SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
+            //}
+            //else if (RB.velocity.y < 0)
+            //{
+            //    //Higher gravity if falling
+            //    SetGravityScale(Data.gravityScale * Data.fallGravityMult);
+            //    //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+            //    RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
+            //}
+            //else
+            //{
+            //    //Default gravity if standing on a platform or moving upwards
+            //    SetGravityScale(Data.gravityScale);
+            //}
         }
         else
         {
