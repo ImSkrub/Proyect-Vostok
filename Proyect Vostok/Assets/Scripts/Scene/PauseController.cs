@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public Button menuButton;
 
     private bool isPaused = false;
 
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        menuButton.onClick.AddListener(OnContinueButton);
     }
 
     void Update()

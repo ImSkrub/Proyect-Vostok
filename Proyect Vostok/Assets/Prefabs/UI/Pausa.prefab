@@ -602,7 +602,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: ExitGame
+        m_MethodName: GoToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1674,6 +1674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 4693827966813943462}
   sfxSlider: {fileID: 4982323033586884571}
+  menuButton: {fileID: 1441444824027121160}
+  pauseController: {fileID: 0}
 --- !u!1 &4108560723292349675
 GameObject:
   m_ObjectHideFlags: 0

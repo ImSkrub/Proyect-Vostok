@@ -241,6 +241,10 @@ PrefabInstance:
       value: PauseController
       objectReference: {fileID: 0}
     - target: {fileID: 9011195064618722062, guid: 6f8793cc697efce4cb2ea214da5be746, type: 3}
+      propertyPath: menuButton
+      value: 
+      objectReference: {fileID: 1731140189}
+    - target: {fileID: 9011195064618722062, guid: 6f8793cc697efce4cb2ea214da5be746, type: 3}
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 1731140187}
@@ -42429,6 +42433,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1441444824160389243, guid: 414995856bcd8bc43a85d27fe38baab0, type: 3}
   m_PrefabInstance: {fileID: 1731140186}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1731140189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441444824027121160, guid: 414995856bcd8bc43a85d27fe38baab0, type: 3}
+  m_PrefabInstance: {fileID: 1731140186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1841643026
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class AudioSettingsUI : MonoBehaviour
 
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+     
     }
 
     public void SetMusicVolume(float volume)
@@ -27,4 +28,5 @@ public class AudioSettingsUI : MonoBehaviour
     {
         AudioManager.instance.SFXVolume(volume);
     }
+ 
 }
