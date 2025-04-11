@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.CompilerServices;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    public AudioSource MusicSource, SFXSource;
+    public AudioSource MusicSource, SFXSource, LoopSFXSource;
     public Sound[] MusicSounds, SFXSounds;
 
-    
-    
+
+
     /*
      * Si queremos hacer sonidos que tengan en cuenta la distancia con el player el audio tiene que ser en 3D.
      * Si es en 2D se reproduce constantemente, pero se puede activar o desactivar con los checkpoints.
@@ -48,6 +49,10 @@ public class AudioManager : MonoBehaviour
             MusicSource.clip = s.Clip;
             MusicSource.Play();
         }
+    }
+    public void StopMusic()
+    {
+        MusicSource.Stop();
     }
     public void PlaySFX(string name, bool loop = false) 
     {
@@ -102,5 +107,34 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.volume = volume;
     }
+    public void PlayLoopSFX(string name)
+    {
+        if (!LoopSFXSource.isPlaying)
+        {
+            Sound s = Array.Find(SFXSounds, x => x.Name == name);
+
+            if (s == null)
+            {
+                Debug.Log("sound not found");
+            }
+
+            else
+            {
+                LoopSFXSource.loop = true;
+                LoopSFXSource.PlayOneShot(s.Clip);
+            }
+        }
+    }
+    public void StopLoopSFX()
+    {
+        LoopSFXSource.Stop();
+    }
+    public void StopAll()
+    {
+        StopLoopSFX();
+        StopSFX();
+        StopMusic();
+    }
+
 
 }

@@ -132,13 +132,18 @@ public class GameManager : MonoBehaviour
 
     void FinishGame()
     {
+        AudioManager.instance.StopAll();
         SceneManager.LoadScene("Win");
+        AudioManager.instance.PlayMusic("lose");
         ResetList();
     }
     public void LoseGame()
     {
+        AudioManager.instance.StopAll();
         SceneManager.LoadScene("Lose");
+        AudioManager.instance.PlayMusic("lose");
         ResetList();
+        
     }
 
     public void CopyNumberChange(int newCopyLimit)

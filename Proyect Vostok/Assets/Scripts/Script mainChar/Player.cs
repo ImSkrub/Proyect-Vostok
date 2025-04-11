@@ -152,12 +152,14 @@ public class Player : MonoBehaviour
                
                 rb.AddForce(Vector2.up * jetpackForce,ForceMode2D.Impulse);
                 jetpackParticle.Play();
-                controller.SetGravityScale(0);
-                jetpackFuel -= Time.deltaTime;  
+                //controller.SetGravityScale(0.5f);
+                jetpackFuel -= Time.deltaTime;
+                AudioManager.instance.PlayLoopSFX("jetpack");
             }
             else
             {
-                jetpackParticle.Stop();     
+                jetpackParticle.Stop();
+                AudioManager.instance.StopLoopSFX();
             }
             
             if (jetpackFuel <= 0)
@@ -165,7 +167,7 @@ public class Player : MonoBehaviour
                 Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
                 jetpackParticle.Stop(); // Stop particles
-                controller.SetGravityScale(1);
+                //controller.SetGravityScale(1);
                 playerView.SetJetpackState(false);
                 
             }

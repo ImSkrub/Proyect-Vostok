@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &1274229 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4718020602213713224, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+  m_PrefabInstance: {fileID: 63454217795543952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53927018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,12 +2627,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: LoopJPSource
+      value: 
+      objectReference: {fileID: 1274229}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: LoopSFXSource
+      value: 
+      objectReference: {fileID: 1274229}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.size
       value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: LoopSFXSounds.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: SFXSounds.Array.data[0].Clip
@@ -2749,6 +2766,14 @@ PrefabInstance:
       propertyPath: MusicSounds.Array.data[1].Name
       value: Music2
       objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: LoopSFXSounds.Array.data[0].Name
+      value: jetpack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700052703295431080, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2034055570760573243, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -2796,6 +2821,10 @@ PrefabInstance:
     - target: {fileID: 2825623399598249704, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718020602213713224, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7702980572895567689, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: Loop

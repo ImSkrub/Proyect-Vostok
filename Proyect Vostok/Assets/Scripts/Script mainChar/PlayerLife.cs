@@ -76,6 +76,7 @@ public class PlayerLife : MonoBehaviour
         if (deathCount >= 1)
         {
             GameManager.Instance.LoseGame();
+
         }
 
         if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.T))
