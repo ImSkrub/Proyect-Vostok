@@ -309,7 +309,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.75, y: 4.13}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.05
 --- !u!96 &224735339681010004
 TrailRenderer:
   serializedVersion: 2
@@ -470,6 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: e6de6150ab38ff74b9ee0fa32028adf7, type: 2}
+  haveDashPowerUp: 0
+  dashPowerUp: 1
   playerView: {fileID: 0}
   isDashEnabled: 0
   _groundCheckPoint: {fileID: 2178810712503718089}
