@@ -12,6 +12,8 @@ public class ButtonManager : MonoBehaviour
     {
         GameManager.Instance.ResetList(); // Limpieza general
         LevelManager.instance.LoadMainMenu();
+        AudioManager.instance.StopAll();
+        AudioManager.instance.PlayMusic("menu");
     }
 
     public void ExitGame()
@@ -23,6 +25,8 @@ public class ButtonManager : MonoBehaviour
     {
         GameManager.Instance.ResetList();
         LevelManager.instance.LoadLevel(1); // Primer nivel jugable
+        AudioManager.instance.StopAll();
+        AudioManager.instance.PlayMusic("level");
     }
 
     public void LevelSelect()
@@ -34,14 +38,16 @@ public class ButtonManager : MonoBehaviour
     {
         GameManager.Instance.ResetList(); // Reinicia copias y powerups
         LevelManager.instance.RestartLevel();
+        AudioManager.instance.StopAll();
+        AudioManager.instance.PlayMusic("level");
     }
 
     // Carga directa de niveles
-    public void Level1() => CargarNivel(1);
-    public void Level2() => CargarNivel(2);
-    public void Level3() => CargarNivel(3);
-    public void Level4() => CargarNivel(4);
-    public void Level5() => CargarNivel(5);
+    public void Level1() { CargarNivel(1); AudioManager.instance.StopAll(); AudioManager.instance.PlayMusic("level");}
+    public void Level2() { CargarNivel(2); AudioManager.instance.StopAll(); AudioManager.instance.PlayMusic("level"); }
+    public void Level3() { CargarNivel(3); AudioManager.instance.StopAll(); AudioManager.instance.PlayMusic("level"); }
+    public void Level4() { CargarNivel(4); AudioManager.instance.StopAll(); AudioManager.instance.PlayMusic("level"); }
+    public void Level5() { CargarNivel(5); AudioManager.instance.StopAll(); AudioManager.instance.PlayMusic("level"); }
 
     private void CargarNivel(int index)
     {

@@ -2640,7 +2640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: LoopSFXSounds.Array.size
@@ -2764,7 +2764,23 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 273aa5fc6a85dcb44abbf6ab1eca1118, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[1].Name
-      value: Music2
+      value: level
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: MusicSounds.Array.data[2].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 35f44652d0f4d5045a6da9b8e97487b8, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: MusicSounds.Array.data[2].Name
+      value: win
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: MusicSounds.Array.data[3].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 03b26414e65dfe441816a9def2a2add3, type: 3}
+    - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
+      propertyPath: MusicSounds.Array.data[3].Name
+      value: lose
       objectReference: {fileID: 0}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: LoopSFXSounds.Array.data[0].Name

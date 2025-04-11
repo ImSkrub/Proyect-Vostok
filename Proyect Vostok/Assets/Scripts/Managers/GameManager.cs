@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.StopAll();
         SceneManager.LoadScene("Win");
-        AudioManager.instance.PlayMusic("lose");
+        AudioManager.instance.PlayMusic("win");
         ResetList();
     }
     public void LoseGame()
