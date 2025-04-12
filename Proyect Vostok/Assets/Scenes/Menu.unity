@@ -3885,7 +3885,7 @@ PrefabInstance:
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[3].Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 03b26414e65dfe441816a9def2a2add3, type: 3}
+      objectReference: {fileID: 8300000, guid: c4e3ad2307fb1e2448d9ec13a2cc8a59, type: 3}
     - target: {fileID: 1564670035158906863, guid: 446d8e658996aa54ca6fcba7c15c37b9, type: 3}
       propertyPath: MusicSounds.Array.data[3].Name
       value: lose
