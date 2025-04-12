@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +18,9 @@ public class GameManager : MonoBehaviour
     public static Queue<List<Vector3>> _listPlayerPositions = new Queue<List<Vector3>>();
     public static Queue<GameObject> _copiaPlayers = new Queue<GameObject>();
 
-     private void Awake()
+    public event Action<int, int> OnCopyCountChanged;
+
+    private void Awake()
     {
         if (Instance != null)
         {
@@ -67,12 +69,17 @@ public class GameManager : MonoBehaviour
                 listPositions.Add(item.Pos);
             }
         }
-        if(_listPlayerPositions.Count < copyLimit)
+
+        if (_listPlayerPositions.Count < copyLimit)
         {
             _listPlayerPositions.Enqueue(listPositions);
             _copiaPlayers.Enqueue(new GameObject());
+
+            // 🚨 Notificar cambio de cantidad
+            OnCopyCountChanged?.Invoke(_listPlayerPositions.Count, copyLimit);
         }
-        if(_listPlayerPositions.Count== copyLimit)
+
+        if (_listPlayerPositions.Count == copyLimit)
         {
             _listPlayerPositions.Dequeue();
         }
@@ -152,5 +159,8 @@ public class GameManager : MonoBehaviour
         {
             copyLimit = newCopyLimit;
         }         
+
     }
+    public int getCopyLimit()=> copyLimit;
+    public int GetUsedCopies()=> _listPlayerPositions.Count;
 }
