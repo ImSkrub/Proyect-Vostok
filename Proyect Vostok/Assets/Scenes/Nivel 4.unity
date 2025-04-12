@@ -1874,6 +1874,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.500495}
   m_EdgeRadius: 0
+--- !u!1 &732599915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732599917}
+  - component: {fileID: 732599916}
+  m_Layer: 0
+  m_Name: Box Reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &732599916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732599915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efb4393c4da2e245a6e01b9f8be49ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 1543711776}
+  destinationPoint: {fileID: 732599917}
+  keyToPress: 114
+--- !u!4 &732599917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732599915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -99.34, y: -17.58, z: 0.8126158}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752880596
 GameObject:
   m_ObjectHideFlags: 0
@@ -4227,8 +4274,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 752880597}
     m_Modifications:
     - target: {fileID: 4126390538709532773, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126390538709532773, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126390538709532773, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4126390538709532774, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
       propertyPath: m_Size.x
@@ -4249,6 +4304,10 @@ PrefabInstance:
     - target: {fileID: 4126390538709532775, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
       propertyPath: m_Name
       value: Caja 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126390538709532775, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4126390538709532795, guid: 2cce124398ec0b54bad2a197bc5256f9, type: 3}
       propertyPath: m_RootOrder

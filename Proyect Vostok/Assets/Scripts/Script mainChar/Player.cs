@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private PlayerRaycast playerRaycast;
    
     [Header("Jetpack")]
-    [SerializeField] private float jetpackForce = 15f;
+    [SerializeField] private float jetpackForce = 3.5f;
     [SerializeField] private ParticleSystem jetpackParticle;
     public float jetpackFuel = 1;
     public bool jetpackOn = false;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     [Header("Copia")]
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
     public Vector2 startPos;
+    public event Action<bool> onReset;
     
     private void Awake()
     {

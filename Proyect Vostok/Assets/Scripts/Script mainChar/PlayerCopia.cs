@@ -10,21 +10,15 @@ public class PlayerCopia : MonoBehaviour
     private bool fastForward = false;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
+    [SerializeField] private int fastForwardMultiplier = 3;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         posCounter = 0;
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
     }
-    private void Awake()
-    {
-        
-    }
-
-    // Update is called once per frame
+  
     void FixedUpdate()
     {
         if (!fastForward && listOfPositions != null)
@@ -75,17 +69,17 @@ public class PlayerCopia : MonoBehaviour
     private void updateCopyPos()
     {
         if (listOfPositions == null || listOfPositions.Count == 0) return;
-
-        if (posCounter < listOfPositions.Count)
+        int steps = fastForward ? fastForwardMultiplier : 1;
+        for (int i = 0; i < steps && posCounter < listOfPositions.Count; i++)
         {
             transform.position = listOfPositions[posCounter];
             posCounter++;
-        }else
+        }
+        if (posCounter >= listOfPositions.Count)
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
             boxCollider2D.isTrigger = false;
             gameObject.layer = 11;
         }
-
     }
 }
