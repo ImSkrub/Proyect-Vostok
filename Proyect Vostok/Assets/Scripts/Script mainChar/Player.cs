@@ -105,11 +105,18 @@ public class Player : MonoBehaviour
     
     public void HandleCopy()
     {
+        if (GameManager.Instance.GetUsedCopies() >= GameManager.Instance.getCopyLimit())
+        {
+            Debug.Log("Player.cs: Límite de copias alcanzado, no se puede crear más.");
+            return;
+        }
+
         GameManager.Instance.UpdateQueueOfPositions(listCopyDataModels);
+        
         GameManager.Instance._Reset();
 
-        // Restaurar la posición desde el último checkpoint
         Checkpoint checkpoint = FindObjectOfType<Checkpoint>();
+        
         if (checkpoint != null && checkpoint.HasSavedStates())
         {
             PlayerMemento lastSavedState = checkpoint.savedStates.Peek(); // Obtener el último estado sin eliminarlo
@@ -123,16 +130,7 @@ public class Player : MonoBehaviour
         }
 
         listCopyDataModels.Clear();
-
-        if (powerUpManager != null)
-        {
-            powerUpManager.ReactivatePowerUps();
-        }
-        else
-        {
-            Debug.LogWarning("PowerUpManager no encontrado en la escena.");
-        }
-
+        powerUpManager?.ReactivatePowerUps();
         jetpackParticle.Stop();
         jetpackOn = false;
     }

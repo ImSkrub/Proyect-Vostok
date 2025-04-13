@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -62,6 +63,11 @@ public class GameManager : MonoBehaviour
 
     public void UpdateQueueOfPositions(List<CopyDataModel> listPos)
     {
+        if (_copiaPlayers.Count >= copyLimit)
+        {
+            Debug.Log("Límite de copias alcanzado, no se puede crear más.");
+            return;
+        }
         var listPositions = new List<Vector3>();
         if (listPos != null)
         {
@@ -71,7 +77,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (_listPlayerPositions.Count < copyLimit)
+        if (_listPlayerPositions.Count <= copyLimit)
         {
             _listPlayerPositions.Enqueue(listPositions);
             _copiaPlayers.Enqueue(new GameObject());
@@ -86,6 +92,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
+
     public void _Reset()
     {
         foreach (var copia in _copiaPlayers)
@@ -97,10 +105,8 @@ public class GameManager : MonoBehaviour
 
     private void instantiateCopiaPlayer(GameObject player, List<Vector3> listOfPositions)
     {
-        //player = Instantiate(copiaPlayerPrefab);
-        //player.TryGetComponent<PlayerCopia>(out PlayerCopia copiaPlayer);
-        //copiaPlayer.setListOfPositions(listOfPositions);
         var copia = Instantiate(copiaPlayerPrefab);
+        
         if (copia.TryGetComponent(out PlayerCopia copiaPlayer))
         {
             copiaPlayer.setListOfPositions(listOfPositions);

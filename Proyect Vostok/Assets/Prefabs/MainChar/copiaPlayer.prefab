@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4769132095426645881}
   m_Layer: 10
   m_Name: copiaPlayer
-  m_TagString: Untagged
+  m_TagString: PlayerCopia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974e27eda81d28c43b026047d53c50d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastForwardMultiplier: 3
 --- !u!61 &725541655629774984
 BoxCollider2D:
   m_ObjectHideFlags: 0

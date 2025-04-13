@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Next
   - Wall
+  - PlayerCopia
   layers:
   - Default
   - TransparentFX
