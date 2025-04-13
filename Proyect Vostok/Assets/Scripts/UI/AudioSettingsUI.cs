@@ -21,12 +21,14 @@ public class AudioSettingsUI : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        AudioManager.instance.MusicVolume(volume);
+        float newVolume = volume * .1f;
+        AudioManager.instance.MusicVolume(newVolume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        AudioManager.instance.SFXVolume(volume);
+        float newVolume = volume * 1f;
+        AudioManager.instance.SFXVolume(newVolume);
     }
  
 }
