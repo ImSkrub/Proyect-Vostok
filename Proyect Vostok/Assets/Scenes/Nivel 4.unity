@@ -3661,7 +3661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -456, y: 274}
+  m_AnchoredPosition: {x: -580, y: 161}
   m_SizeDelta: {x: 708.9236, y: 294.1927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403636350
@@ -3697,9 +3697,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '"Reporte: Aunque mejoramos enormemente las capacidades atleticas del modelo
-    no esperabamos que requiriera tanta energia" Una vez agarrado usar Shift para
-    hacer uso del poder'
+  m_Text: '"Reporte: Las mejoras atleticas que se le hicieron al modelo fueron satisfactorias,
+    pero los cientificos quisieron probar que pasaria con una sobrecarga de energia."
+    Prueba a tocar SHIFT para notar las mejoras'
 --- !u!222 &1403636351
 CanvasRenderer:
   m_ObjectHideFlags: 0
