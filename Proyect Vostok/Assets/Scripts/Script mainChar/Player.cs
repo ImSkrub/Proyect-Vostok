@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     [Header("Copia")]
     public List<CopyDataModel> listCopyDataModels = new List<CopyDataModel>();
     public Vector2 startPos;
-    public event Action<bool> onReset;
     
     private void Awake()
     {

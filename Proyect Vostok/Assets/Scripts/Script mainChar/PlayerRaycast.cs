@@ -10,7 +10,6 @@ public class PlayerRaycast : MonoBehaviour
     private bool leftCopy = false;
     private bool timerEnded = false;
     private bool timerStarted = false;
-    [SerializeField] private float sideDistance = 1.0f;
     [SerializeField] private Transform _rightWallCheckPoint;
     [SerializeField] private Transform _leftWallCheckPoint;
     [SerializeField] private Transform _groundCheckPoint;

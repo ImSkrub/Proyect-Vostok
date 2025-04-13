@@ -6,7 +6,6 @@ public class PlayerCopia : MonoBehaviour
 {
     private List<Vector3> listOfPositions;
     private int posCounter = 0;
-    private bool enableCollision = true;
     private bool fastForward = false;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
@@ -58,13 +57,6 @@ public class PlayerCopia : MonoBehaviour
         print(list.Count);    
         listOfPositions = list;
     }
-
-    //IEnumerator activateCollision(float delay, BoxCollider2D collider2D)
-    //{
-    //    yield return new WaitForSeconds(delay);
-
-    //    collider2D.isTrigger = false;
-    //}
 
     private void updateCopyPos()
     {
