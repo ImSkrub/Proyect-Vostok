@@ -93,6 +93,11 @@ public class LevelManager : MonoBehaviour
             else
             {
                 Debug.Log($"[LevelManager] Cargando escena NO jugable (índice guardado sigue en: {lastPlayableLevelIndex})");
+                if (trimmedSceneName == "Win" || levelIndex == 6)
+                {
+                    AudioManager.instance.StopAll();
+                    AudioManager.instance.PlayMusic("win");
+                }
             }
 
             SceneManager.LoadScene(levelIndex);
