@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static Queue<GameObject> _copiaPlayers = new Queue<GameObject>();
 
     public event Action<int, int> OnCopyCountChanged;
+    public static string pendingMusicToPlay = "";
 
     private void Awake()
     {
@@ -139,13 +140,15 @@ public class GameManager : MonoBehaviour
 
     void FinishGame()
     {
+        Debug.Log("Gane");
         AudioManager.instance.StopAll();
-        SceneManager.LoadScene("Win");
         AudioManager.instance.PlayMusic("win");
         ResetList();
+        SceneManager.LoadScene("Win");
     }
     public void LoseGame()
     {
+        Debug.Log("Perdiste");
         AudioManager.instance.StopAll();
         SceneManager.LoadScene("Lose");
         AudioManager.instance.PlayMusic("lose");

@@ -54,11 +54,6 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogWarning("PowerUpManager.Instance es nulo. Asegúrate de que haya un PowerUpManager en la escena.");
         }
-
-        if (lastPlayableLevelIndex != 8)
-        {
-            // AudioManager.instance.PlayMusic("Music2");
-        }
     }
 
     private bool IsNonPlayableScene(string sceneName)

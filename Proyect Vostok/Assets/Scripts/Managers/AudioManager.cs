@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -9,13 +9,6 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public AudioSource MusicSource, SFXSource, LoopSFXSource;
     public Sound[] MusicSounds, SFXSounds;
-
-
-
-    /*
-     * Si queremos hacer sonidos que tengan en cuenta la distancia con el player el audio tiene que ser en 3D.
-     * Si es en 2D se reproduce constantemente, pero se puede activar o desactivar con los checkpoints.
-    */
     private void Awake()
     {
         if (instance == null)
@@ -37,15 +30,16 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string name)
     {
+        Debug.Log($"🔍 Buscando música con nombre: '{name}'");
         Sound s = Array.Find(MusicSounds, x => x.Name == name);
 
         if (s == null)
         {
-            Debug.Log("sound not found");
+            Debug.LogWarning($"❌ Música no encontrada: '{name}'. Revisá si está mal escrito o no cargado.");
         }
-
         else
         {
+            Debug.Log($"✅ Reproduciendo música: {s.Name}");
             MusicSource.clip = s.Clip;
             MusicSource.Play();
         }
