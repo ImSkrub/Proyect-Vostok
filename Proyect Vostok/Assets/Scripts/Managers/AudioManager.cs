@@ -100,6 +100,7 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float volume)
     {
         SFXSource.volume = volume;
+        LoopSFXSource.volume = volume;
     }
     public void PlayLoopSFX(string name)
     {
