@@ -21,7 +21,7 @@ public class AudioSettingsUI : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        float newVolume = volume * .1f;
+        float newVolume = volume * 0.05f;
         AudioManager.instance.MusicVolume(newVolume);
     }
 
