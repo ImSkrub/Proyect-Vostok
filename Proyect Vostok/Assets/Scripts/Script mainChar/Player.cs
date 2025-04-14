@@ -131,8 +131,7 @@ public class Player : MonoBehaviour
 
         listCopyDataModels.Clear();
         powerUpManager?.ReactivatePowerUps();
-        jetpackParticle.Stop();
-        jetpackOn = false;
+        ResetJetpack();
     }
 
     #region JETPACK
@@ -159,8 +158,8 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("El jugador se saco el jetpack");
                 jetpackOn = false; // Disable the jetpack
-                jetpackParticle.Stop(); // Stop particles
                 playerView.SetJetpackState(false);
+                jetpackParticle.Stop(); // Stop particles
                 
             }
         }
@@ -172,6 +171,13 @@ public class Player : MonoBehaviour
         jetpackOn = true;
         jetpackParticle.Play(); // Start particles when activating the jetpack
         playerView.SetJetpackState(true);
+    }
+
+    public void ResetJetpack()
+    {
+        jetpackOn = false;
+        jetpackParticle.Stop();
+        playerView.SetJetpackState(false);
     }
 
     public void AddJetpackFuel(int value)
